@@ -21,8 +21,16 @@
                 </label>
             </form>
         </div>
-        <div *ngFor="let item of searchRegistry" class="Item">
+        <div *ngFor="let item of finalRegistry" class="Item" (click)="selectItem(item);">
             <div>Name: {{item.payload.doc.data().name}}</div>
             <div>Catgory: {{item.payload.doc.data().category}}</div>
+        </div>
+
+        <div>
+            <div>my items</div>
+            <div *ngFor="let item of guestsItems" class="Item" (click)="selectItem(item);">
+                <div>Name: {{item.payload.doc.data().name}}</div>
+                <div>Catgory: {{item.payload.doc.data().category}}</div>
+            </div>
         </div>
     </div>

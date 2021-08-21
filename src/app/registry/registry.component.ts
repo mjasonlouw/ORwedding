@@ -11,10 +11,12 @@ import { RegistryService } from '../registry.service';
 })
 export class RegistryComponent implements OnInit {
 
+  finalRegistry;
   searchRegistry;
   registry;
   categories = [];
   activeCategories = [];
+  guestsItems = [];
   searchTerm = '';
   categoryFilter: FormGroup
 
@@ -51,6 +53,10 @@ export class RegistryComponent implements OnInit {
     this.categories = [...new Set(this.categories)]; //remove duplicates
     console.log(this.categories)
 
+    this.categoryFilter = this.formBuilder.group({
+      categories: new FormArray([])
+    });
+
     this.categories.forEach(() => {
       this.ordersFormArray.push(new FormControl(false));
     })
@@ -63,6 +69,8 @@ export class RegistryComponent implements OnInit {
         this.registry = res;
         this.sortCategories();
         this.filterCategories();
+        this.searchThroughRegistry();
+        this.sortMyItems();
       });
   }
 
@@ -79,6 +87,7 @@ export class RegistryComponent implements OnInit {
     console.log("active", this.activeCategories)
 
     this.filterCategories()
+    this.searchThroughRegistry()
   }
 
   filterCategories(){
@@ -101,18 +110,66 @@ export class RegistryComponent implements OnInit {
   }
 
   searchThroughRegistry(){
-    console.log("searching through registry")
+    console.log("0------------searching through registry")
+    this.finalRegistry = [];
     this.searchRegistry.forEach(item => {
-      console.log(item.payload.doc.data())
+      let data = item.payload.doc.data();
+
+      let allSearchableTerms = this.searchTerm.split(' ');
+
+      let allSearchableWords = [...data.name.split(' ')]
+
+      data.category.forEach(cat => {
+        allSearchableWords = [...allSearchableWords, ...cat.split(' ')]
+      });
+
+      console.log("allSearchableWords",allSearchableWords)
+      console.log("allSearchableTerms",allSearchableTerms)
+
+      let intersection = [];
+      allSearchableWords.forEach(word => {
+        allSearchableTerms.forEach(term => {
+          word = word.toLowerCase()
+          term = term.toLowerCase()
+          console.log(word,term,word.indexOf(term))
+          if(word.indexOf(term) != -1){
+            intersection.push(word)
+
+          }
+        })
+      })
+
+      console.log("INTERSECTION: ", intersection)
+      if(intersection.length > 0){
+        this.finalRegistry.push(item)
+      }else if(this.searchTerm == ''){
+        this.finalRegistry.push(item)
+      }
     });
   }
 
   onSearchKeyUp(event){
     console.log(event.target.value);
     this.searchTerm = event.target.value;
-    if(this.searchTerm != ''){
-      this.searchThroughRegistry()
-    }
+    this.searchThroughRegistry()
+  }
+
+  selectItem(item){
+   this.RegistryService.assignGuestToItem(item, this.GuestService.getGuestName())
+   this.sortMyItems()
+  }
+
+  sortMyItems(){
+    console.log("sort guests items")
+    this.guestsItems = [];
+    let guestName = this.GuestService.getGuestName();
+    this.searchRegistry.forEach(item => {
+      let data = item.payload.doc.data();
+      console.log(data.name, guestName)
+      if(data.guest == guestName){
+        this.guestsItems.push(item);
+      }
+    })
   }
       
 
