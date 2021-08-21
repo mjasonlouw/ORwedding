@@ -1,1 +1,28 @@
-<p>registry works!</p>
+<div class="Body">
+    <div>
+        <div>Search</div>
+        <form [formGroup]="categoryFilter">
+         
+                <input type="text" (keyup)="onSearchKeyUp($event)">
+       
+                <br/>
+            
+            </form>
+        </div>
+    <div>
+        <div>categories</div>
+        <form [formGroup]="categoryFilter">
+            <label formArrayName="categories" *ngFor="let order of
+                ordersFormArray.controls; let i= index">
+                <input type="checkbox" [formControlName]="i"
+                    (change)="checkCategory(i, $event)">
+                {{categories[i]}}
+                <br/>
+                </label>
+            </form>
+        </div>
+        <div *ngFor="let item of searchRegistry" class="Item">
+            <div>Name: {{item.payload.doc.data().name}}</div>
+            <div>Catgory: {{item.payload.doc.data().category}}</div>
+        </div>
+    </div>

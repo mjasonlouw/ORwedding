@@ -15,4 +15,8 @@ export class GuestService {
       this.GuestName = x.name;
     })
   }
+
+  getGuestName(){
+    return this.GuestName;
+  }
 }
