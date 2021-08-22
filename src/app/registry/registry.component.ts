@@ -155,8 +155,15 @@ export class RegistryComponent implements OnInit {
   }
 
   selectItem(item){
-   this.RegistryService.assignGuestToItem(item, this.GuestService.getGuestName())
-   this.sortMyItems()
+    if(item.payload.doc.data().guest == ''){
+      this.RegistryService.assignGuestToItem(item, this.GuestService.getGuestName())
+      this.sortMyItems()
+    }
+  }
+
+  removeGuestItem(item){
+    this.RegistryService.removeGuestFromItem(item)
+    this.sortMyItems()
   }
 
   sortMyItems(){

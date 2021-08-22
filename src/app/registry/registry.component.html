@@ -24,11 +24,13 @@
         <div *ngFor="let item of finalRegistry" class="Item" (click)="selectItem(item);">
             <div>Name: {{item.payload.doc.data().name}}</div>
             <div>Catgory: {{item.payload.doc.data().category}}</div>
+            <!-- <div>Catgory: {{item.payload.doc.data().url}}</div> -->
+            <img [src]="item.payload.doc.data().url" width="80%"/>
         </div>
 
         <div>
             <div>my items</div>
-            <div *ngFor="let item of guestsItems" class="Item" (click)="selectItem(item);">
+            <div *ngFor="let item of guestsItems" class="Item" (click)="removeGuestItem(item);">
                 <div>Name: {{item.payload.doc.data().name}}</div>
                 <div>Catgory: {{item.payload.doc.data().category}}</div>
             </div>
