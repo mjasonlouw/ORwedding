@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+$primary_green: #333F36; 
+$secondary_green: #667D6B;
+$background: #E9E5E0;
+
+@font-face {
+  font-family: "Greycliff_medium";
+  src: url(../assets/fonts/GreycliffCF-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Greycliff_medium_italic";
+  src: url(../assets/fonts/GreycliffCF-MediumOblique.ttf);
+}
+
+@font-face {
+  font-family: "Greycliff_light";
+  src: url(../assets/fonts/GreycliffCF-Light.ttf);
+}
+
+@font-face {
+  font-family: "Greycliff_bold";
+  src: url(../assets/fonts/GreycliffCF-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Greycliff_bolder";
+  src: url(../assets/fonts/GreycliffCF-Heavy.ttf);
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}

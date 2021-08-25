@@ -13,7 +13,7 @@ export class RegistryComponent implements OnInit {
 
   finalRegistry;
   searchRegistry;
-  registry;
+  registry = [];
   categories = [];
   activeCategories = [];
   guestsItems = [];
@@ -45,13 +45,14 @@ export class RegistryComponent implements OnInit {
 
   sortCategories(){
     this.registry.forEach(item => {
+console.log(item);
+
       item.payload.doc.data().category.forEach(cat => {
         this.categories.push(cat) //get each category
       });
     });
     
     this.categories = [...new Set(this.categories)]; //remove duplicates
-    console.log(this.categories)
 
     this.categoryFilter = this.formBuilder.group({
       categories: new FormArray([])
@@ -75,16 +76,12 @@ export class RegistryComponent implements OnInit {
   }
 
   checkCategory(index, values){
-    console.log(index, values.currentTarget.checked);
-    console.log(this.categories[index])
     let io = this.activeCategories.indexOf(this.categories[index])
     if(io >= 0){
       this.activeCategories.splice(io, 1);
     }else{
       this.activeCategories.push(this.categories[index])
     }
-
-    console.log("active", this.activeCategories)
 
     this.filterCategories()
     this.searchThroughRegistry()
