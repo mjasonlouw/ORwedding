@@ -103,7 +103,7 @@
 
       <div class="my_items_wrapper">
         <div class="my_items_header">1. MY ITEMS <span class="my_items_sub_header">Your gifts</span></div>
-        <div class="my_items_grid">
+        <div class="my_items_grid" *ngIf="guestsItems?.length > 0">
           <div class="my_items_information_wrapper" *ngFor="let item of guestsItems" class="gift_item"
             (click)="removeGuestItem(item);">
             <div class="image_outer_wrapper">
@@ -129,6 +129,14 @@
               <div>{{item.payload.doc.data().name}}</div>
             </div>
           </div>
+        </div>
+
+        <div class="empty_state_wrapper" *ngIf="guestsItems?.length == 0">
+            <div class="empty_state">
+              <div class="empty_state_text">
+                You have no gifts selected at the moment
+              </div>
+            </div>
         </div>
       </div>
 
@@ -173,6 +181,13 @@
             </div>
           </ng-container>
         </div>
+
+        <div class="added_popup_wrapper hidden">
+            <div class="added_popup_information pulse_animation">
+             
+            </div>
+        </div>
+
       </div>
     </div>
   </div>

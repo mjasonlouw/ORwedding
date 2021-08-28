@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { $ } from 'protractor';
 import { GuestService } from '../guest.service';
 import { RegistryService } from '../registry.service';
 
@@ -45,7 +46,7 @@ export class RegistryComponent implements OnInit {
 
   sortCategories(){
     this.registry.forEach(item => {
-console.log(item);
+//console.log(item);
 
       item.payload.doc.data().category.forEach(cat => {
         this.categories.push(cat) //get each category
@@ -92,7 +93,7 @@ console.log(item);
     this.registry.forEach(item => {
       let data = item.payload.doc.data();
       const intersection = data.category.filter(element => this.activeCategories.includes(element));
-      console.log("this.activeCategories.length",this.activeCategories.length)
+      //console.log("this.activeCategories.length",this.activeCategories.length)
       if(intersection.length > 0){
         this.searchRegistry.push(item)
       }else if(this.activeCategories.length == 0){
@@ -102,12 +103,12 @@ console.log(item);
       if(this.searchTerm != ''){
         this.searchThroughRegistry()
       }
-      console.log("intesection",intersection)
+      //console.log("intesection",intersection)
     })
   }
 
   searchThroughRegistry(){
-    console.log("0------------searching through registry")
+    //console.log("0------------searching through registry")
     this.finalRegistry = [];
     this.searchRegistry.forEach(item => {
       let data = item.payload.doc.data();
@@ -120,15 +121,15 @@ console.log(item);
         allSearchableWords = [...allSearchableWords, ...cat.split(' ')]
       });
 
-      console.log("allSearchableWords",allSearchableWords)
-      console.log("allSearchableTerms",allSearchableTerms)
+      //console.log("allSearchableWords",allSearchableWords)
+      //console.log("allSearchableTerms",allSearchableTerms)
 
       let intersection = [];
       allSearchableWords.forEach(word => {
         allSearchableTerms.forEach(term => {
           word = word.toLowerCase()
           term = term.toLowerCase()
-          console.log(word,term,word.indexOf(term))
+          //console.log(word,term,word.indexOf(term))
           if(word.indexOf(term) != -1){
             intersection.push(word)
 
@@ -136,7 +137,7 @@ console.log(item);
         })
       })
 
-      console.log("INTERSECTION: ", intersection)
+      //console.log("INTERSECTION: ", intersection)
       if(intersection.length > 0){
         this.finalRegistry.push(item)
       }else if(this.searchTerm == ''){
@@ -146,30 +147,54 @@ console.log(item);
   }
 
   onSearchKeyUp(event){
-    console.log(event.target.value);
+    //console.log(event.target.value);
     this.searchTerm = event.target.value;
     this.searchThroughRegistry()
+  }
+
+  removePopUp(popup) {
+    setTimeout(function(){
+      popup.classList.remove("show");
+      popup.classList.add("hidden");
+    },3000);
   }
 
   selectItem(item){
     if(item.payload.doc.data().guest == ''){
       this.RegistryService.assignGuestToItem(item, this.GuestService.getGuestName())
       this.sortMyItems()
+
+      var popup = document.getElementsByClassName("added_popup_wrapper")[0];
+      document.getElementsByClassName("added_popup_information")[0].innerHTML = "Added";
+      
+      popup.classList.remove("hidden");
+      popup.classList.add("show");
+
+      this.removePopUp(popup); 
+    
     }
   }
-
+  
   removeGuestItem(item){
     this.RegistryService.removeGuestFromItem(item)
     this.sortMyItems()
+
+    var popup = document.getElementsByClassName("added_popup_wrapper")[0];
+    document.getElementsByClassName("added_popup_information")[0].innerHTML = "Removed";
+    
+    popup.classList.remove("hidden");
+    popup.classList.add("show");
+
+    this.removePopUp(popup);
   }
 
   sortMyItems(){
-    console.log("sort guests items")
+    //console.log("sort guests items")
     this.guestsItems = [];
     let guestName = this.GuestService.getGuestName();
     this.searchRegistry.forEach(item => {
       let data = item.payload.doc.data();
-      console.log(data.name, guestName)
+      //console.log(data.name, guestName)
       if(data.guest == guestName){
         this.guestsItems.push(item);
       }

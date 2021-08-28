@@ -1,5 +1,7 @@
 @import "../../scss/common.scss";
 
+
+
 @mixin transparent_button {
     height: 45px;
     width: 45px;
@@ -58,7 +60,8 @@
 
 .my_items_wrapper {
     color: $secondary_green;
-    padding: 5%; 
+    padding: 5% 5% 0 5%; 
+    position: relative; 
 
     .my_items_header {
         font-family: "Greycliff_bolder";
@@ -73,8 +76,6 @@
         }
     }
 
-  
-
     .my_items_grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -83,6 +84,16 @@
         .gift_item {
             display: grid;
             grid-template-rows: auto 8vh;
+            transition: all 0.3s; 
+
+            &:active {
+               transform: scale(0.9); 
+            }
+
+            &:hover {
+                transform: scale(0.9);
+                cursor: pointer; 
+             }
         }
 
         .item_name {
@@ -119,6 +130,7 @@
                             display: flex;
                             justify-content: flex-end;
                             align-items: flex-end;
+
                         }
 
                         .category_wrapper {
@@ -159,3 +171,64 @@
     }
 }
 
+.added_popup_wrapper {
+    position: sticky;
+    bottom: -50px;
+    display: flex;
+    justify-content: center;
+    transition: all 0.5s; 
+
+    &.hidden {
+        opacity: 0; 
+    }
+
+    &.show {
+        opacity: 1; 
+        bottom: 40px;
+    }
+
+    .added_popup_information {
+        background-color: rgba($secondary_green, 0.2);
+        border: 1px solid $secondary_green; 
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+        padding: 10px 25px;
+        border-radius: 30px;
+        color: $secondary_green; 
+        letter-spacing: 2px;
+        font-family: "Greycliff_medium_italic";
+
+        box-shadow: 3px 2px 40px 10px rgba(0,0,0,0.16);
+        -webkit-box-shadow: 3px 2px 40px 10px rgba(0,0,0,0.16);
+        -moz-box-shadow: 3px 2px 40px 10px rgba(0,0,0,0.16);
+
+        &.pulse_animation {
+            box-shadow: 0 0 0 0 rgba($secondary_green, 1);
+            animation: pulse-green 2s infinite;
+        }
+    }
+}
+
+@keyframes pulse-green {
+    0% {
+      box-shadow: 0 0 0 0 rgba($secondary_green, 0.7);
+    }
+    
+    70% {
+      box-shadow: 0 0 0 10px rgba($secondary_green, 0);
+    }
+    
+    100% {
+      box-shadow: 0 0 0 0 rgba($secondary_green, 0);
+    }
+  }
+
+  .empty_state_wrapper {
+      .empty_state {
+        .empty_state_text {
+            font-family: "Greycliff_medium_italic";
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
+      }
+  }
