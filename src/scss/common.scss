@@ -2,6 +2,7 @@
 $primary_green: #333F36; 
 $secondary_green: #667D6B;
 $background: #E9E5E0;
+$light_background: #FBF4EB; 
 
 @font-face {
   font-family: "Greycliff_medium";
@@ -11,6 +12,11 @@ $background: #E9E5E0;
 @font-face {
   font-family: "Greycliff_medium_italic";
   src: url(../assets/fonts/GreycliffCF-MediumOblique.ttf);
+}
+
+@font-face {
+  font-family: "Greycliff_light_italic";
+  src: url(../assets/fonts/GreycliffCF-LightOblique.ttf);
 }
 
 @font-face {

@@ -44,6 +44,16 @@ export class RegistryComponent implements OnInit {
     return this.categoryFilter.controls.categories as FormArray;
   }
 
+  openFilters() {
+    if(document.getElementsByClassName("filter_wrapper")[0].classList.contains("opened")) {
+      document.getElementsByClassName("filter_wrapper")[0].classList.remove("opened");
+      document.getElementsByClassName("filter_wrapper")[0].classList.add("closed");
+    } else {
+      document.getElementsByClassName("filter_wrapper")[0].classList.remove("closed");
+      document.getElementsByClassName("filter_wrapper")[0].classList.add("opened");
+    }
+  }
+
   sortCategories(){
     this.registry.forEach(item => {
 //console.log(item);
