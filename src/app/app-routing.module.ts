@@ -3,6 +3,7 @@ import { Routes, RouterModule, UrlSegment } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { GuestService } from './guest.service';
 import { RegistryComponent } from './registry/registry.component';
+import { DefaultComponent } from './default/default.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,7 @@ const routes: Routes = [
     },
     component: RegistryComponent
   },
-  { path: '', redirectTo: 'welcome/jason/1996', pathMatch: 'full'},
+  { path: '', component: DefaultComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
