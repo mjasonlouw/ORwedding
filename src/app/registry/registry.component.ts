@@ -38,6 +38,34 @@ export class RegistryComponent implements OnInit {
     this.getRegistry();
     this.GuestService.getGuestName()
     this.filterCategories()
+
+    document.addEventListener('scroll', function(e) {
+        var position = window.pageYOffset;
+
+console.log(position);
+
+        if(position > 99) {
+          if(document.getElementsByClassName("filtering_wrapper")[0].classList.contains("at_top")) {
+            document.getElementsByClassName("filtering_wrapper")[0].classList.remove("at_top");
+            document.getElementsByClassName("filtering_wrapper")[0].classList.add("scrolling");
+
+            document.getElementsByClassName("search_box")[0].classList.remove("at_top_search");
+            document.getElementsByClassName("search_box")[0].classList.add("on_scroll_search");
+
+            document.getElementsByClassName("filters_button")[0].classList.add("on_scroll_button");
+          }
+        } else {
+          if(document.getElementsByClassName("filtering_wrapper")[0].classList.contains("scrolling")) {
+            document.getElementsByClassName("filtering_wrapper")[0].classList.remove("scrolling");
+            document.getElementsByClassName("filtering_wrapper")[0].classList.add("at_top");
+
+            document.getElementsByClassName("search_box")[0].classList.remove("on_scroll_search");
+            document.getElementsByClassName("search_box")[0].classList.add("at_top_search");
+
+            document.getElementsByClassName("filters_button")[0].classList.remove("on_scroll_button");
+          }
+        }
+    });
   }
 
   get ordersFormArray() {

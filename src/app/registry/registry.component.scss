@@ -1,23 +1,29 @@
 @import "../../scss/common.scss";
 
-
-
 @mixin transparent_button {
     height: 45px;
     width: 45px;
     justify-content: center;
     align-items: center;
-    border: 1px solid #E9E5E0;
+    border: 1px solid $background;
     background-color: rgba(233, 229, 224, 0.1);
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
     border-radius: 100%;
+    transition: all 0.3s;
+
+    &.on_scroll_button { 
+        background-color: rgba($secondary_green, 0.5); 
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        @include drop_shadow;
+    }
 }
 
 @mixin drop_shadow {
-    box-shadow: 3px 2px 40px 10px rgba(0,0,0,0.05);
-    -webkit-box-shadow: 3px 2px 40px 10px rgba(0,0,0,0.05);
-    -moz-box-shadow: 3px 2px 40px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 0 41px 1px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 41px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 41px 1px rgba(0, 0, 0, 0.2);
 }
 
 @mixin leaves {
@@ -27,8 +33,8 @@
 }
 
 .main_header_wrapper {
-    position: relative; 
     height: 300px; 
+    position: relative; 
 
     .heading_blob {
         position: absolute;
@@ -37,7 +43,7 @@
         width: 100%;
 
         @media (min-width: 1024px) {
-            bottom: -50px;
+            bottom: -80px;
         }
     }
 }
@@ -62,13 +68,28 @@
             }
         }
     } 
+}
+
+.filtering_wrapper {
+    position: relative; 
+    transition: all 0.3s; 
+    
+    &.at_top {
+        top: 110px;
+    }
+
+    &.scrolling {
+        top: 35px;
+    }
+}
 
     .search_filter_wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 100%;
+        position: fixed;
+        z-index: 3;
 
         .search_wrapper {
             display: flex;
@@ -77,16 +98,27 @@
             .search_box {
                 padding: 0 25px;
                 border-radius: 30px;
-                border: 1px solid $background; 
-                background-color: rgba($background, 0.1);
                 width: 200px;
-                -webkit-backdrop-filter: blur(2px);
-                backdrop-filter: blur(2px);
-                font-family: 'Greycliff_light';
-                font-weight: lighter;
+                font-family: 'Greycliff_light_italic';
                 letter-spacing: 3px;
                 height: 45px; 
                 color: $background;
+                font-size: 0.9rem;
+                transition: all 0.5s;
+                border: 1px solid $background; 
+
+                &.at_top_search{
+                    background-color: rgba($background, 0.1);
+                    -webkit-backdrop-filter: blur(2px);
+                    backdrop-filter: blur(2px);
+                }
+
+                &.on_scroll_search{
+                    background-color: rgba($secondary_green, 0.5); 
+                    -webkit-backdrop-filter: blur(6px);
+                    backdrop-filter: blur(6px);
+                    @include drop_shadow;
+                }
 
                 @media (min-width: 1024px) {
                     width: 400px;
@@ -98,11 +130,13 @@
             }
         }
     }
-}
 
 .registry_wrapper {
 }
 
+.body {
+    position: relative; 
+}
 
 .my_items_wrapper {
     color: $secondary_green;
@@ -126,9 +160,11 @@
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-gap: 25px;
+        grid-template-rows: masonry;
 
         @media (min-width: 1024px) {
             grid-template-columns: repeat(5, minmax(0, 1fr));
+            //grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         }
 
         .gift_item {
@@ -194,6 +230,7 @@
                                 color: $background;
                                 padding: 10px;
                                 border-radius: 30px;
+                                background-color: rgba($background, 0.1);
                                 font-family: "Greycliff_medium_italic";
                                 position: relative;
                                 top: 10px; 
@@ -244,15 +281,18 @@
     }
 
     .added_popup_information {
-        background-color: rgba($secondary_green, 0.2);
-        border: 1px solid $secondary_green; 
-        -webkit-backdrop-filter: blur(3px);
-        backdrop-filter: blur(3px);
+        // background-color: rgba($secondary_green, 0.2);
+        // border: 1px solid $secondary_green; 
+        background-color: rgba($secondary_green, 0.5); 
+        border: 1px solid $background;
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
         padding: 10px 25px;
         border-radius: 30px;
-        color: $secondary_green; 
-        letter-spacing: 2px;
-        font-family: "Greycliff_medium_italic";
+        font-family: "Greycliff_light_italic";
+        color: $background;
+        letter-spacing: 3px;
+        font-size: 0.9rem;
 
         @include drop_shadow;
 
@@ -292,22 +332,19 @@
     position: fixed; 
     z-index: 3; 
     transition: all 0.5s;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(6px);
     background-color: rgba($secondary_green, 0.5); 
     border: 1px solid $background;
     @include drop_shadow;
-    padding: 20px;
+    padding: 30px;
     border-radius: 15px 0 0 15px;
     width: 180px; 
-    top: 190px;
+    margin-top: 14%;
     overflow-y: scroll;
     height: 400px; 
 
     .filter_header {
-        display: grid;
-        grid-template-columns: auto auto;
-        align-items: center;
-        padding-bottom: 60px;
+        padding-bottom: 40px;
 
         .filter_close {
             svg {
@@ -317,10 +354,8 @@
         }
 
         .filters_heading {
-            justify-content: flex-end;
             color: $background;
             font-family: "Greycliff_light";
-            display: flex;
             letter-spacing: 3px;
             font-size: 1rem; 
         }

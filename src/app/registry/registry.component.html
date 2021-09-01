@@ -1,22 +1,77 @@
-<div class="Body">
-  <div class="main_header_wrapper">
+<div class="body">
+  <div class="filtering_wrapper at_top">
+    <div class="search_filter_wrapper">
+      <div class="search_wrapper">
+        <form [formGroup]="categoryFilter">
+          <input placeholder="Search an item" type="text" (keyup)="onSearchKeyUp($event)" class="search_box at_top_search" />
+        </form>
+      </div>
+  
+      <div class="filters_button" (click)="openFilters();">
+        <div class="filter_button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11.538" height="10.434" viewBox="0 0 11.538 10.434">
+            <path id="filter" d="M13.038,3H2L6.415,8.221v3.61l2.208,1.1V8.221Z" transform="translate(-1.75 -2.75)"
+              fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  
+    <div class="filter_wrapper closed">
+      <div class="filter_header">
+        <div class="filters_heading">FILTERS</div>
+      </div>
+  
+      <div class="filter_item_wrapper">
+        <form [formGroup]="categoryFilter">
+          <div formArrayName="categories" *ngFor="let order of
+          ordersFormArray.controls; let i= index">
+            <label class="checkbox">
+              <span class="checkbox__input">
+                <input type="checkbox" name="checkbox" [formControlName]="i" (change)="checkCategory(i, $event)">
+                <span class="checkbox__control">
+                  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+                    <path fill='none' stroke='#667D6B' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59'
+                      stroke-linecap="round" />
+                  </svg>
+                </span>
+              </span>
+              <span class="category_name">{{categories[i]}}</span>
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="main_header_wrapper" id="headerBlob">
     <div class="heading_blob">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 845 754.046">
-        <path id="Path_623" data-name="Path 623" d="M765,726a573.15,573.15,0,0,0,149,48c211.941,37.025,271.327-79.948,431-30,51.625,16.149,128.136,54.253,238,43,11.376-1.165,20.725-2.615,27-3.691V35H766C765.667,170,765.333,591,765,726Z" transform="translate(-765 -35)" fill="#667d6b"/>
-      </svg>     
+        <path id="Path_623" data-name="Path 623"
+          d="M765,726a573.15,573.15,0,0,0,149,48c211.941,37.025,271.327-79.948,431-30,51.625,16.149,128.136,54.253,238,43,11.376-1.165,20.725-2.615,27-3.691V35H766C765.667,170,765.333,591,765,726Z"
+          transform="translate(-765 -35)" fill="#667d6b" />
+      </svg>
     </div>
 
     <div class="leaves">
       <div class="one">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.917 154.88">
           <g id="Group_202" data-name="Group 202" transform="translate(-293.336)" opacity="0.5">
-            <path id="Path_595" data-name="Path 595" d="M0,0V145.686" transform="translate(306.295)" fill="#20271a" stroke="#20271a" stroke-width="1.2"/>
-            <g id="Ellipse_9" data-name="Ellipse 9" transform="translate(301.295 144.88)" fill="none" stroke="#20271a" stroke-width="1.2">
-              <circle cx="5" cy="5" r="5" stroke="none"/>
-              <circle cx="5" cy="5" r="4.4" fill="none"/>
+            <path id="Path_595" data-name="Path 595" d="M0,0V145.686" transform="translate(306.295)" fill="#20271a"
+              stroke="#20271a" stroke-width="1.2" />
+            <g id="Ellipse_9" data-name="Ellipse 9" transform="translate(301.295 144.88)" fill="none" stroke="#20271a"
+              stroke-width="1.2">
+              <circle cx="5" cy="5" r="5" stroke="none" />
+              <circle cx="5" cy="5" r="4.4" fill="none" />
             </g>
-            <path id="Path_592" data-name="Path 592" d="M204.129,667.946a9.23,9.23,0,0,1,2.15,3.056,2.8,2.8,0,0,1-4.362,3.359,9.3,9.3,0,0,1-2.483-2.987c-1.1-1.774-7.2-9.9-4.583-11.8C196.629,658.285,202.727,666.44,204.129,667.946Z" transform="translate(112.091 -567.557)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10" stroke-width="1.2"/>
-            <path id="Path_593" data-name="Path 593" d="M196.574,667.946a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.946Z" transform="translate(99.796 -584.977)" fill="none" stroke="#20271a" stroke-miterlimit="10" stroke-width="1.2"/>
+            <path id="Path_592" data-name="Path 592"
+              d="M204.129,667.946a9.23,9.23,0,0,1,2.15,3.056,2.8,2.8,0,0,1-4.362,3.359,9.3,9.3,0,0,1-2.483-2.987c-1.1-1.774-7.2-9.9-4.583-11.8C196.629,658.285,202.727,666.44,204.129,667.946Z"
+              transform="translate(112.091 -567.557)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10"
+              stroke-width="1.2" />
+            <path id="Path_593" data-name="Path 593"
+              d="M196.574,667.946a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.946Z"
+              transform="translate(99.796 -584.977)" fill="none" stroke="#20271a" stroke-miterlimit="10"
+              stroke-width="1.2" />
           </g>
         </svg>
       </div>
@@ -24,15 +79,29 @@
       <div class="two">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.917 222.1">
           <g id="Group_254" data-name="Group 254" transform="translate(-8916.746 1254.1)" opacity="0.5">
-            <g id="Ellipse_9" data-name="Ellipse 9" transform="translate(8925.631 -1042.147)" fill="none" stroke="#20271a" stroke-width="1.2">
-              <circle cx="5.074" cy="5.074" r="5.074" stroke="none"/>
-              <circle cx="5.074" cy="5.074" r="4.474" fill="none"/>
+            <g id="Ellipse_9" data-name="Ellipse 9" transform="translate(8925.631 -1042.147)" fill="none"
+              stroke="#20271a" stroke-width="1.2">
+              <circle cx="5.074" cy="5.074" r="5.074" stroke="none" />
+              <circle cx="5.074" cy="5.074" r="4.474" fill="none" />
             </g>
-            <path id="Path_592" data-name="Path 592" d="M204.129,667.946a9.23,9.23,0,0,1,2.15,3.056,2.8,2.8,0,0,1-4.362,3.359,9.3,9.3,0,0,1-2.483-2.987c-1.1-1.774-7.2-9.9-4.583-11.8C196.629,658.285,202.727,666.44,204.129,667.946Z" transform="translate(8736.501 -1748.585)" fill="none" stroke="#20271a" stroke-miterlimit="10" stroke-width="1.2"/>
-            <path id="Path_620" data-name="Path 620" d="M204.129,667.946a9.23,9.23,0,0,1,2.15,3.056,2.8,2.8,0,0,1-4.362,3.359,9.3,9.3,0,0,1-2.483-2.987c-1.1-1.774-7.2-9.9-4.583-11.8C196.629,658.285,202.727,666.44,204.129,667.946Z" transform="translate(8736.501 -1891.585)" fill="none" stroke="#20271a" stroke-miterlimit="10" stroke-width="1.2"/>
-            <path id="Path_593" data-name="Path 593" d="M196.574,667.946a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.946Z" transform="translate(8723.206 -1825.005)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10" stroke-width="1.2"/>
-            <path id="Path_612" data-name="Path 612" d="M196.574,667.946a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.946Z" transform="translate(8723.206 -1727.005)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10" stroke-width="1.2"/>
-            <line id="Line_34" data-name="Line 34" y2="211" transform="translate(8930.5 -1253.5)" fill="none" stroke="#20271a" stroke-linecap="round" stroke-width="1.2"/>
+            <path id="Path_592" data-name="Path 592"
+              d="M204.129,667.946a9.23,9.23,0,0,1,2.15,3.056,2.8,2.8,0,0,1-4.362,3.359,9.3,9.3,0,0,1-2.483-2.987c-1.1-1.774-7.2-9.9-4.583-11.8C196.629,658.285,202.727,666.44,204.129,667.946Z"
+              transform="translate(8736.501 -1748.585)" fill="none" stroke="#20271a" stroke-miterlimit="10"
+              stroke-width="1.2" />
+            <path id="Path_620" data-name="Path 620"
+              d="M204.129,667.946a9.23,9.23,0,0,1,2.15,3.056,2.8,2.8,0,0,1-4.362,3.359,9.3,9.3,0,0,1-2.483-2.987c-1.1-1.774-7.2-9.9-4.583-11.8C196.629,658.285,202.727,666.44,204.129,667.946Z"
+              transform="translate(8736.501 -1891.585)" fill="none" stroke="#20271a" stroke-miterlimit="10"
+              stroke-width="1.2" />
+            <path id="Path_593" data-name="Path 593"
+              d="M196.574,667.946a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.946Z"
+              transform="translate(8723.206 -1825.005)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10"
+              stroke-width="1.2" />
+            <path id="Path_612" data-name="Path 612"
+              d="M196.574,667.946a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.946Z"
+              transform="translate(8723.206 -1727.005)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10"
+              stroke-width="1.2" />
+            <line id="Line_34" data-name="Line 34" y2="211" transform="translate(8930.5 -1253.5)" fill="none"
+              stroke="#20271a" stroke-linecap="round" stroke-width="1.2" />
           </g>
         </svg>
       </div>
@@ -40,82 +109,38 @@
       <div class="three">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.917 163.723">
           <g id="Group_207" data-name="Group 207" transform="translate(-109.95 6.843)" opacity="0.5">
-            <path id="Path_593" data-name="Path 593" d="M196.574,667.946a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.946Z" transform="translate(-83.59 -579.838)" fill="none" stroke="#20271a" stroke-miterlimit="10" stroke-width="1.2"/>
-            <path id="Path_594" data-name="Path 594" d="M204.129,667.947a9.23,9.23,0,0,1,2.15,3.056,2.8,2.8,0,0,1-4.362,3.359,9.3,9.3,0,0,1-2.483-2.987c-1.1-1.774-7.2-9.9-4.583-11.8C196.629,658.285,202.727,666.44,204.129,667.947Z" transform="translate(-71.295 -560.969)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10" stroke-width="1.2"/>
-            <path id="Path_621" data-name="Path 621" d="M196.574,667.947a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.947Z" transform="translate(-83.59 -638.969)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10" stroke-width="1.2"/>
+            <path id="Path_593" data-name="Path 593"
+              d="M196.574,667.946a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.946Z"
+              transform="translate(-83.59 -579.838)" fill="none" stroke="#20271a" stroke-miterlimit="10"
+              stroke-width="1.2" />
+            <path id="Path_594" data-name="Path 594"
+              d="M204.129,667.947a9.23,9.23,0,0,1,2.15,3.056,2.8,2.8,0,0,1-4.362,3.359,9.3,9.3,0,0,1-2.483-2.987c-1.1-1.774-7.2-9.9-4.583-11.8C196.629,658.285,202.727,666.44,204.129,667.947Z"
+              transform="translate(-71.295 -560.969)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10"
+              stroke-width="1.2" />
+            <path id="Path_621" data-name="Path 621"
+              d="M196.574,667.947a9.23,9.23,0,0,0-2.15,3.056,2.8,2.8,0,0,0,4.362,3.359,9.3,9.3,0,0,0,2.483-2.987c1.1-1.774,7.2-9.9,4.583-11.8C204.074,658.285,197.976,666.44,196.574,667.947Z"
+              transform="translate(-83.59 -638.969)" fill="#20271a" stroke="#20271a" stroke-miterlimit="10"
+              stroke-width="1.2" />
             <g id="Group_181" data-name="Group 181" transform="translate(-22.001 -6.843)">
-              <path id="Path_595" data-name="Path 595" d="M0,0V156.723" transform="translate(144.91)" fill="#20271a" stroke="#20271a" stroke-width="1.2"/>
+              <path id="Path_595" data-name="Path 595" d="M0,0V156.723" transform="translate(144.91)" fill="#20271a"
+                stroke="#20271a" stroke-width="1.2" />
             </g>
-            <g id="Ellipse_10" data-name="Ellipse 10" transform="translate(118.909 148.88)" fill="#20271a" stroke="#20271a" stroke-width="1">
-              <circle cx="4" cy="4" r="4" stroke="none"/>
-              <circle cx="4" cy="4" r="3.5" fill="none"/>
+            <g id="Ellipse_10" data-name="Ellipse 10" transform="translate(118.909 148.88)" fill="#20271a"
+              stroke="#20271a" stroke-width="1">
+              <circle cx="4" cy="4" r="4" stroke="none" />
+              <circle cx="4" cy="4" r="3.5" fill="none" />
             </g>
           </g>
         </svg>
       </div>
     </div>
-    
 
     <div class="header_wrapper">
       <div class="registry_icon">
-        <img src="../../assets/images/registry_icon.png" alt="registry icon"/>
-      </div>
-
-      <div class="search_filter_wrapper">
-        <div class="search_wrapper">
-          <form [formGroup]="categoryFilter">
-            <input placeholder="Find an item" type="text" (keyup)="onSearchKeyUp($event)" class="search_box" />
-          </form>
-        </div>
-  
-        <div class="filters_button" (click)="openFilters();">
-          <div class="filter_button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="11.538" height="10.434" viewBox="0 0 11.538 10.434">
-              <path id="filter" d="M13.038,3H2L6.415,8.221v3.61l2.208,1.1V8.221Z" transform="translate(-1.75 -2.75)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
-            </svg>
-          </div>
-        </div>
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 561.75 399.92"><defs><style>.cls-1,.cls-4{opacity:0.5;}.cls-2,.cls-4{isolation:isolate;}.cls-3{fill:#20271a;}.cls-5{fill:#e9e5e0;}</style></defs><g id="S" class="cls-1"><g class="cls-2"><path class="cls-3" d="M49.3,346.15a50.52,50.52,0,0,1-24-5.53A47.2,47.2,0,0,1,8.75,326.68a2.83,2.83,0,0,1,.36-3.93l10.36-12q2-2.32,4.11-.36,12,12.31,25.19,12.32,8,0,12.77-3.39t4.73-10q0-5.72-3.48-8.76T51.27,294l-15.19-7.14q-25-11.43-25-34.12,0-16.42,11-25.81t27.6-9.38q21.25,0,36.62,16.43,1.78,1.8.18,4.11L76.28,250.41c-1.2,1.55-2.51,1.78-3.94.71q-11.61-10.19-21.79-10.18c-4.52,0-8.13,1.07-10.8,3.22a10.6,10.6,0,0,0-4,8.75,10.22,10.22,0,0,0,3.21,8q3.21,2.85,11.43,6.61l12.87,5.89a97.17,97.17,0,0,1,10.18,5.45,58.3,58.3,0,0,1,8.66,6.88A26.78,26.78,0,0,1,88.87,296a37.58,37.58,0,0,1,2.23,13.4q0,17.86-12.23,27.33T49.3,346.15Z"/></g></g><g id="R" class="cls-1"><g class="cls-2"><path class="cls-3" d="M99.85,150.25q2,3.23-1.78,3.22H76.63a3.48,3.48,0,0,1-3.21-1.79L47,109.71H37.87v41.08a2.37,2.37,0,0,1-2.68,2.68H15a2.36,2.36,0,0,1-2.67-2.68V31.11A2.36,2.36,0,0,1,15,28.43H52.7q21.6,0,32.77,11T96.64,69q0,29.11-24.83,37.87Zm-62-99.13V87H51.8q20.37,0,20.37-18,0-17.87-20.37-17.86Z"/></g></g><g id="T" class="cls-1"><g class="cls-2"><path class="cls-3" d="M181.48,344a2.37,2.37,0,0,1-2.68-2.68V241.66H154.33a2.37,2.37,0,0,1-2.68-2.68V221.65a2.37,2.37,0,0,1,2.68-2.68h74.31a2.37,2.37,0,0,1,2.68,2.68V239a2.37,2.37,0,0,1-2.68,2.68H204.35v99.67a2.37,2.37,0,0,1-2.68,2.68Z"/></g></g><g id="E" class="cls-1"><g class="cls-2"><path class="cls-3" d="M157.9,153.47a2.36,2.36,0,0,1-2.67-2.68V31.11a2.36,2.36,0,0,1,2.67-2.68h63.6a2.37,2.37,0,0,1,2.68,2.68V48.44a2.37,2.37,0,0,1-2.68,2.68H180.77V78.8h38.41a2.37,2.37,0,0,1,2.67,2.68V98.81a2.36,2.36,0,0,1-2.67,2.68H180.77v29.29H221.5a2.37,2.37,0,0,1,2.68,2.68v17.33a2.37,2.37,0,0,1-2.68,2.68Z"/></g></g><g class="cls-4"><path class="cls-3" d="M463.33,344a2.37,2.37,0,0,1-2.68-2.68V286L424,222.18c-1.19-2.14-.6-3.21,1.79-3.21h21.07a3.54,3.54,0,0,1,3.22,1.78l23.4,42,23.22-42A3.54,3.54,0,0,1,500,219H521q3.57,0,1.78,3.21l-36.62,64.13v55a2.37,2.37,0,0,1-2.68,2.68Z"/></g><g class="cls-4"><path class="cls-3" d="M462.24,151.83a2.37,2.37,0,0,1-2.68-2.68V29.47a2.37,2.37,0,0,1,2.68-2.68h20.18a2.37,2.37,0,0,1,2.68,2.68V149.15a2.37,2.37,0,0,1-2.68,2.68Z"/></g><g class="cls-4"><path class="cls-3" d="M380.62,340.79q2,3.22-1.78,3.22H357.4a3.48,3.48,0,0,1-3.21-1.79l-26.44-42h-9.11v41.08A2.37,2.37,0,0,1,316,344H295.77a2.36,2.36,0,0,1-2.67-2.68V221.65a2.36,2.36,0,0,1,2.67-2.68h37.7q21.6,0,32.77,11t11.17,29.56q0,29.12-24.83,37.87Zm-62-99.13v35.9h13.93q20.37,0,20.37-18,0-17.86-20.37-17.86Z"/></g><path class="cls-5" d="M404.13,52.63H376.7A18.29,18.29,0,0,0,371,17.12c-.31,0-.62,0-.86,0-15.52,0-23.69,13.66-27.54,23.42-3.85-9.76-12-23.42-27.46-23.42-.32,0-.63,0-.94,0a18.31,18.31,0,0,0-12.14,31.56,18.43,18.43,0,0,0,6.42,4H281a3,3,0,0,0-3,3V86.41a3,3,0,0,0,3,3h9.6v61.34a3,3,0,0,0,3,3h97.89a3,3,0,0,0,3-3V89.41h9.61a3,3,0,0,0,3-3V55.63A3,3,0,0,0,404.13,52.63ZM370.21,23.12c.21,0,.41,0,.63,0a12.3,12.3,0,1,1-.71,24.59H346.47C348.76,40.12,355.51,23.12,370.21,23.12ZM302.36,35.73a12.3,12.3,0,0,1,12-12.61h.7c14.59,0,21.35,17,23.65,24.59H315a12.31,12.31,0,0,1-12.61-12ZM284,58.63h55.56V83.41H284Zm12.6,30.78h43v58.34h-43Zm91.89,58.34H345.59V89.41h42.93Zm12.61-64.34H345.59V58.63h55.54Z"/></svg>
       </div>
     </div>
   </div>
-
-
-
-  <div class="filter_wrapper closed">
-    <div class="filter_header">
-      <div class="filter_close" (click)="openFilters();">
-        <svg xmlns="http://www.w3.org/2000/svg" width="8.013" height="8.013" viewBox="0 0 8.013 8.013">
-          <g id="Close" transform="translate(0.354 0.354)">
-            <line id="Line_34" data-name="Line 34" x1="7.305" y2="7.305" transform="translate(0)" fill="none"
-              stroke="#fbf4eb" stroke-linecap="round" stroke-width="0.5" />
-            <line id="Line_35" data-name="Line 35" x2="7.305" y2="7.305" transform="translate(0)" fill="none"
-              stroke="#fbf4eb" stroke-linecap="round" stroke-width="0.5" />
-          </g>
-        </svg>
-      </div>
-      <div class="filters_heading">FILTERS</div>
-    </div>
-
-    <div class="filter_item_wrapper">
-      <form [formGroup]="categoryFilter">
-        <div formArrayName="categories" *ngFor="let order of
-        ordersFormArray.controls; let i= index">
-          <label class="checkbox">
-            <span class="checkbox__input">
-              <input type="checkbox" name="checkbox" [formControlName]="i" (change)="checkCategory(i, $event)">
-              <span class="checkbox__control">
-                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
-                  <path fill='none' stroke='#667D6B' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' stroke-linecap="round"/></svg>
-              </span>
-            </span>
-            <span class="category_name">{{categories[i]}}</span>
-          </label>
-        </div>
-      </form>
-    </div>
-  </div>
-
-
 
   <div class="registry_wrapper">
     <div>
