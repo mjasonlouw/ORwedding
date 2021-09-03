@@ -42,8 +42,6 @@ export class RegistryComponent implements OnInit {
     document.addEventListener('scroll', function(e) {
         var position = window.pageYOffset;
 
-console.log(position);
-
         if(position > 99) {
           if(document.getElementsByClassName("filtering_wrapper")[0].classList.contains("at_top")) {
             document.getElementsByClassName("filtering_wrapper")[0].classList.remove("at_top");

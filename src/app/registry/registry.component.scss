@@ -147,7 +147,7 @@
         font-family: "Greycliff_bolder";
         font-size: 1.7rem;
         letter-spacing: 3px;
-        padding-bottom: 50px; 
+        padding-bottom: 8%; 
 
         .my_items_sub_header {
             font-family: "Greycliff_medium_italic";
@@ -320,8 +320,7 @@
   .empty_state_wrapper {
       .empty_state {
         .empty_state_text {
-            font-family: "Greycliff_bold";
-            opacity: 0.5; 
+            font-family: "Greycliff_light_italic";
             letter-spacing: 2px;
             font-size: 0.8rem;
         }
