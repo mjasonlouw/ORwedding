@@ -42,7 +42,7 @@ export class RegistryComponent implements OnInit {
     document.addEventListener('scroll', function(e) {
         var position = window.pageYOffset;
 
-        if(position > 99) {
+        if(position != 0) {
           if(document.getElementsByClassName("filtering_wrapper")[0].classList.contains("at_top")) {
             document.getElementsByClassName("filtering_wrapper")[0].classList.remove("at_top");
             document.getElementsByClassName("filtering_wrapper")[0].classList.add("scrolling");
