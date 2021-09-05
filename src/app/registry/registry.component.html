@@ -254,6 +254,14 @@
           </ng-container>
         </div>
 
+        <div class="empty_state_wrapper" *ngIf="finalRegistry?.length == 0">
+          <div class="empty_state">
+            <div class="empty_state_text">
+              No items found
+            </div>
+          </div>
+        </div>
+
         <div class="added_popup_wrapper hidden">
           <div class="added_popup_information pulse_animation">
 
