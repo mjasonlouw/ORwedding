@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { GuestService } from './guest.service';
 import { RegistryComponent } from './registry/registry.component';
 import { DefaultComponent } from './default/default.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
     },
     component: RegistryComponent
   },
+  { path:'admin', component: AdminComponent, pathMatch: 'full' },
   { path: '', component: DefaultComponent, pathMatch: 'full'},
 ];
 

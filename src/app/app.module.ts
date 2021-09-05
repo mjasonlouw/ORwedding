@@ -10,13 +10,15 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RegistryComponent,
-    DefaultComponent
+    DefaultComponent,
+    AdminComponent
   ],
   imports: [
     ReactiveFormsModule,

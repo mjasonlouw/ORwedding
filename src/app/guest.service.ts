@@ -43,7 +43,24 @@ export class GuestService {
     }
   }
 
+  getAllGuests(){
+    return this.firestore.collection("Users").snapshotChanges()
+  }
+
   getGuestName(){
     return this.GuestName;
+  }
+
+  createNewGuest(name){
+    console.log('creating guest with name',name)
+    this.firestore.collection("Users").add({name}).then(res => {
+      console.log('created new guest')
+    }, err => {
+      console.log('ERROR: couldnt create new guestt')
+    });
+  }
+
+  deleteGuest(guest){
+    this.firestore.collection("Users").doc(guest.payload.doc.id).delete();
   }
 }

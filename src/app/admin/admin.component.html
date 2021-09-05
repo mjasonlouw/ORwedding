@@ -1,0 +1,23 @@
+<div>
+    <!-- <form>
+        <input placeholder="create a guest" type="text" />
+        <input type="submit" value="Submit">
+    </form> -->
+    <div style="margin: 30px;">
+        <div>
+            <label for="fname">Create a guest</label><br>
+            <input type="text" id="fname" name="fname" [value]="guestName"
+                (input)="guestName=$event.target.value"
+                (keyup.enter)="createGuest($event)">
+            <input type="button" value="Create Guest"
+                (click)="createGuest($event)" />
+        </div>
+        <div>
+            <div *ngFor="let guest of allGuests">
+                {{guest.payload.doc.data().name}} - https://ruanolivia.wedding/{{guest.payload.doc.data().name}}/registry 
+                <input type="button" value="delete guest"
+                (click)="deleteGuest(guest)" />
+            </div>
+        </div>
+    </div>
+</div>
