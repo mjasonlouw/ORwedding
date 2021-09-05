@@ -39,6 +39,22 @@ const routes: Routes = [
     },
     component: RegistryComponent
   },
+  {
+    matcher: (url) => {
+        if(url.length == 1){
+    
+            return {
+              consumed: url,
+              posParams: {
+                name: new UrlSegment(url[0].path, {}),
+              }
+            };
+          
+        }
+      return null;
+    },
+    component: DefaultComponent
+  },
   { path:'admin', component: AdminComponent, pathMatch: 'full' },
   { path: '', component: DefaultComponent, pathMatch: 'full'},
 ];
