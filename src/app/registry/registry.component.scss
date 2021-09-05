@@ -338,9 +338,9 @@
     padding: 30px;
     border-radius: 15px 0 0 15px;
     width: 180px; 
-    margin-top: 14%;
+    margin-top: 65px;
     overflow-y: scroll;
-    height: 400px; 
+    height: 300px; 
 
     .filter_header {
         padding-bottom: 40px;
@@ -443,6 +443,22 @@
     @include transparent_button; 
 
     .filter_button {
+        display: grid; 
+
+        .filter {
+            grid-column: 1;
+            grid-row: 1;
+            position: relative;
+            top: 1px;
+        }
+
+        .close {
+            grid-column: 1;
+            grid-row: 1;
+            position: relative;
+            left: 1px;
+        }
+
         svg {
             transform: scale(1.9); 
          }
@@ -477,3 +493,54 @@
     }
 }
 
+
+.swipeUpAway {
+    animation-fill-mode: both;
+    animation-duration: 0.2s;
+    -webkit-animation-name: swipeUpAway;
+    animation-name: swipeUpAway;
+  }
+  
+  .swipeUp {
+    animation-fill-mode: both;
+    animation-duration: 0.2s;
+    -webkit-animation-name: swipeUp;
+    animation-name: swipeUp;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes swipeUpAway {
+    0% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    33% {
+      transform: translateY(-5px);
+    }
+    66% {
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+  }
+  
+  
+  
+  @keyframes swipeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      33% {
+        transform: translateY(10px);
+      }
+      66% {
+        transform: translateY(5px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+  }

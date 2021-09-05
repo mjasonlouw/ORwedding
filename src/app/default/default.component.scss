@@ -1,0 +1,13 @@
+@import "../../scss/common.scss";
+
+.in_progress_wrapper {
+    padding: 50px;
+
+    .caption {
+        color: $secondary_green;
+        font-family: "Greycliff_medium_italic";
+        letter-spacing: 2;
+        text-align: center;
+        padding-top: 5px;
+    }
+}

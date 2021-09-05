@@ -74,9 +74,19 @@ export class RegistryComponent implements OnInit {
     if(document.getElementsByClassName("filter_wrapper")[0].classList.contains("opened")) {
       document.getElementsByClassName("filter_wrapper")[0].classList.remove("opened");
       document.getElementsByClassName("filter_wrapper")[0].classList.add("closed");
+
+      document.getElementsByClassName("filter")[0].classList.add("swipeUp");
+      document.getElementsByClassName("filter")[0].classList.remove("swipeUpAway");
+      document.getElementsByClassName("close")[0].classList.add("swipeUpAway");
+      document.getElementsByClassName("close")[0].classList.remove("swipeUp");
     } else {
       document.getElementsByClassName("filter_wrapper")[0].classList.remove("closed");
       document.getElementsByClassName("filter_wrapper")[0].classList.add("opened");
+
+      document.getElementsByClassName("filter")[0].classList.add("swipeUpAway");
+      document.getElementsByClassName("filter")[0].classList.remove("swipeUp");
+      document.getElementsByClassName("close")[0].classList.add("swipeUp");
+      document.getElementsByClassName("close")[0].classList.remove("swipeUpAway");
     }
   }
 
