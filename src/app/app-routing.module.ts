@@ -9,11 +9,11 @@ const routes: Routes = [
   {
     matcher: (url) => {
         if(url.length == 2){
-          if(url[0].path == 'welcome'){
+          if(url[1].path == 'welcome'){
             return {
               consumed: url,
               posParams: {
-                name: new UrlSegment(url[1].path, {}),
+                name: new UrlSegment(url[0].path, {}),
               }
             };
           }
@@ -25,11 +25,11 @@ const routes: Routes = [
   {
     matcher: (url) => {
         if(url.length == 2){
-          if(url[0].path == 'registry'){
+          if(url[1].path == 'registry'){
             return {
               consumed: url,
               posParams: {
-                name: new UrlSegment(url[1].path, {}),
+                name: new UrlSegment(url[0].path, {}),
               }
             };
           }
