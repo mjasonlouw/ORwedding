@@ -27,11 +27,11 @@ export class RegistryComponent implements OnInit {
     private GuestService: GuestService,
     private formBuilder: FormBuilder) {
 
-      this.categoryFilter = this.formBuilder.group({
-        categories: new FormArray([])
-      });
+    this.categoryFilter = this.formBuilder.group({
+      categories: new FormArray([])
+    });
 
-     }
+  }
 
   ngOnInit(): void {
     this.GuestService.setUserDetailsFromActivatedRoute(this.activatedRoute);
@@ -71,7 +71,7 @@ export class RegistryComponent implements OnInit {
   }
 
   openFilters() {
-    if(document.getElementsByClassName("filter_wrapper")[0].classList.contains("opened")) {
+    if (document.getElementsByClassName("filter_wrapper")[0].classList.contains("opened")) {
       document.getElementsByClassName("filter_wrapper")[0].classList.remove("opened");
       document.getElementsByClassName("filter_wrapper")[0].classList.add("closed");
 
@@ -90,27 +90,29 @@ export class RegistryComponent implements OnInit {
     }
   }
 
-  sortCategories(){
-    this.registry.forEach(item => {
-//console.log(item);
+  sortCategories() {
+    if (this.categories.length == 0) {
+      this.registry.forEach(item => {
+        //console.log(item);
 
-      item.payload.doc.data().category.forEach(cat => {
-        this.categories.push(cat) //get each category
+        item.payload.doc.data().category.forEach(cat => {
+          this.categories.push(cat) //get each category
+        });
       });
-    });
-    
-    this.categories = [...new Set(this.categories)]; //remove duplicates
 
-    this.categoryFilter = this.formBuilder.group({
-      categories: new FormArray([])
-    });
+      this.categories = [...new Set(this.categories)]; //remove duplicates
 
-    this.categories.forEach(() => {
-      this.ordersFormArray.push(new FormControl(false));
-    })
+      this.categoryFilter = this.formBuilder.group({
+        categories: new FormArray([])
+      });
+
+      this.categories.forEach(() => {
+        this.ordersFormArray.push(new FormControl(false));
+      })
+    }
   }
 
-  getRegistry(){
+  getRegistry() {
     this.RegistryService
       .getRegistry()
       .subscribe(res => {
@@ -122,11 +124,11 @@ export class RegistryComponent implements OnInit {
       });
   }
 
-  checkCategory(index, values){
+  checkCategory(index, values) {
     let io = this.activeCategories.indexOf(this.categories[index])
-    if(io >= 0){
+    if (io >= 0) {
       this.activeCategories.splice(io, 1);
-    }else{
+    } else {
       this.activeCategories.push(this.categories[index])
     }
 
@@ -134,26 +136,26 @@ export class RegistryComponent implements OnInit {
     this.searchThroughRegistry()
   }
 
-  filterCategories(){
+  filterCategories() {
     this.searchRegistry = [];
     this.registry.forEach(item => {
       let data = item.payload.doc.data();
       const intersection = data.category.filter(element => this.activeCategories.includes(element));
       //console.log("this.activeCategories.length",this.activeCategories.length)
-      if(intersection.length > 0){
+      if (intersection.length > 0) {
         this.searchRegistry.push(item)
-      }else if(this.activeCategories.length == 0){
+      } else if (this.activeCategories.length == 0) {
         this.searchRegistry.push(item)
       }
 
-      if(this.searchTerm != ''){
+      if (this.searchTerm != '') {
         this.searchThroughRegistry()
       }
       //console.log("intesection",intersection)
     })
   }
 
-  searchThroughRegistry(){
+  searchThroughRegistry() {
     //console.log("0------------searching through registry")
     this.finalRegistry = [];
     this.searchRegistry.forEach(item => {
@@ -176,7 +178,7 @@ export class RegistryComponent implements OnInit {
           word = word.toLowerCase()
           term = term.toLowerCase()
           //console.log(word,term,word.indexOf(term))
-          if(word.indexOf(term) != -1){
+          if (word.indexOf(term) != -1) {
             intersection.push(word)
 
           }
@@ -184,68 +186,78 @@ export class RegistryComponent implements OnInit {
       })
 
       //console.log("INTERSECTION: ", intersection)
-      if(intersection.length > 0){
+      if (intersection.length > 0) {
         this.finalRegistry.push(item)
-      }else if(this.searchTerm == ''){
+      } else if (this.searchTerm == '') {
         this.finalRegistry.push(item)
       }
     });
+
+    this.finalRegistry.sort((a, b) => {
+      let name1 = b.payload.doc.data().name.replace(/[0-9]/g, '').replace(' ','');
+      let name2 = a.payload.doc.data().name.replace(/[0-9]/g, '').replace(' ','');
+      if (name1 > name2)
+        return -1;
+      if (name1 > name2)
+        return 1;
+      return 0;
+    })
   }
 
-  onSearchKeyUp(event){
+  onSearchKeyUp(event) {
     //console.log(event.target.value);
     this.searchTerm = event.target.value;
     this.searchThroughRegistry()
   }
 
   removePopUp(popup) {
-    setTimeout(function(){
+    setTimeout(function () {
       popup.classList.remove("show");
       popup.classList.add("hidden");
-    },3000);
+    }, 3000);
   }
 
-  selectItem(item){
-    if(item.payload.doc.data().guest == ''){
+  selectItem(item) {
+    if (item.payload.doc.data().guest == '') {
       this.RegistryService.assignGuestToItem(item, this.GuestService.getGuestName())
       this.sortMyItems()
 
       var popup = document.getElementsByClassName("added_popup_wrapper")[0];
       document.getElementsByClassName("added_popup_information")[0].innerHTML = "Added";
-      
+
       popup.classList.remove("hidden");
       popup.classList.add("show");
 
-      this.removePopUp(popup); 
-    
+      this.removePopUp(popup);
+
     }
   }
-  
-  removeGuestItem(item){
+
+  removeGuestItem(item) {
     this.RegistryService.removeGuestFromItem(item)
     this.sortMyItems()
 
     var popup = document.getElementsByClassName("added_popup_wrapper")[0];
     document.getElementsByClassName("added_popup_information")[0].innerHTML = "Removed";
-    
+
     popup.classList.remove("hidden");
     popup.classList.add("show");
 
     this.removePopUp(popup);
   }
 
-  sortMyItems(){
+  sortMyItems() {
     //console.log("sort guests items")
     this.guestsItems = [];
     let guestName = this.GuestService.getGuestName();
     this.searchRegistry.forEach(item => {
       let data = item.payload.doc.data();
       //console.log(data.name, guestName)
-      if(data.guest == guestName){
+      if (data.guest == guestName) {
         this.guestsItems.push(item);
       }
     })
   }
-      
+
 
 }
