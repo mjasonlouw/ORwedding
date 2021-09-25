@@ -1,0 +1,38 @@
+<div class="landing-page">
+    <div class="image-wrapper">
+
+        <div class="logo-mark">
+            <p>R/O</p>
+        </div>
+
+        <div class="menu">
+            <object data="../../../assets/icons/menu.svg" type="image/svg+xml"></object>
+        </div>
+
+        <div class="welcome-message">
+            <p class="greeting" *ngIf="guest != null">Hey, {{guest.data().name}} </p>
+
+            <div class="count-down-timer">
+                <div class="days countdown-item">
+                    <p class="value">{{daysLeft}}</p>
+                    <p class="text">Days</p>
+                </div>
+                <div class="hours countdown-item">
+                    <p class="value">{{hoursLeft}}</p>
+                    <p class="text">Hrs</p>
+                </div>
+
+                <div class="minutes countdown-item">
+                    <p class="value">{{minsLeft}}</p>
+                    <p class="text">Mins</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <object data="../../../assets/icons/double_arrows_white.svg" type="image/svg+xml"></object>
+        </div>
+    </div>
+
+
+</div>

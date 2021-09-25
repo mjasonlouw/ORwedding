@@ -1,0 +1,141 @@
+<div class="rsvp_wrapper">
+
+    <div class="rsvp_header">
+
+        <div class="header-wrapper">
+            <h4>RSVP</h4> <!-- TODO: Change out for icon header from designs -->
+            <p>RSVP by 16th October 2021</p>
+        </div>
+        <div class="form-stepper">
+            <div class="arrow_wrapper arrow_prev" (click)="currentStep = currentStep - 1" [ngClass]="{'available-step' : currentStep > 0}">
+                <object data="../../../assets/icons/double_arrows.svg" type="image/svg+xml" height="10" width="10"></object>
+            </div>
+
+            <div class="step-hint">
+                <div class="hints">
+                    <div class="previous-hint hint" *ngIf="currentStep > 0"></div>
+                    <div class="current-hint hint"></div>
+                    <div class="next-hint hint" *ngIf="currentStep < rsvps.controls.length - 1"></div>
+                </div>
+                <p class="hint-text">{{ currentStep + 1 }} of {{ rsvps.controls.length}}</p>
+            </div>
+
+            <div class="arrow_wrapper arrow_next" (click)="currentStep = currentStep + 1" [ngClass]="{'available-step' : currentStep < rsvps.controls.length - 1}">
+                <object data="../../../assets/icons/double_arrows.svg" type="image/svg+xml" height="10" width="10"></object>
+            </div>
+        </div>
+    </div>
+
+    <div *ngFor="let rsvp of rsvps.controls; index as i">
+
+        <ng-container [formGroup]="rsvp">
+
+            <div class="form-wrapper" [ngClass]="{'active': currentStep == i}">
+
+                <div class="form-heading" *ngIf="personsData[i].name != '' || !showPlusOne">
+                    <p> {{i + 1}}. </p>
+                    <p>For {{personsData[i].name}}</p>
+                </div>
+
+                <!-- <p *ngIf="personsData[i].name == '' && showPlusOne">Name</p> -->
+
+                <div class="form-sections" *ngIf="personsData[i].name != '' || showPlusOne">
+
+                    <div class="form-section">
+                        <p class="form-section-label">Are you coming to celebrate?</p>
+                        <div class="custom-radio-control-wrapper">
+                            <div class="custom-radio-control" (click)="toggleComingControl(true)">
+                                <input type="radio" formControlName="coming" value="yes" type="hidden" [checked]="comingControlFlag" />
+                                <div class="radio-control">
+                                    <object *ngIf="comingControlFlag" data="../../../assets/icons/check.svg" type="image/svg+xml" class="control_check" height="9"
+                                        width="9"></object>
+                                </div>
+                                <label>Yes</label>
+                            </div>
+
+                            <div class="custom-radio-control" (click)="toggleComingControl(false)">
+                                <input type="radio" formControlName="coming" value="no" type="hidden" [checked]="!comingControlFlag" />
+                                <div class="radio-control">
+                                    <object *ngIf="!comingControlFlag" data="../../../assets/icons/check.svg" type="image/svg+xml" class="control_check" height="9"
+                                        width="9"></object>
+                                </div>
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <p class="form-section-label">What would you like to eat for dinner?</p>
+                        <div>
+
+                            <div class="menu_items_information_wrapper">
+
+                                <div class="menu_item" *ngFor="let menuItem of mealOptions" (click)="selectMeal(menuItem)"
+                                    [ngClass]="{'active': currentMealOption?.id == menuItem.id}">
+                                    <div class="image_outer_wrapper">
+                                        <div class="image_wrapper" [ngStyle]="{'background-image':'url(' + menuItem.imgUrl + ')'}">
+                                        </div>
+                                    </div>
+                                    <div class="item_desc">
+                                        <div>{{ menuItem.desc }}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- <input type="radio" formControlName="meal" value="1" /> -->
+                            <!-- <label>option 1:</label>
+                            <input type="radio" formControlName="meal" value="2" />
+                            <label>option 2:</label>
+                            <input type="radio" formControlName="meal" value="3" />
+                            <label>option 3:</label>
+                            <input type="radio" formControlName="meal" value="4" />
+                            <label>option 4:</label> -->
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <p class="form-section-label">Are you vaccinated?</p>
+
+                        <div class="custom-radio-control-wrapper">
+                            <div class="custom-radio-control" (click)="toggleVaccineControl(true)">
+                                <input type="radio" formControlName="vaccinated" value="yes" type="hidden" [checked]="vaccinatedControlFlag" />
+                                <div class="radio-control">
+                                    <object *ngIf="vaccinatedControlFlag" data="../../../assets/icons/check.svg" type="image/svg+xml" class="control_check" height="9"
+                                        width="9"></object>
+                                </div>
+                                <label>Yes</label>
+                            </div>
+
+                            <div class="custom-radio-control" (click)="toggleVaccineControl(false)">
+                                <input type="radio" formControlName="vaccinated" value="no" type="hidden" [checked]="!vaccinatedControlFlag" />
+                                <div class="radio-control">
+                                    <object *ngIf="!vaccinatedControlFlag" data="../../../assets/icons/check.svg" type="image/svg+xml" class="control_check" height="9"
+                                        width="9"></object>
+                                </div>
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- <input type='text' *ngIf="personsData[i].name == '' && showPlusOne" formControlName="name" />
+    
+                <button *ngIf="personsData[i].isPlusOne == 'yes' &&
+                    personsData[i].name == '' && !showPlusOne" (click)="addPlusOne()">
+                    add plus one
+                </button>
+    
+                <button *ngIf="(personsData[i].isPlusOne == 'yes' &&
+                    personsData[i].name != '') || (showPlusOne &&
+                    personsData[i].isPlusOne == 'yes' )" (click)="removePlusOne(rsvp,i)">
+                    remove plus one
+                </button> -->
+            </div>
+
+        </ng-container>
+
+    </div>
+    <input type='submit' value='Submit' class="submit_btn" (click)='submitRSVP()' />
+</div>

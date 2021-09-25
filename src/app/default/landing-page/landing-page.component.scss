@@ -1,0 +1,95 @@
+.landing-page {
+  height: 100vh;
+
+  .image-wrapper {
+    background-image: url("../../../assets/images/wavy_bg.png");
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    .logo-mark {
+      position: absolute;
+      color: white;
+      top: 25px;
+      left: 25px;
+
+      font-family: "Greycliff_light";
+      letter-spacing: 3px;
+    }
+
+    .welcome-message {
+      position: absolute;
+      top: 20%;
+
+      color: white;
+      font-family: "Greycliff_light";
+      letter-spacing: 3px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .greeting {
+        font-family: "Greycliff_light";
+        text-transform: uppercase;
+        font-size: 2.3rem;
+      }
+    }
+
+    .menu {
+      position: absolute;
+      right: 25px;
+      top: 25px;
+      border: 1px white solid;
+      padding: 6px 25px;
+      border-radius: 50px;
+      background-color: rgba(white, 0.1);
+      box-shadow: 0 3px 10px rgb(black, 0.05);
+    }
+
+    .count-down-timer {
+      display: flex;
+
+      .countdown-item {
+        margin: 10px;
+        background-color: rgba(white, 0.1);
+        height: 60px;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 50%;
+
+        p {
+          margin: 0;
+        }
+
+        .value {
+          font-family: "Greycliff_bold";
+          font-size: 0.9rem;
+        }
+
+        .text {
+          font-size: 0.5rem;
+        }
+      }
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 30%;
+      position: absolute;
+      border: 1px white solid;
+      padding: 6px 25px;
+      border-radius: 50px;
+      background-color: rgba(white, 0.1);
+      box-shadow: 0 3px 10px rgb(black, 0.05);
+      transform: rotate(90deg);
+    }
+  }
+}

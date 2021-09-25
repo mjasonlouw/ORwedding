@@ -18,6 +18,11 @@ export class GuestService {
     activatedRoute.params.forEach(x => {
       this.GuestName = x.name;
     })
+
+    if(this.GuestName == null) {
+      console.error("You need params in the URL dumb dumb");
+    }
+    
     document.cookie = this.GuestName;
     // let users = await this.firestore.collection('Users').get()//this should work but it doesnt lol
     // console.log('usersss',users)

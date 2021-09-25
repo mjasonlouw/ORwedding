@@ -1,0 +1,236 @@
+@import "../../../scss/common.scss";
+
+.rsvp_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 8%;
+
+  .rsvp_header {
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+    justify-content: space-between;
+
+    .header-wrapper {
+      h4 {
+        color: $secondary_green;
+        font-family: "Greycliff_medium";
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 1.9rem;
+        margin: 0;
+      }
+
+      p {
+        margin: o;
+        font-family: "Greycliff_light_italic";
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        color: $secondary_green;
+      }
+    }
+
+    .form-stepper {
+      display: flex;
+
+      p {
+        margin: 0;
+      }
+
+      .arrow_wrapper {
+        margin: 0 10px;
+        opacity: 0.25;
+        pointer-events: none;
+
+        &.available-step {
+          pointer-events: all;
+          opacity: 1;
+        }
+
+        &.arrow_prev {
+          transform: rotateY(180deg);
+        }
+
+        object {
+          width: 100%;
+          pointer-events: none;
+        }
+      }
+
+      .step-hint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .hints {
+          display: flex;
+
+          .hint {
+            height: 9px;
+            width: 9px;
+            background-color: $secondary_green;
+            margin: 2px;
+            border-radius: 50%;
+            opacity: 0.25;
+
+            &.current-hint {
+              width: 25px;
+              border-radius: 50px;
+              opacity: 1;
+            }
+          }
+        }
+
+        .hint-text {
+          color: $secondary_green;
+          font-family: "Greycliff_light";
+          letter-spacing: 3px;
+          margin: 0;
+          margin-top: 5px;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .form-wrapper {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    .form-heading {
+      display: flex;
+      color: $secondary_green;
+      font-family: "Greycliff_bold";
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 1.7rem;
+
+      p:nth-child(2) {
+        margin-left: 10px;
+        letter-spacing: 2px;
+      }
+    }
+
+    .form-section {
+      margin-bottom: 10%;
+
+      .form-section-label {
+        font-family: "Greycliff_medium";
+        color: $secondary_green;
+        letter-spacing: 3px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Radio buttons
+.custom-radio-control-wrapper {
+  display: flex;
+}
+
+.custom-radio-control {
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .radio-control {
+    background-color: rgba($secondary_green, 0.25);
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .control_check {
+      stroke-width: 1.5px;
+    }
+  }
+
+  label {
+    margin-top: 15%;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    color: $secondary_green;
+    font-family: "Greycliff_medium";
+  }
+}
+
+// Menu Items
+.menu_items_information_wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 25px;
+  grid-template-rows: masonry;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .image_wrapper {
+    height: 18vh;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+  }
+
+  .menu_item {
+    cursor: pointer;
+
+    .item_desc {
+      color: $secondary_green;
+      font-family: "Greycliff_light";
+      letter-spacing: 3px;
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      padding: 8px 0;
+    }
+
+    .image_wrapper {
+      opacity: 0.5;
+    }
+
+    &.active {
+      .image_wrapper {
+        opacity: 1;
+      }
+
+      .item_desc {
+        font-family: "Greycliff_bold";
+      }
+    }
+
+    &:hover {
+      transform: scale(0.95);
+      .image_wrapper {
+        opacity: 1;
+      }
+    }
+
+    &.active:hover {
+      transform: scale(1);
+    }
+  }
+}
+
+// Button Styles
+
+.submit_btn {
+  border-radius: 50px;
+  border: 0.5px $secondary_green solid;
+  background-color: rgba($secondary_green, 0.25);
+  text-transform: uppercase;
+  color: $secondary_green;
+  font-family: "Greycliff_light";
+  padding: 10px 25px;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  margin: 10% auto;
+  box-shadow: 0 3px 10px rgba(black, 0.1);
+}

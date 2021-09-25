@@ -11,6 +11,9 @@ import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
 import { AdminComponent } from './admin/admin.component';
+import { HeaderComponent } from './default/header/header.component';
+import { RsvpFormComponent } from './default/rsvp-form/rsvp-form.component';
+import { LandingPageComponent } from './default/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { AdminComponent } from './admin/admin.component';
     HomeComponent,
     RegistryComponent,
     DefaultComponent,
-    AdminComponent
+    AdminComponent,
+    HeaderComponent,
+    RsvpFormComponent,
+    LandingPageComponent
   ],
   imports: [
     ReactiveFormsModule,

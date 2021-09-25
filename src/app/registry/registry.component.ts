@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { $ } from 'protractor';
 import { GuestService } from '../guest.service';
 import { RegistryService } from '../registry.service';
 

@@ -1,0 +1,48 @@
+.main_header_wrapper {
+  height: 300px;
+  position: relative;
+
+  .heading_blob {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    @media (min-width: 1024px) {
+      bottom: -80px;
+    }
+  }
+}
+
+@mixin leaves {
+  position: absolute;
+  top: 0;
+  width: 40px;
+}
+
+.leaves {
+  .one {
+    @include leaves;
+    left: 73%;
+  }
+
+  .two {
+    @include leaves;
+    left: 59%;
+  }
+
+  .three {
+    @include leaves;
+    left: 28%;
+  }
+
+  @media (min-width: 1024px) {
+    .one {
+      left: 65%;
+    }
+
+    .three {
+      left: 33%;
+    }
+  }
+}

@@ -7,71 +7,13 @@
 </div>
 </div> -->
 
-<div>
-    <div>
-        <p *ngIf="guest != null">Hey {{guest.data().greeting}} it's<br>
-            {{daysLeft}} days {{hoursLeft}} hours {{ minsLeft}}mins<br>
-            until the big day</p>
-    </div>
-    <p>RSVP</p>
-    <div *ngFor="let rsvp of rsvps.controls; index as i">
+<app-landing-page></app-landing-page>
 
-        <ng-container [formGroup]="rsvp">
-            <p *ngIf="personsData[i].name != '' || !showPlusOne">{{i +
-                1}}.{{personsData[i].name}}</p>
-            <p *ngIf="personsData[i].name == '' && showPlusOne">Name</p>
-            <input type='text' *ngIf="personsData[i].name == '' && showPlusOne"
-                formControlName="name" />
+<!-- <app-header></app-header> -->
 
-            <button *ngIf="personsData[i].isPlusOne == 'yes' &&
-                personsData[i].name == '' && !showPlusOne"
-                (click)="addPlusOne()">
-                add plus one
-            </button>
+<!-- <div>
+    
+</div>
+<p>RSVP</p> -->
 
-            <button *ngIf="(personsData[i].isPlusOne == 'yes' &&
-                personsData[i].name != '') || (showPlusOne &&
-                personsData[i].isPlusOne == 'yes' )"
-                (click)="removePlusOne(rsvp,i)">
-                remove plus one
-            </button>
-
-            <div *ngIf="personsData[i].name != '' || showPlusOne">
-                <p>Are you coming to celebrate?</p>
-                <div>
-                    <input type="radio" formControlName="coming" value="yes" />
-                    <label>Yes</label>
-                    <input type="radio" formControlName="coming" value="no" />
-                    <label>No</label>
-                </div>
-                <p>What would you like to eat for dinner?</p>
-                <div>
-                    <input type="radio" formControlName="meal"
-                        value="1" />
-                    <label>option 1:</label>
-                    <input type="radio" formControlName="meal"
-                        value="2" />
-                    <label>option 2:</label>
-                    <input type="radio" formControlName="meal"
-                        value="3" />
-                    <label>option 3:</label>
-                    <input type="radio" formControlName="meal"
-                        value="4" />
-                    <label>option 4:</label>
-                </div>
-                <p>Are you vaccinated?</p>
-                <div>
-                    <input type="radio" formControlName="vaccinated" value="yes"
-                        />
-                    <label>Yes</label>
-                    <input type="radio" formControlName="vaccinated" value="no"
-                        />
-                    <label>No</label>
-                </div>
-                <hr/>
-                </div>
-            </ng-container>
-
-        </div>
-        <input type='submit' value='confirm' (click)='submitRSVP()'/>
-    </div>
+<app-rsvp-form></app-rsvp-form>
