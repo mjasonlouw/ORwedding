@@ -7,6 +7,7 @@ import { DefaultComponent } from './default/default.component';
 import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
+  { path:'admin', component: AdminComponent, pathMatch: 'full' },
   {
     matcher: (url) => {
         if(url.length == 2){
@@ -55,7 +56,7 @@ const routes: Routes = [
     },
     component: DefaultComponent
   },
-  { path:'admin', component: AdminComponent, pathMatch: 'full' },
+  
   { path: '', component: DefaultComponent, pathMatch: 'full'},
 ];
 

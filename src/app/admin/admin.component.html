@@ -20,4 +20,25 @@
             </div>
         </div>
     </div>
+
+    <div style="margin: 30px;">
+        <div>
+            <h1>Taken</h1>
+            <ng-container *ngFor="let item of registry; let i = index">
+                <div *ngIf='item.payload.doc.data().guest != ""'>
+                    {{item.payload.doc.data().name}} 
+                </div>
+                
+            </ng-container>
+        </div>
+        <div>
+            <h1>Available</h1>
+            <ng-container *ngFor="let item of registry; let i = index">
+                <div *ngIf='item.payload.doc.data().guest == ""'>
+                    {{item.payload.doc.data().name}} 
+                </div>
+                
+            </ng-container>
+        </div>
+    </div>
 </div>
