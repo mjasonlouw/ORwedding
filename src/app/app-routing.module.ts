@@ -58,8 +58,8 @@ const routes: Routes = [
     component: DefaultComponent
   },
   
-  { path: '', component: DefaultComponent, pathMatch: 'full'},
-  { path: '**', component: NotFoundComponent},
+  { path: '', component: NotFoundComponent, pathMatch: 'full'},
+  { path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({

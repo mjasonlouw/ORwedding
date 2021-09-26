@@ -5,6 +5,7 @@
   flex-direction: column;
   padding: 8%;
   position: relative;
+  z-index: 1;
 
   .rsvp_header {
     display: flex;
@@ -55,6 +56,7 @@
         &.available-step {
           pointer-events: all;
           opacity: 1;
+          cursor: pointer;
         }
 
         &.arrow_prev {
@@ -126,6 +128,12 @@
 
     .form-section {
       margin-bottom: 10%;
+      pointer-events: all;
+
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
 
       .form-section-label {
         font-family: "Greycliff_medium";
@@ -147,6 +155,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 
   &:nth-child(2) {
     padding: 3%;
@@ -187,7 +196,7 @@
   }
 
   .image_wrapper {
-    height: 18vh;
+    height: 20vh;
     background-size: cover;
     background-position: center;
     border-radius: 15px;
@@ -247,10 +256,12 @@
   letter-spacing: 3px;
   margin: 10% auto;
   box-shadow: 0 3px 10px rgba(black, 0.1);
-
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 
   object {
     margin: 0 5px;
@@ -261,4 +272,15 @@
 .bubble-wrapper {
   position: absolute;
   bottom: -10%;
+  right: 0;
+  z-index: -1;
+}
+
+// Form Validation
+.error-container {
+  li {
+    text-transform: uppercase;
+    color: $secondary_green;
+    font-family: "Greycliff_medium";
+  }
 }

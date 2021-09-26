@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { GuestService } from '../../../guest.service';
-import { MealOption } from '../../interfaces/MealOptions.interface';
+import { MealOption } from '../../models/MealOptions.models';
 
 @Component({
   selector: 'app-rsvp-form',
@@ -21,6 +21,9 @@ export class RsvpFormComponent {
   mealOptions = new Array();
 
   currentStep: number = 0;
+
+  showErrors: boolean = true;
+  errorList = new Array();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -66,24 +69,62 @@ export class RsvpFormComponent {
 
   submitRSVP(){
     console.log('submit rsvp')
-
-    this.rsvps.controls.forEach((group, index) => {
+    let errors: Array<any> = []
+    let convertedRsvps = []
+    convertedRsvps = this.rsvps.controls.map
+    (group => {
       let rsvp = {
         coming: group.get('coming').value,
         isPlusOne: group.get('isPlusOne').value,
-        meal: group.get('meal').value.id,
+        meal: group.get('meal').value?.id,
         name: group.get('name').value,
         vaccinated: group.get('vaccinated').value
       }
+      errors.push(...this.validateRSVP(rsvp));
+      return rsvp;
+    });
 
-      let count = 0
-      this.persons.forEach((person) => {
-        if(count++ == index){
-          console.log('update id',person.id, rsvp, this.guest.id)
-          this.GuestService.updatePersonById(person.id, rsvp, this.guest.id)
-        }
+    convertedRsvps = convertedRsvps.map(e => {
+      if (!e.coming) {
+        e.meal = "";
+        e.vaccinated = "";
+      }
+
+      return e;
+    });
+
+    if (errors.length === 0) {
+      this.errorList = [];
+
+      convertedRsvps
+      .forEach((rsvp, index) => {
+        let count = 0
+        this.persons.forEach((person) => {
+          if(count++ == index){
+            console.log('update id',person.id, rsvp, this.guest.id)
+            this.GuestService.updatePersonById(person.id, rsvp, this.guest.id)
+          }
+        });
       });
-    })
+    } else {
+      this.errorList = errors;
+    }
+    
+  }
+
+  private validateRSVP(rsvp: any): Array<any> {
+    let result: Array<any> = [];
+    if (rsvp.coming) {
+      this.appendIf(result, {name: rsvp.name, error: "has not selected a meal"}, rsvp.meal === null || rsvp.meal === undefined);
+      this.appendIf(result, {name: rsvp.name, error: "has not stated their vaccination status"}, rsvp.vaccinated === null || rsvp.vaccinated == undefined);
+    }
+    return result;
+  }
+
+  private appendIf(array: Array<any>, element: any, condition: boolean): void {
+    if (condition) {
+      array.push(element)
+    }
   }
 
   removePlusOne(rsvpp, index){

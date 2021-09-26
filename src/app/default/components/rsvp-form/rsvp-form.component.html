@@ -14,9 +14,7 @@
 
             <div class="step-hint">
                 <div class="hints">
-                    <div class="previous-hint hint" *ngIf="currentStep > 0"></div>
-                    <div class="current-hint hint"></div>
-                    <div class="next-hint hint" *ngIf="currentStep < rsvps.controls.length - 1"></div>
+                    <div class="hint" [ngClass]="{'current-hint' : currentStep === i}" *ngFor="let rsvp of rsvps.controls; index as i"></div>
                 </div>
                 <p class="hint-text">{{ currentStep + 1 }} of {{ rsvps.controls.length}}</p>
             </div>
@@ -63,14 +61,14 @@
                         </div>
                     </div>
 
-                    <div class="form-section">
+                    <div class="form-section" [ngClass]="{'disabled': rsvp.controls['coming']?.value !== true}">
                         <p class="form-section-label">What would you like to eat for dinner?</p>
                         <div>
 
                             <div class="menu_items_information_wrapper">
 
                                 <div class="menu_item" *ngFor="let menuItem of mealOptions" (click)="selectMeal(menuItem, rsvp)"
-                                    [ngClass]="{'active': rsvp.controls['meal']?.value?.id == menuItem.id}">
+                                    [ngClass]="{'active': rsvp.controls['meal']?.value?.id == menuItem.id && rsvp.controls['coming']?.value === true}">
                                     <div class="image_outer_wrapper">
                                         <div class="image_wrapper" [ngStyle]="{'background-image':'url(' + menuItem.imgUrl + ')'}">
                                         </div>
@@ -86,19 +84,10 @@
                                 </div>
 
                             </div>
-
-                            <!-- <input type="radio" formControlName="meal" value="1" /> -->
-                            <!-- <label>option 1:</label>
-                            <input type="radio" formControlName="meal" value="2" />
-                            <label>option 2:</label>
-                            <input type="radio" formControlName="meal" value="3" />
-                            <label>option 3:</label>
-                            <input type="radio" formControlName="meal" value="4" />
-                            <label>option 4:</label> -->
                         </div>
                     </div>
 
-                    <div class="form-section">
+                    <div class="form-section" [ngClass]="{'disabled': rsvp.controls['coming']?.value !== true}">
                         <p class="form-section-label">Are you vaccinated?</p>
 
                         <div class="custom-radio-control-wrapper">
@@ -140,6 +129,12 @@
 
         </ng-container>
 
+    </div>
+
+    <div class="error-container" *ngIf="showErrors">
+        <ul>
+            <li *ngFor="let error of errorList">{{error.name}} {{error.error}}</li>
+        </ul>
     </div>
 
     <button type="submit" class="submit_btn" (click)='submitRSVP()'>
