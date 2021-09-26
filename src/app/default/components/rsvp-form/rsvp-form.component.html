@@ -3,7 +3,8 @@
     <div class="rsvp_header">
 
         <div class="header-wrapper">
-            <h4>RSVP</h4> <!-- TODO: Change out for icon header from designs -->
+            <h4>RSVP</h4>
+            <hr class="heading_divider" />
             <p>RSVP by 16th October 2021</p>
         </div>
         <div class="form-stepper">
@@ -140,5 +141,13 @@
         </ng-container>
 
     </div>
-    <input type='submit' value='Submit' class="submit_btn" (click)='submitRSVP()' />
+
+    <button type="submit" class="submit_btn" (click)='submitRSVP()'>
+        Submit
+        <object data="../../../../assets/icons/email.svg" type="image/svg+xml"></object>
+    </button>
+
+    <div class="bubble-wrapper">
+        <object data="../../../../assets/images/circles_top.svg" type="image/svg+xml"></object>
+    </div>
 </div>

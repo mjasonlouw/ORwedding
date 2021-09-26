@@ -25,6 +25,26 @@ $light_background: #fbf4eb;
 }
 
 @font-face {
+  font-family: "Greycliff_ExtraLight";
+  src: url(../assets/fonts/GreycliffCF-ExtraLight.ttf);
+}
+
+@font-face {
+  font-family: "Greycliff_Thin";
+  src: url(../assets/fonts/GreycliffCF-Thin.ttf);
+}
+
+@font-face {
+  font-family: "Greycliff_ThinOblique";
+  src: url(../assets/fonts/GreycliffCF-ThinOblique.ttf);
+}
+
+@font-face {
+  font-family: "Greycliff_LightOblique";
+  src: url(../assets/fonts/GreycliffCF-LightOblique.ttf);
+}
+
+@font-face {
   font-family: "Greycliff_bold";
   src: url(../assets/fonts/GreycliffCF-Bold.ttf);
 }

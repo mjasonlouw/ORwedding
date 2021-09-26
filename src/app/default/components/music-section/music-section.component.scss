@@ -28,6 +28,15 @@
         letter-spacing: 2px;
         color: $secondary_green;
       }
+
+      .heading_divider {
+        width: 2rem;
+        height: 1px;
+        font-weight: bold;
+        background-color: $secondary_green;
+        border-radius: 50px;
+        margin: 8% 0;
+      }
     }
   }
 
