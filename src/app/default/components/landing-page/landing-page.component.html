@@ -1,16 +1,15 @@
 <div class="landing-page">
     <div class="image-wrapper">
-
-        <div class="logo-mark">
-            <p>R/O</p>
+        <div>
+            <div class="logo-mark">
+                <p>R/O</p>
+            </div>
+    
+            <div class="menu">
+                <object data="../../../assets/icons/menu.svg" type="image/svg+xml"></object>
+            </div>
         </div>
-
-        <div class="menu">
-            <object data="../../../assets/icons/menu.svg" type="image/svg+xml"></object>
-        </div>
-
-        <app-menu></app-menu>
-
+       
         <div class="welcome-message">
             <p class="greeting" *ngIf="guest != null">Hey, {{guest.data().name}} </p>
 

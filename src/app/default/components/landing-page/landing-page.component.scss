@@ -14,11 +14,6 @@
     position: relative;
 
     .logo-mark {
-      position: absolute;
-      color: white;
-      top: 25px;
-      left: 25px;
-
       font-family: "Greycliff_light";
       letter-spacing: 3px;
     }
@@ -43,9 +38,6 @@
     }
 
     .menu {
-      position: absolute;
-      right: 25px;
-      top: 25px;
       border: 1px white solid;
       padding: 6px 25px;
       border-radius: 50px;
