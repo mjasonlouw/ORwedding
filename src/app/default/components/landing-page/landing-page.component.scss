@@ -6,7 +6,7 @@
   .image-wrapper {
     background-image: url("../../../../assets/images/wavy_bg.png");
     background-size: cover;
-    background-position: center;
+    background-position: top;
     height: 100%;
 
     display: flex;
@@ -23,17 +23,17 @@
       top: 20%;
 
       color: white;
-      font-family: "Greycliff_light";
-      letter-spacing: 3px;
+      font-family: "Greycliff_ExtraLight";
 
       display: flex;
       flex-direction: column;
       align-items: center;
 
       .greeting {
-        font-family: "Greycliff_light";
+        font-family: "Greycliff_Thin";
         text-transform: uppercase;
         font-size: 2.3rem;
+        letter-spacing: 5px;
       }
     }
 
@@ -49,15 +49,16 @@
       display: flex;
 
       .countdown-item {
-        margin: 10px;
+        margin: 15px;
         background-color: rgba(white, 0.1);
-        height: 60px;
-        width: 60px;
+        height: 70px;
+        width: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         border-radius: 50%;
+        box-shadow: 0 0 15px rgba(black, 0.05);
 
         p {
           margin: 0;
@@ -65,34 +66,49 @@
 
         .value {
           font-family: "Greycliff_bold";
-          font-size: 0.9rem;
+          font-size: 1.25rem;
         }
 
         .text {
-          font-size: 0.5rem;
+          font-size: 0.7rem;
         }
       }
     }
 
     .scroll-hint {
+      display: flex;
       position: absolute;
       bottom: 30%;
-      position: absolute;
       border: 1px white solid;
-      padding: 6px 25px;
+      padding: 10px 30px;
       border-radius: 50px;
       background-color: rgba(white, 0.1);
       box-shadow: 0 3px 10px rgb(black, 0.05);
       transform: rotate(90deg);
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+
+      object {
+        transform: translateX(20px);
+        animation-name: slide-hint;
+        animation-timing-function: ease;
+        animation-duration: 3s;
+        animation-delay: 5s;
+        animation-iteration-count: infinite;
+        transform-origin: bottom;
+      }
     }
   }
 }
 
-.menu_icon {
-  margin-left: -400%;
-  transition: all 2s;
-
-  &.openClass {
-    margin-left: 0;
+@keyframes slide-hint {
+  0% {
+    transform: scale(1, 1) translateX(20px);
+  }
+  50% {
+    transform: scale(0.9, 0.95) translateX(0);
+  }
+  100% {
+    transform: scale(1, 1) translateX(20px);
   }
 }
