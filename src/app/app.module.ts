@@ -19,6 +19,7 @@ import { MusicSectionComponent } from './default/components/music-section/music-
 import { WeddingDetailsComponent } from './default/components/wedding-details/wedding-details.component';
 import { MenuComponent } from './default/components/menu/menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FooterComponent } from './default/components/footer/footer.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MusicSectionComponent,
     WeddingDetailsComponent,
     MenuComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FooterComponent
   ],
   imports: [
     ReactiveFormsModule,
