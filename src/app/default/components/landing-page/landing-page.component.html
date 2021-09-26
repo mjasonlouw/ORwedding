@@ -1,17 +1,71 @@
 <div class="landing-page">
+    <div class="landing_waves_wrapper">
+        <object data="../../../../assets/images/landing_waves.svg" type="image/svg+xml"></object>
+    </div>
     <div class="image-wrapper">
-        <div>
+        <div class="heading_wrapper">
             <div class="logo-mark">
-                <p>R/O</p>
+                <p>R&O</p>
             </div>
-    
-            <div class="menu">
-                <object data="../../../assets/icons/menu.svg" type="image/svg+xml"></object>
+            <div class="menu_wrapper">
+                <div class="menu" (click)="openMainMenu();">
+                    <div class="close_menu fade_out">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.733 11.732">
+                            <g id="Group_329" data-name="Group 329" transform="translate(-339.05 -28.551)">
+                              <g id="menu_1_" data-name="menu (1)" transform="translate(340.971 24.479)">
+                                <line id="Line_43" data-name="Line 43" x2="14.591" transform="translate(-1.213 4.778) rotate(45)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                <line id="Line_45" data-name="Line 45" x2="14.592" transform="translate(9.105 4.778) rotate(135)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                              </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="open_menu fade_in">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 13">
+                            <g id="Group_348" data-name="Group 348" transform="translate(-359.5 -28)">
+                              <g id="menu_1_" data-name="menu (1)" transform="translate(360.971 24.479)">
+                                <line id="Line_42" data-name="Line 42" x2="12" transform="translate(-0.971 10.021)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                <line id="Line_43" data-name="Line 43" x2="12" transform="translate(3.029 4.021)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                <line id="Line_44" data-name="Line 44" x2="12" transform="translate(3.029 16.021)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                              </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="menu_dropdown_wrapper closed">
+                    <div class="main_menu_item parent_1 fade_out">
+                        <div class="menu_icon">
+                            <object data="../../../assets/icons/menu_mail.svg" type="image/svg+xml"></object>
+                        </div>
+                        <div class="menu_information">RSVP</div>
+                    </div>
+
+                    <div class="main_menu_item parent_2 fade_out">
+                        <div class="menu_icon">
+                            <object data="../../../assets/icons/menu_music.svg" type="image/svg+xml"></object>
+                        </div>
+                        <div class="menu_information">MUSIC</div>
+                    </div>
+
+                    <div class="main_menu_item parent_3 fade_out">
+                        <div class="menu_icon">
+                            <object data="../../../assets/icons/menu_clipboard.svg" type="image/svg+xml"></object>
+                        </div>
+                        <div class="menu_information">DETAILS</div>
+                    </div>
+
+                    <div class="main_menu_item parent_4 fade_out">
+                        <div class="menu_icon">
+                            <object data="../../../assets/icons/menu_gift.svg" type="image/svg+xml"></object>
+                        </div>
+                        <div class="menu_information">REGISTRY</div>
+                    </div>
+                </div>
             </div>
         </div>
-        
+
         <div class="welcome-message">
-            <p class="greeting" *ngIf="guest != null">Hey, {{guest.data().name}} </p>
+            <p class="greeting" *ngIf="guest != null">Hey, {{guest.data().greeting}} </p>
 
             <div class="count-down-timer">
                 <div class="days countdown-item">
@@ -20,12 +74,12 @@
                 </div>
                 <div class="hours countdown-item">
                     <p class="value">{{hoursLeft}}</p>
-                    <p class="text">Hrs</p>
+                    <p class="text">Hours</p>
                 </div>
 
                 <div class="minutes countdown-item">
                     <p class="value">{{minsLeft}}</p>
-                    <p class="text">Mins</p>
+                    <p class="text">Minutes</p>
                 </div>
             </div>
         </div>
