@@ -1,0 +1,33 @@
+@import "../../../../scss/common.scss";
+
+.details_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 8%;
+
+  .details_header {
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+    justify-content: space-between;
+
+    .header-wrapper {
+      h4 {
+        color: $secondary_green;
+        font-family: "Greycliff_medium";
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 1.9rem;
+        margin: 0;
+      }
+
+      p {
+        margin: o;
+        font-family: "Greycliff_light_italic";
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        color: $secondary_green;
+      }
+    }
+  }
+}

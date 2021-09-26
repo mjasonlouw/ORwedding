@@ -1,0 +1,176 @@
+@import "../../../../scss/common.scss";
+
+.music_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 8%;
+
+  .music_header {
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+    justify-content: space-between;
+
+    .header-wrapper {
+      h4 {
+        color: $secondary_green;
+        font-family: "Greycliff_medium";
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 1.9rem;
+        margin: 0;
+      }
+
+      p {
+        margin: o;
+        font-family: "Greycliff_light_italic";
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        color: $secondary_green;
+      }
+    }
+  }
+
+  .search_wrapper {
+    display: flex;
+    justify-content: center;
+
+    form {
+      width: 100%;
+    }
+
+    .search_box {
+      padding: 0 25px;
+      border-radius: 30px;
+      width: 80%;
+      font-family: "Greycliff_light_italic";
+      letter-spacing: 3px;
+      height: 45px;
+      font-size: 0.9rem;
+      transition: all 0.5s;
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+
+      border: 0.5px $secondary_green solid;
+      background-color: rgba($secondary_green, 0.25);
+      color: $secondary_green;
+      box-shadow: 0 3px 10px rgba(black, 0.1);
+
+      // &.at_top_search {
+      //   background-color: rgba($background, 0.1);
+      // }
+
+      // &.on_scroll_search {
+      //   background-color: rgba($secondary_green, 0.5);
+      //   @include drop_shadow;
+      // }
+
+      @media (min-width: 1024px) {
+        width: 400px;
+      }
+    }
+
+    ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $secondary_green;
+      opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: $secondary_green;
+    }
+
+    ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: $secondary_green;
+    }
+  }
+
+  .added_songs_wrapper {
+    color: $secondary_green;
+    position: relative;
+    margin-top: 10%;
+
+    .added_songs_header {
+      font-family: "Greycliff_bold";
+      font-size: 1.25rem;
+      letter-spacing: 3px;
+      padding-bottom: 8%;
+    }
+
+    .added_songs_grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 25px;
+      grid-template-rows: masonry;
+
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .song_details {
+        display: grid;
+        grid-template-rows: auto auto;
+        transition: all 0.3s;
+
+        p {
+          margin: 0;
+        }
+
+        .song_name {
+          letter-spacing: 3px;
+          font-family: "Greycliff_bold";
+          display: flex;
+          align-items: center;
+          font-size: 0.8rem;
+          padding-top: 10px;
+        }
+
+        .song_artist {
+          font-family: "Greycliff_light_italic";
+          letter-spacing: 3px;
+          font-size: 0.75rem;
+        }
+
+        &:active {
+          transform: scale(0.9);
+        }
+
+        &:hover {
+          transform: scale(0.9);
+          cursor: pointer;
+        }
+      }
+
+      .image_outer_wrapper {
+        .image_wrapper {
+          height: 25vh;
+          background-size: cover;
+          background-position: center;
+          border-radius: 15px;
+
+          .remove_button_wrapper {
+            display: flex;
+            width: 100%;
+            height: 100%;
+
+            &.align_button_centre {
+              justify-content: center;
+              align-items: center;
+            }
+
+            .remove_button {
+              display: flex;
+              @include transparent_button;
+
+              svg {
+                transform: scale(1.9);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

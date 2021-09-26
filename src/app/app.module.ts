@@ -11,9 +11,14 @@ import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
 import { AdminComponent } from './admin/admin.component';
-import { HeaderComponent } from './default/header/header.component';
-import { RsvpFormComponent } from './default/rsvp-form/rsvp-form.component';
-import { LandingPageComponent } from './default/landing-page/landing-page.component';
+
+import { HeaderComponent } from './default/components/header/header.component';
+import { RsvpFormComponent } from './default/components/rsvp-form/rsvp-form.component';
+import { LandingPageComponent } from './default/components/landing-page/landing-page.component';
+import { MusicSectionComponent } from './default/components/music-section/music-section.component';
+import { WeddingDetailsComponent } from './default/components/wedding-details/wedding-details.component';
+import { MenuComponent } from './default/components/menu/menu.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -25,7 +30,11 @@ import { LandingPageComponent } from './default/landing-page/landing-page.compon
     AdminComponent,
     HeaderComponent,
     RsvpFormComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    MusicSectionComponent,
+    WeddingDetailsComponent,
+    MenuComponent,
+    NotFoundComponent
   ],
   imports: [
     ReactiveFormsModule,

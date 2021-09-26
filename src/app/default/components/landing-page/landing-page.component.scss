@@ -1,8 +1,10 @@
+@import "../../../../scss/common.scss";
+
 .landing-page {
   height: 100vh;
 
   .image-wrapper {
-    background-image: url("../../../assets/images/wavy_bg.png");
+    background-image: url("../../../../assets/images/wavy_bg.png");
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -91,5 +93,14 @@
       box-shadow: 0 3px 10px rgb(black, 0.05);
       transform: rotate(90deg);
     }
+  }
+}
+
+.menu_icon {
+  margin-left: -400%;
+  transition: all 2s;
+
+  &.openClass {
+    margin-left: 0;
   }
 }

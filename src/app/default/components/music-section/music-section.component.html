@@ -1,0 +1,50 @@
+<div class="music_wrapper">
+
+    <div class="music_header">
+
+        <div class="header-wrapper">
+            <h4>MUSIC</h4>
+            <p>Request a song you'd like to jam to</p>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+
+        <div class="search_wrapper">
+            <form [formGroup]="musicFilter">
+                <input placeholder="Find a song" type="text" (keyup)="onSearchKeyUp($event)" class="search_box at_top_search" />
+            </form>
+        </div>
+
+        <div class="added_songs_wrapper">
+            <div class="added_songs_header">Added </div>
+            <div class="added_songs_grid" *ngIf="guestSongs?.length > 0">
+                <div class="added_songs_information_wrapper" *ngFor="let song of guestSongs" class="song_item" (click)="removeGuestSong(song);">
+                    <div class="image_outer_wrapper">
+                        <div class="image_wrapper" [ngStyle]="{'background-image':'url(' + song.imgUrl + ')'}">
+                            <div class="remove_button_wrapper align_button_centre">
+                                <div class="remove_button">
+                                    <object data="../../../../assets/icons/remove.svg" type="image/svg+xml" height="15" width="15"></object>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="song_details">
+                        <p class="song_name">{{song.name}}</p>
+                        <p class="song_artist">{{song.artist}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="empty_state_wrapper" *ngIf="guestSongs?.length == 0">
+                <div class="empty_state">
+                    <div class="empty_state_text">
+                        You haven't added any songs yet
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

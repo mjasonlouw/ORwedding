@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GuestService } from '../../guest.service';
+import { GuestService } from '../../../guest.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,6 +14,8 @@ export class LandingPageComponent implements OnInit {
   daysLeft = 0;
   hoursLeft = 0;
   minsLeft = 0;
+
+  showMenu: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,

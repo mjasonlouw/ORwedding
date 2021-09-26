@@ -5,6 +5,7 @@ import { GuestService } from './guest.service';
 import { RegistryComponent } from './registry/registry.component';
 import { DefaultComponent } from './default/default.component';
 import { AdminComponent } from './admin/admin.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path:'admin', component: AdminComponent, pathMatch: 'full' },
@@ -58,6 +59,7 @@ const routes: Routes = [
   },
   
   { path: '', component: DefaultComponent, pathMatch: 'full'},
+  { path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({

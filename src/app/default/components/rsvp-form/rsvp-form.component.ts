@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { GuestService } from '../../guest.service';
-import { MealOption } from '../interfaces/MealOptions.interface';
+import { GuestService } from '../../../guest.service';
+import { MealOption } from '../../interfaces/MealOptions.interface';
 
 @Component({
   selector: 'app-rsvp-form',
@@ -31,10 +31,10 @@ export class RsvpFormComponent {
 
   ngOnInit(): void {    
     this.mealOptions = [
-      new MealOption("chorizoSausage", "Chorizo sausage and Prawn gnocchi",  "../../assets/images/meals/chorizo_sausage.jpg"),
-      new MealOption("lambShank", "Slow Braised lamb shank",  "../../assets/images/meals/lamb_shank.jpg"),
-      new MealOption("porkBelly", "Crispy Pork belly",  "../../assets/images/meals/pork_belly.jpg"),
-      new MealOption("cauliflowerSteak", "Roasted cauliflower steak",  "../../assets/images/meals/cauliflower_steak.jpg")
+      new MealOption("chorizoSausage", "Chorizo sausage and Prawn gnocchi",  "../../../../assets/images/meals/chorizo_sausage.jpg"),
+      new MealOption("lambShank", "Slow Braised lamb shank",  "../../../../assets/images/meals/lamb_shank.jpg"),
+      new MealOption("porkBelly", "Crispy Pork belly",  "../../../../assets/images/meals/pork_belly.jpg"),
+      new MealOption("cauliflowerSteak", "Roasted cauliflower steak",  "../../../../assets/images/meals/cauliflower_steak.jpg")
     ];
   }
 
@@ -50,12 +50,13 @@ export class RsvpFormComponent {
 
     this.persons.forEach(person => {
       const personData = person.data()
+      console.log(personData);
       const rsvp = new FormGroup({
         name: new FormControl(personData.name),
         meal: new FormControl(personData.meal),
-        coming: new FormControl(personData.coming),
-        vaccinated: new FormControl(personData.vaccinated),
-        isPlusOne: new FormControl(personData.isPlusOne)
+        coming: new FormControl(personData && (personData.coming?.toLowerCase() === "yes")),
+        vaccinated: new FormControl(personData && (personData.vaccinated?.toLowerCase() === "yes")),
+        isPlusOne: new FormControl(personData && (personData.isPlusOne?.toLowerCase() === "yes"))
       })
 
       this.personsData.push(person.data())
@@ -70,11 +71,11 @@ export class RsvpFormComponent {
       let rsvp = {
         coming: group.get('coming').value,
         isPlusOne: group.get('isPlusOne').value,
-        meal: group.get('meal').value,
+        meal: group.get('meal').value.id,
         name: group.get('name').value,
         vaccinated: group.get('vaccinated').value
       }
-      
+
       let count = 0
       this.persons.forEach((person) => {
         if(count++ == index){
@@ -105,23 +106,15 @@ export class RsvpFormComponent {
     this.showPlusOne = true;
   }
 
-
-  comingControlFlag: boolean = true;
-  vaccinatedControlFlag: boolean = false;
-
-  public toggleComingControl(state: boolean): void {
-   
-    this.comingControlFlag = state;
+  public toggleComingControl(state: boolean, rsvpControl: any): void {
+    rsvpControl.controls['coming'].setValue(state);
   }
 
-  public toggleVaccineControl(state: boolean): void {
-    this.vaccinatedControlFlag = state;
+  public toggleVaccineControl(state: boolean, rsvpControl: any): void {
+    rsvpControl.controls['vaccinated'].setValue(state);
   } 
 
-  currentMealOption: MealOption
-  public selectMeal(selectedMeal: MealOption): void {
-    console.log(this.currentMealOption);
-    this.currentMealOption = selectedMeal;
-    console.log(this.currentMealOption);
+  public selectMeal(selectedMeal: MealOption, rsvpControl: any): void {
+    rsvpControl.controls['meal'].setValue(selectedMeal);
   }
 }
