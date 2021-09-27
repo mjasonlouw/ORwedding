@@ -67,8 +67,8 @@
 
                             <div class="menu_items_information_wrapper">
 
-                                <div class="menu_item" *ngFor="let menuItem of mealOptions" (click)="selectMeal(menuItem, rsvp)"
-                                    [ngClass]="{'active': rsvp.controls['meal']?.value?.id == menuItem.id && rsvp.controls['coming']?.value === true}">
+                                <div class="menu_item" *ngFor="let menuItem of mealOptions" (click)="selectMeal(menuItem.id, rsvp)"
+                                    [ngClass]="{'active': rsvp.controls['meal'].value == menuItem.id}">
                                     <div class="image_outer_wrapper">
                                         <div class="image_wrapper" [ngStyle]="{'background-image':'url(' + menuItem.imgUrl + ')'}">
                                         </div>

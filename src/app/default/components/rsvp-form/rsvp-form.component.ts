@@ -53,13 +53,13 @@ export class RsvpFormComponent {
 
     this.persons.forEach(person => {
       const personData = person.data()
-      console.log(personData);
+      console.log('person data:',personData);
       const rsvp = new FormGroup({
         name: new FormControl(personData.name),
         meal: new FormControl(personData.meal),
-        coming: new FormControl(personData && (personData.coming?.toLowerCase() === "yes")),
-        vaccinated: new FormControl(personData && (personData.vaccinated?.toLowerCase() === "yes")),
-        isPlusOne: new FormControl(personData && (personData.isPlusOne?.toLowerCase() === "yes"))
+        coming: new FormControl(personData && personData.coming),
+        vaccinated: new FormControl(personData && personData.vaccinated),
+        isPlusOne: new FormControl(personData && personData.isPlusOne)
       })
 
       this.personsData.push(person.data())
@@ -76,7 +76,7 @@ export class RsvpFormComponent {
       let rsvp = {
         coming: group.get('coming').value,
         isPlusOne: group.get('isPlusOne').value,
-        meal: group.get('meal').value?.id,
+        meal: group.get('meal').value,
         name: group.get('name').value,
         vaccinated: group.get('vaccinated').value
       }
@@ -135,10 +135,10 @@ export class RsvpFormComponent {
     rsvpp.controls['name'].setValue('')
     rsvpp.controls['vaccinated'].setValue('')
 
-    this.personsData[index].coming = ''
+    this.personsData[index].coming = false
     this.personsData[index].meal = ''
     this.personsData[index].name = ''
-    this.personsData[index].coming = ''
+    this.personsData[index].vaccinated = false
 
     console.log('remove plus one',rsvpp.get('coming').value)
   }
@@ -155,7 +155,7 @@ export class RsvpFormComponent {
     rsvpControl.controls['vaccinated'].setValue(state);
   } 
 
-  public selectMeal(selectedMeal: MealOption, rsvpControl: any): void {
+  public selectMeal(selectedMeal: string, rsvpControl: any): void {
     rsvpControl.controls['meal'].setValue(selectedMeal);
   }
 }
