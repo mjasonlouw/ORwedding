@@ -1,15 +1,28 @@
 .footer {
   height: 25vh;
+  overflow: hidden;
 
   .image-wrapper {
-    display: flex;
     justify-content: center;
     position: relative;
-    overflow: hidden;
 
     .footer_graphic {
       position: relative;
-      top: 10px; 
+      bottom: 0;
+      height: 100%;
+
+      svg {
+        position: absolute;
+        top: 25px;
+      }
+    }
+
+    .scroll_hint_wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      top: 120px;
     }
 
     .scroll-hint {

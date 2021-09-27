@@ -3,11 +3,12 @@
 .landing-page {
   height: 100vh;
   position: relative;
+  width: 100%; 
 
   .landing_waves_wrapper {
     width: 100%;
     position: absolute;
-    top: 0;
+    bottom: 0;
   }
 
   .image-wrapper {
