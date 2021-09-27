@@ -1,3 +1,7 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* You can add global styles to this file, and also import other style files */
 $primary_green: #333f36;
 $secondary_green: #667d6b;
@@ -88,3 +92,42 @@ input:focus {
   top: 0;
   width: 40px;
 }
+
+
+.header-wrapper {
+  display: grid;
+  grid-auto-rows: 1fr;
+
+  h4 {
+    color: $secondary_green;
+    font-family: "Greycliff_Thin";
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    font-size: 1.9rem;
+    margin: 0;
+  }
+
+  .align_sub_heading {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin: 0; 
+      font-family: "Greycliff_light_italic";
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: $secondary_green;
+    }
+  }
+
+  .heading_divider {
+    width: 2rem;
+    height: 2px;
+    font-weight: bold;
+    background-color: $secondary_green;
+    border-radius: 50px;
+    margin: 6% 0;
+  }
+}
+
+

@@ -10,99 +10,7 @@
   .rsvp_header {
     display: flex;
     align-items: center;
-    margin-top: 10%;
     justify-content: space-between;
-
-    .header-wrapper {
-      h4 {
-        color: $secondary_green;
-        font-family: "Greycliff_Thin";
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 1.9rem;
-        margin: 0;
-      }
-
-      p {
-        margin: o;
-        font-family: "Greycliff_light_italic";
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-        color: $secondary_green;
-      }
-
-      .heading_divider {
-        width: 2rem;
-        height: 1px;
-        font-weight: bold;
-        background-color: $secondary_green;
-        border-radius: 50px;
-        margin: 8% 0;
-      }
-    }
-
-    .form-stepper {
-      display: flex;
-
-      p {
-        margin: 0;
-      }
-
-      .arrow_wrapper {
-        margin: 0 10px;
-        opacity: 0.25;
-        pointer-events: none;
-
-        &.available-step {
-          pointer-events: all;
-          opacity: 1;
-          cursor: pointer;
-        }
-
-        &.arrow_prev {
-          transform: rotateY(180deg);
-        }
-
-        object {
-          width: 100%;
-          pointer-events: none;
-        }
-      }
-
-      .step-hint {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .hints {
-          display: flex;
-
-          .hint {
-            height: 9px;
-            width: 9px;
-            background-color: $secondary_green;
-            margin: 2px;
-            border-radius: 50%;
-            opacity: 0.25;
-
-            &.current-hint {
-              width: 25px;
-              border-radius: 50px;
-              opacity: 1;
-            }
-          }
-        }
-
-        .hint-text {
-          color: $secondary_green;
-          font-family: "Greycliff_light";
-          letter-spacing: 3px;
-          margin: 0;
-          margin-top: 5px;
-          font-size: 0.8rem;
-        }
-      }
-    }
   }
 
   .form-wrapper {
@@ -140,6 +48,7 @@
         color: $secondary_green;
         letter-spacing: 3px;
         font-size: 0.9rem;
+        line-height: 25px;
       }
     }
   }
@@ -147,15 +56,17 @@
 
 // Radio buttons
 .custom-radio-control-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  justify-content: flex-start;
 }
 
 .custom-radio-control {
-  padding: 3% 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
   cursor: pointer;
+  grid-auto-rows: 1fr;
+  row-gap: 8px;
 
   &:nth-child(2) {
     padding: 3%;
@@ -176,11 +87,13 @@
   }
 
   label {
-    margin-top: 15%;
-    text-transform: uppercase;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     color: $secondary_green;
     font-family: "Greycliff_medium";
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
 
@@ -204,28 +117,29 @@
 
   .menu_item {
     cursor: pointer;
+    transition: all 0.3s; 
 
     .item_desc {
       color: $secondary_green;
-      font-family: "Greycliff_light";
+      font-family: "Greycliff_bold";
       letter-spacing: 3px;
       display: flex;
       align-items: center;
       font-size: 0.8rem;
-      padding: 8px 0;
+      line-height: 20px;
     }
 
     .image_wrapper {
       opacity: 0.5;
     }
 
-    &.active {
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &.selected {
       .image_wrapper {
         opacity: 1;
-      }
-
-      .item_desc {
-        font-family: "Greycliff_bold";
       }
     }
 
@@ -235,38 +149,113 @@
         opacity: 1;
       }
     }
-
-    &.active:hover {
-      transform: scale(1);
-    }
   }
 }
 
 // Button Styles
 
-.submit_btn {
-  border-radius: 50px;
-  border: 0.5px $secondary_green solid;
-  background-color: rgba($secondary_green, 0.25);
-  text-transform: uppercase;
-  color: $secondary_green;
-  font-family: "Greycliff_ThinOblique";
-  padding: 10px 25px;
-  font-size: 0.8rem;
-  letter-spacing: 3px;
-  margin: 10% auto;
-  box-shadow: 0 3px 10px rgba(black, 0.1);
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.submit_wrapper {
+  display: grid;
+  grid-template-columns: auto auto;
 
-  cursor: pointer;
+  .form-stepper {
+    display: flex;
 
-  object {
-    margin: 0 5px;
+    p {
+      margin: 0;
+    }
+
+    .arrow_wrapper {
+      margin: 0 10px;
+      opacity: 0.25;
+      pointer-events: none;
+
+      &.available-step {
+        pointer-events: all;
+        opacity: 1;
+        cursor: pointer;
+      }
+
+      &.arrow_prev {
+        transform: rotateY(180deg);
+      }
+
+      object {
+        width: 100%;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .step-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .hints {
+      display: flex;
+
+      .hint {
+        height: 9px;
+        width: 9px;
+        background-color: $secondary_green;
+        margin: 2px;
+        border-radius: 50%;
+        opacity: 0.25;
+
+        &.current-hint {
+          width: 25px;
+          border-radius: 50px;
+          opacity: 1;
+        }
+      }
+    }
+
+    .hint-text {
+      color: $secondary_green;
+      font-family: "Greycliff_light";
+      letter-spacing: 3px;
+      margin: 0;
+      margin-top: 5px;
+      font-size: 0.8rem;
+    }
+  }
+
+  .submit_button {
+    .submit_btn {
+      border-radius: 50px;
+      border: 0.5px $secondary_green solid;
+      background-color: rgba($secondary_green, 0.25);
+      text-transform: uppercase;
+      color: $secondary_green;
+      font-family: "Greycliff_medium_italic";
+      padding: 10px 25px;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      margin: 0;
+      box-shadow: 0 3px 10px rgba(black, 0.1);
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    
+      cursor: pointer;
+    
+      object {
+        margin: 0 5px;
+      }
+    }
+  }
+
+  .stepper_wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 }
+
+
+
 
 // Bubble Styles
 .bubble-wrapper {

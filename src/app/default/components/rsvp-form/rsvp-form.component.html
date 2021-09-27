@@ -3,24 +3,14 @@
     <div class="rsvp_header">
 
         <div class="header-wrapper">
-            <h4>RSVP</h4>
-            <hr class="heading_divider" />
-            <p>RSVP by 16th October 2021</p>
-        </div>
-        <div class="form-stepper">
-            <div class="arrow_wrapper arrow_prev" (click)="currentStep = currentStep - 1" [ngClass]="{'available-step' : currentStep > 0}">
-                <object data="../../../assets/icons/double_arrows.svg" type="image/svg+xml" height="10" width="10"></object>
+            <div>
+                <h4>RSVP</h4>
             </div>
-
-            <div class="step-hint">
-                <div class="hints">
-                    <div class="hint" [ngClass]="{'current-hint' : currentStep === i}" *ngFor="let rsvp of rsvps.controls; index as i"></div>
-                </div>
-                <p class="hint-text">{{ currentStep + 1 }} of {{ rsvps.controls.length}}</p>
+            <div>
+                <hr class="heading_divider" />
             </div>
-
-            <div class="arrow_wrapper arrow_next" (click)="currentStep = currentStep + 1" [ngClass]="{'available-step' : currentStep < rsvps.controls.length - 1}">
-                <object data="../../../assets/icons/double_arrows.svg" type="image/svg+xml" height="10" width="10"></object>
+            <div class="align_sub_heading">
+                <p>RSVP by 16th October 2021</p> 
             </div>
         </div>
     </div>
@@ -137,10 +127,32 @@
         </ul>
     </div>
 
-    <button type="submit" class="submit_btn" (click)='submitRSVP()'>
-        Submit
-        <object data="../../../../assets/icons/email.svg" type="image/svg+xml"></object>
-    </button>
+    <div class="submit_wrapper">
+        <div class="submit_button"> 
+            <button type="submit" class="submit_btn" (click)='submitRSVP()'>
+                Submit
+            </button>
+        </div>
+        <div class="stepper_wrapper">
+            <div class="form-stepper">
+                <div class="arrow_wrapper arrow_prev" (click)="currentStep = currentStep - 1" [ngClass]="{'available-step' : currentStep > 0}">
+                    <object data="../../../assets/icons/double_arrows.svg" type="image/svg+xml" height="10" width="10"></object>
+                </div>
+    
+                <div class="step-hint">
+                    <div class="hints">
+                        <div class="hint" [ngClass]="{'current-hint' : currentStep === i}" *ngFor="let rsvp of rsvps.controls; index as i"></div>
+                    </div>
+                    <p class="hint-text">{{ currentStep + 1 }} of {{ rsvps.controls.length}}</p>
+                </div>
+    
+                <div class="arrow_wrapper arrow_next" (click)="currentStep = currentStep + 1" [ngClass]="{'available-step' : currentStep < rsvps.controls.length - 1}">
+                    <object data="../../../assets/icons/double_arrows.svg" type="image/svg+xml" height="10" width="10"></object>
+                </div>
+            </div>
+        </div>
+    </div>
+   
 
     <div class="bubble-wrapper">
         <object data="../../../../assets/images/circles_top.svg" type="image/svg+xml"></object>

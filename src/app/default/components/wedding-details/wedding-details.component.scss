@@ -4,43 +4,8 @@
   display: flex;
   flex-direction: column;
   padding: 8%;
+  position: relative;
   z-index: 1;
-
-  .details_header {
-    display: flex;
-    align-items: center;
-    margin-top: 10%;
-    justify-content: space-between;
-
-    .header-wrapper {
-      z-index: 1;
-      h4 {
-        color: $secondary_green;
-        font-family: "Greycliff_medium";
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 1.9rem;
-        margin: 0;
-      }
-
-      p {
-        margin: o;
-        font-family: "Greycliff_light_italic";
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-        color: $secondary_green;
-      }
-
-      .heading_divider {
-        width: 2rem;
-        height: 1px;
-        font-weight: bold;
-        background-color: $secondary_green;
-        border-radius: 50px;
-        margin: 8% 0;
-      }
-    }
-  }
 
   .content-wrapper {
     z-index: 1;
