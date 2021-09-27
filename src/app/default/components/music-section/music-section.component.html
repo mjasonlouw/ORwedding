@@ -19,21 +19,30 @@
 
         <div class="search_wrapper">
             <form [formGroup]="musicFilter">
-                <input placeholder="Find a song" type="text" (keyup)="onSearchKeyUp($event)" class="search_box at_top_search" />
+                <input placeholder="Find a song" type="text"
+                    (keyup)="onSearchKeyUp($event)" class="search_box
+                    at_top_search" />
 
                 <!-- <object class="search_icon" data="../../../../assets/icons/search.svg" type="image/svg+xml" width="12" height="12"></object> -->
             </form>
         </div>
 
-        <div class="added_songs_wrapper">
-            <div class="added_songs_header">Added </div>
-            <div class="added_songs_grid" *ngIf="guestSongs != null && guestSongs?.length > 0">
-                <div class="added_songs_information_wrapper" *ngFor="let song of guestSongs" class="song_item" (click)="addSong(song.uri)">
+
+        <div class="added_songs_wrapper" style="max-height: 50vh; overflow-y:
+            scroll;">
+            <div class="added_songs_header">Search Result </div>
+            <div class="added_songs_grid" *ngIf="searchResults != null &&
+                searchResults?.length> 0">
+                <div class="added_songs_information_wrapper" *ngFor="let song of
+                    searchResults" class="song_item" (click)="addSong(song)">
                     <div class="image_outer_wrapper">
-                        <div class="image_wrapper" [ngStyle]="{'background-image':'url(' + song.imgUrl + ')'}">
-                            <div class="remove_button_wrapper align_button_centre">
+                        <div class="image_wrapper"
+                            [ngStyle]="{'background-image':'url(' + song.imgUrl
+                            + ')'}">
+                            <div class="remove_button_wrapper
+                                align_button_centre">
                                 <div class="remove_button">
-                                    <object data="../../../../assets/icons/remove.svg" type="image/svg+xml" height="15" width="15"></object>
+                                    add
                                 </div>
                             </div>
                         </div>
@@ -45,19 +54,58 @@
                 </div>
             </div>
 
-            <div class="empty_state_wrapper" *ngIf="guestSongs?.length == 0">
+            <div class="empty_state_wrapper" *ngIf="searchResults?.length == 0">
                 <div class="empty_state">
                     <div class="empty_state_text">
-                        You haven't added any songs yet
+                        No results
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="added_songs_wrapper" style="max-height: 50vh; overflow-y:
+            scroll;">
+            <div class="added_songs_header">My Song Picks </div>
+            <div class="added_songs_grid" *ngIf="guestSongs != null &&
+                guestSongs?.length> 0">
+                <div class="added_songs_information_wrapper" *ngFor="let song of
+                    guestSongs" class="song_item" (click)="removeSong(song)">
+                    <div *ngIf="song.payload.doc.data().user == gname">
+                        <div class="image_outer_wrapper">
+                            <div class="image_wrapper"
+                                [ngStyle]="{'background-image':'url(' +
+                                song.payload.doc.data().imgUrl + ')'}">
+                                <div class="remove_button_wrapper
+                                    align_button_centre">
+                                    <div class="remove_button">
+                                        remove
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song_details">
+                            <p class="song_name">{{song.payload.doc.data().name}}</p>
+                            <p class="song_artist">{{song.payload.doc.data().artist}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="empty_state_wrapper" *ngIf="guestSongs?.length == 0">
+                <div class="empty_state">
+                    <div class="empty_state_text">
+                        No results
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
     <div class="bubble-wrapper">
-        <object data="../../../../assets/images/circles_bottom.svg" type="image/svg+xml"></object>
+        <object data="../../../../assets/images/circles_bottom.svg"
+            type="image/svg+xml"></object>
     </div>
 
 </div>
