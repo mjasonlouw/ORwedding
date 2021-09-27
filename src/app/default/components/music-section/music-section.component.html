@@ -21,8 +21,8 @@
 
         <div class="added_songs_wrapper">
             <div class="added_songs_header">Added </div>
-            <div class="added_songs_grid" *ngIf="guestSongs?.length > 0">
-                <div class="added_songs_information_wrapper" *ngFor="let song of guestSongs" class="song_item" (click)="removeGuestSong(song);">
+            <div class="added_songs_grid" *ngIf="guestSongs != null && guestSongs?.length > 0">
+                <div class="added_songs_information_wrapper" *ngFor="let song of guestSongs" class="song_item" (click)="addSong(song.uri)">
                     <div class="image_outer_wrapper">
                         <div class="image_wrapper" [ngStyle]="{'background-image':'url(' + song.imgUrl + ')'}">
                             <div class="remove_button_wrapper align_button_centre">

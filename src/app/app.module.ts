@@ -19,6 +19,7 @@ import { MusicSectionComponent } from './default/components/music-section/music-
 import { WeddingDetailsComponent } from './default/components/wedding-details/wedding-details.component';
 import { MenuComponent } from './default/components/menu/menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './default/components/footer/footer.component';
 
 
@@ -43,7 +44,9 @@ import { FooterComponent } from './default/components/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
