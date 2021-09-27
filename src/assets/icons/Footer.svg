@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="414" height="200" viewBox="0 0 414 200">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_178" data-name="Rectangle 178" width="414" height="200" transform="translate(0 1940)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.413" y1="0.134" x2="0.58" y2="0.05" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#667d6b"/>
+      <stop offset="1" stop-color="#e9e5e0" stop-opacity="0.388"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.389" y1="-0.006" x2="0.649" y2="0.971" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#667d6b" stop-opacity="0"/>
+      <stop offset="1" stop-color="#e9e5e0"/>
+    </linearGradient>
+    <filter id="Path_680" x="17.5" y="-109.447" width="605.631" height="563.522" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="18.5" result="blur"/>
+      <feFlood flood-opacity="0.02"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-3" x1="0.299" y1="0.421" x2="0.471" y2="0.13" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#667d6b"/>
+      <stop offset="1" stop-color="#667d6b" stop-opacity="0.451"/>
+    </linearGradient>
+    <filter id="Path_681" x="-384.699" y="-194" width="1137.397" height="1078.735" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="18.5" result="blur-2"/>
+      <feFlood flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Mask_Group_6" data-name="Mask Group 6" transform="translate(0 -1940)" clip-path="url(#clip-path)">
+    <g id="Group_416" data-name="Group 416">
+      <path id="blobblob" d="M1010.484-36.5c-8.533-14.74-21.513-27.441-37.489-33.48C935.4-84.182,914.759-57.03,862.047-56.853c-53.193.179-58.441-27.52-124.186-44.74-15.546-4.072-95.03-22.964-166.625,22-7.793,4.894-30.249,19-50.088,43.089v647.52h489.335Z" transform="translate(-629.652 2084.566)" opacity="0.18" fill="url(#linear-gradient)"/>
+      <g transform="matrix(1, 0, 0, 1, 0, 1940)" filter="url(#Path_680)">
+        <path id="Path_680-2" data-name="Path 680" d="M.813,178.638C8.6,221.5,73.571,244.813,146.092,270.832c63.513,22.787,113.355,40.669,166.721,17.806,37.62-16.117,77.472-52.687,86.414-101.4,14.581-79.44-58.943-159.021-131.414-180.6C138.946-31.732-12.445,105.609.813,178.638Z" transform="matrix(0.88, -0.47, 0.47, 0.88, 73, 131.35)" opacity="0.74" fill="url(#linear-gradient-2)"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 1940)" filter="url(#Path_681)">
+        <path id="Path_681-2" data-name="Path 681" d="M46.136,90.073C100.762,16.55,221.363-21.791,307.974,12.947c96.887,38.859,61.666,79.577,179.913,147.547,96.806,55.644,171.694-19.734,240.955,40.24C794,257.152,866.12,497.643,747.249,603.693S450.4,718.618,253.357,624.934C26.4,517.025-62.517,236.319,46.136,90.073Z" transform="translate(-329.2 201.21) rotate(-25)" opacity="0.7" fill="url(#linear-gradient-3)"/>
+      </g>
+    </g>
+  </g>
+</svg>

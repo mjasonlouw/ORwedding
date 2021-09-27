@@ -42,7 +42,7 @@
     .menu_wrapper {
       display: grid; 
       justify-content: flex-end;
-      grid-template-columns: repeat(1, minmax(0, 110px));
+      grid-template-columns: repeat(1, minmax(0, 95px));
       grid-row-gap: 25px;
 
       .menu_dropdown_wrapper {
@@ -76,8 +76,8 @@
             display: grid;
             justify-content: center;
 
-            object {
-              height: 20px;
+            svg {
+              height: 20px !important;
             }
           }
 
@@ -295,3 +295,4 @@
     left: 10;
   }
 }
+
