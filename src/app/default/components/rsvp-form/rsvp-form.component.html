@@ -14,24 +14,37 @@
             </div>
         </div>
     </div>
+    <hr/>
+    <div class="RsvpPositionContainer">
+        <div *ngFor="let rsvp of rsvps.controls; index as i"
+            [ngClass]="currentStep == i ? 'selectedPerson' : 'notSelectedPerson'">
+            <div (click)="scrollTo(i)">{{personsData[i].name}}<span *ngIf="personsData[i].isPlusOne"> +1</span></div>
+        </div>
+    </div>
+    <hr/>
     <div class='scrollContainer' (scroll)="scrollContainerScrolling($event)">
-
-        <div *ngFor="let rsvp of rsvps.controls; index as i" class='rsvpPerson{{i}}'>
+        <div *ngFor="let rsvp of rsvps.controls; index as i"
+            class='rsvpPerson{{i}}'>
 
             <div [formGroup]="rsvp">
 
                 <div class="form-wrapper active">
                     <!-- [ngClass]="{'active': currentStep == i}" -->
 
-                <div class="form-heading" *ngIf="personsData[i].name != '' || !showPlusOne">
-                    <div>
-                        <p> {{i + 1}}. </p>
+                    <div class="form-heading" *ngIf="personsData[i].name != ''
+                        || !showPlusOne">
+                        <div>
+                            <p> {{i + 1}}. </p>
+                        </div>
+                        <div>
+                            <p *ngIf="!personsData[i].isPlusOne">For
+                                {{personsData[i].name}}</p>
+                            <input placeholder="Plus one's name"
+                                class="search_box plus_one"
+                                *ngIf="personsData[i].isPlusOne" type="test"
+                                formControlName='name'/>
+                        </div>
                     </div>
-                    <div>
-                        <p *ngIf="!personsData[i].isPlusOne">For {{personsData[i].name}}</p>
-                        <input placeholder="Plus one's name" class="search_box plus_one" *ngIf="personsData[i].isPlusOne" type="test" formControlName='name'/>
-                    </div>
-                </div>
 
                     <!-- <p *ngIf="personsData[i].name == '' && showPlusOne">Name</p> -->
                     <div class="form-sections" *ngIf="personsData[i].name != ''
@@ -82,75 +95,88 @@
                                 eat for dinner?</p>
                             <div>
 
-                            <div class="menu_items_information_wrapper">
-                                
-                                <div class="menu_item" *ngFor="let menuItem of mealOptions" (click)="selectMeal(menuItem.id, rsvp)"
-                                    [ngClass]="rsvp.controls['meal'].value == menuItem.id && rsvp.controls['coming']?.value == true ? 'selected' : 'notSelected'">
-                                    <div class="image_outer_wrapper">
-                                        <div class="image_wrapper" [ngStyle]="{'background-image':'url(' + menuItem.imgUrl + ')'}">
-                                        </div>
-                                        <div class="item_desc">
-                                            <div>
-                                                <p>
-                                                    <object *ngIf="menuItem.id
-                                                        === 'cauliflowerSteak'"
-                                                        data="../../../assets/icons/veg_meal.svg"
-                                                        type="image/svg+xml"></object>
-                                                    {{ menuItem.desc }}
-                                                </p>
+                                <div class="menu_items_information_wrapper">
+                                    <div class="menu_item" *ngFor="let menuItem
+                                        of mealOptions"
+                                        (click)="selectMeal(menuItem.id, rsvp)"
+                                        [ngClass]="rsvp.controls['meal'].value
+                                        == menuItem.id &&
+                                        rsvp.controls['coming']?.value == true ?
+                                        'selected' : 'notSelected'">
+                                        <div class="image_outer_wrapper">
+                                            <div class="image_wrapper"
+                                                [ngStyle]="{'background-image':'url('
+                                                + menuItem.imgUrl + ')'}">
+                                            </div>
+                                            <div class="item_desc">
+                                                <div>
+                                                    <p>
+                                                        <object
+                                                            *ngIf="menuItem.id
+                                                            ===
+                                                            'cauliflowerSteak'"
+                                                            data="../../../assets/icons/veg_meal.svg"
+                                                            type="image/svg+xml"></object>
+                                                        {{ menuItem.desc }}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-section" [ngClass]="{'disabled':
-                            rsvp.controls['coming']?.value !== true}">
-                            <p class="form-section-label">Are you vaccinated?</p>
-                            <div class="custom-radio-control-wrapper">
-                                <div class="custom-radio-control"
-                                    (click)="toggleVaccineControl(true, rsvp)">
-                                    <input type="radio"
-                                        formControlName="vaccinated" value="yes"
-                                        type="hidden"
-                                        [checked]="rsvp.controls['vaccinated'].value"
-                                        />
-                                    <div class="radio-control">
-                                        <object
-                                            *ngIf="rsvp.controls['vaccinated'].value"
-                                            data="../../../assets/icons/check.svg"
-                                            type="image/svg+xml"
-                                            class="control_check"
-                                            height="9" width="9"></object>
+                            <div class="form-section" [ngClass]="{'disabled':
+                                rsvp.controls['coming']?.value !== true}">
+                                <p class="form-section-label">Are you
+                                    vaccinated?</p>
+                                <div class="custom-radio-control-wrapper">
+                                    <div class="custom-radio-control"
+                                        (click)="toggleVaccineControl(true,
+                                        rsvp)">
+                                        <input type="radio"
+                                            formControlName="vaccinated"
+                                            value="yes"
+                                            type="hidden"
+                                            [checked]="rsvp.controls['vaccinated'].value"
+                                            />
+                                        <div class="radio-control">
+                                            <object
+                                                *ngIf="rsvp.controls['vaccinated'].value"
+                                                data="../../../assets/icons/check.svg"
+                                                type="image/svg+xml"
+                                                class="control_check"
+                                                height="9" width="9"></object>
+                                        </div>
+                                        <label>Yes</label>
                                     </div>
-                                    <label>Yes</label>
-                                </div>
 
-                                <div class="custom-radio-control"
-                                    (click)="toggleVaccineControl(false, rsvp)">
-                                    <input type="radio"
-                                        formControlName="vaccinated" value="no"
-                                        type="hidden"
-                                        [checked]="!rsvp.controls['vaccinated'].value"
-                                        />
-                                    <div class="radio-control">
-                                        <object
-                                            *ngIf="!rsvp.controls['vaccinated'].value"
-                                            data="../../../assets/icons/check.svg"
-                                            type="image/svg+xml"
-                                            class="control_check"
-                                            height="9" width="9"></object>
+                                    <div class="custom-radio-control"
+                                        (click)="toggleVaccineControl(false,
+                                        rsvp)">
+                                        <input type="radio"
+                                            formControlName="vaccinated"
+                                            value="no"
+                                            type="hidden"
+                                            [checked]="!rsvp.controls['vaccinated'].value"
+                                            />
+                                        <div class="radio-control">
+                                            <object
+                                                *ngIf="!rsvp.controls['vaccinated'].value"
+                                                data="../../../assets/icons/check.svg"
+                                                type="image/svg+xml"
+                                                class="control_check"
+                                                height="9" width="9"></object>
+                                        </div>
+                                        <label>No</label>
                                     </div>
-                                    <label>No</label>
                                 </div>
                             </div>
+
                         </div>
 
-                    </div>
-
-                    <!-- <input type='text' *ngIf="personsData[i].name == '' && showPlusOne" formControlName="name" />
+                        <!-- <input type='text' *ngIf="personsData[i].name == '' && showPlusOne" formControlName="name" />
     
                 <button *ngIf="personsData[i].isPlusOne == 'yes' &&
                     personsData[i].name == '' && !showPlusOne" (click)="addPlusOne()">
@@ -162,10 +188,18 @@
                     personsData[i].isPlusOne == 'yes' )" (click)="removePlusOne(rsvp,i)">
                     remove plus one
                 </button> -->
+                    </div>
+
                 </div>
 
             </div>
+        </div>
 
+        <div class="error-container" *ngIf="showErrors">
+            <ul>
+                <li *ngFor="let error of errorList">{{error.name}}
+                    {{error.error}}</li>
+            </ul>
         </div>
     </div>
     <div class="bubble-wrapper">
@@ -215,3 +249,8 @@
     </div>
 </div>
 
+
+    <div class="bubble-wrapper">
+        <object data="../../../../assets/images/circles_top.svg"
+            type="image/svg+xml"></object>
+    </div>

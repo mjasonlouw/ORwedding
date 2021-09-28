@@ -187,8 +187,6 @@ export class RsvpFormComponent {
 
     console.log('currentScrollLeft: ',currentScrollLeft)
 
-    let sum = 0;
-    let holdPosition = []
     for(var i = 0; i < this.inviteCount; i++){
 
         let goto = i * containerWidth;
@@ -199,16 +197,42 @@ export class RsvpFormComponent {
           console.log('goto',i,goto)
           // el.scrollLeft = goto;
           // el.scrollIntoView()
-          const per = document.querySelector(`.rsvpPerson${i}`);
-          per.scrollIntoView({behavior: 'smooth'})
+          const per = document.querySelector(`.rsvpPerson0`);
+          // per.scrollIntoView({behavior: 'smooth'})
+          this.currentStep = i;
+          el.scrollTo({
+            top: 0,
+            left: goto,
+            behavior: 'smooth'
+          });
 
-          // el.scrollTo({
-          //   top: 100,
-          //   left: 100,
-          //   behavior: 'smooth'
-          // });
+          //192.168.58.198
         }
 
     }
+  }
+
+  scrollTo(i){
+    console.log(i);
+
+    const el = document.querySelector('.scrollContainer');
+    let containerWidth = el.clientWidth
+    let currentScrollLeft = el.scrollLeft
+
+    let goto = i * containerWidth;
+    let min = (i * containerWidth) - (containerWidth/2);
+    let max = (i * containerWidth) + (containerWidth/2);
+
+      const per = document.querySelector(`.rsvpPerson0`);
+      // per.scrollIntoView({behavior: 'smooth'})
+      this.currentStep = i;
+      el.scrollTo({
+        top: 0,
+        left: goto,
+        behavior: 'smooth'
+      });
+
+      //192.168.58.198
+
   }
 }

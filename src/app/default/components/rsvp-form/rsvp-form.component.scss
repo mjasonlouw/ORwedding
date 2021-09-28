@@ -290,3 +290,22 @@
 .scrollContainer::-webkit-scrollbar {
   display: none;
 }
+
+.RsvpPositionContainer{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.selectedPerson{
+  text-transform: uppercase;
+  color: $secondary_green;
+  font-family: "Greycliff_medium";
+}
+
+.notSelectedPerson{
+  text-transform: uppercase;
+  font-family: "Greycliff_medium";
+  color: $secondary_green;
+  opacity: 0.5;
+}
