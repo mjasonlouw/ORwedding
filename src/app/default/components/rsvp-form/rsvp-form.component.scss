@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 50px;
   }
 
   .form-wrapper {
@@ -26,16 +27,20 @@
     }
 
     .form-heading {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto auto;
       color: $secondary_green;
       font-family: "Greycliff_bold";
       text-transform: uppercase;
+      grid-gap: 20px;
+      justify-content: flex-start;
       letter-spacing: 3px;
       font-size: 1.7rem;
+      align-items: center;
+      padding-bottom: 20px;
 
-      p:nth-child(2) {
-        margin-left: 10px;
-        letter-spacing: 2px;
+      p {
+        margin: 0; 
       }
     }
 
@@ -106,7 +111,7 @@
 .menu_items_information_wrapper {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-gap: 25px;
+  grid-gap: 0 25px;
   grid-template-rows: masonry;
 
   @media (min-width: 1024px) {
@@ -134,26 +139,18 @@
       line-height: 20px;
     }
 
-    .image_wrapper {
-      opacity: 0.5;
-    }
-
-
     &:active {
       transform: scale(0.95);
     }
 
     &.selected {
-      .image_wrapper {
-        opacity: 1;
-      }
+      transform: scale(1);
+      opacity: 1; 
     }
 
-    &:hover {
-      transform: scale(0.95);
-      .image_wrapper {
-        opacity: 1;
-      }
+    &.notSelected {
+      transform: scale(0.9);
+      opacity: 0.5; 
     }
   }
 }

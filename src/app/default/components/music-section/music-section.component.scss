@@ -21,62 +21,6 @@
     form {
       width: 100%;
     }
-
-    // .search_icon {
-    //   position: absolute;
-    //   bottom: 18px;
-    //   right: 40px;
-    // }
-
-    .search_box {
-      margin-top: 10%;
-      padding: 0 25px;
-      border-radius: 30px;
-      width: 80%;
-      font-family: "Greycliff_light_italic";
-      letter-spacing: 3px;
-      height: 44px;
-      font-size: 0.8rem;
-      transition: all 0.5s;
-      -webkit-backdrop-filter: blur(3px);
-      backdrop-filter: blur(3px);
-
-      border: 0.5px $secondary_green solid;
-      background-color: rgba($secondary_green, 0.25);
-      color: $secondary_green;
-      box-shadow: 0 3px 10px rgba(black, 0.1);
-
-      cursor: text;
-
-      // &.at_top_search {
-      //   background-color: rgba($background, 0.1);
-      // }
-
-      // &.on_scroll_search {
-      //   background-color: rgba($secondary_green, 0.5);
-      //   @include drop_shadow;
-      // }
-
-      @media (min-width: 1024px) {
-        width: 400px;
-      }
-    }
-
-    ::placeholder {
-      /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: $secondary_green;
-      opacity: 1; /* Firefox */
-    }
-
-    :-ms-input-placeholder {
-      /* Internet Explorer 10-11 */
-      color: $secondary_green;
-    }
-
-    ::-ms-input-placeholder {
-      /* Microsoft Edge */
-      color: $secondary_green;
-    }
   }
 
   .added_songs_wrapper {
@@ -85,11 +29,10 @@
     margin-top: 10%;
 
     .added_songs_header {
-      font-family: "Greycliff_bold";
-      font-size: 1.25rem;
+      font-family: "Greycliff_medium_italic";
+      font-size: 1rem;
       letter-spacing: 3px;
       padding-bottom: 8%;
-      text-transform: uppercase;
     }
 
     .added_songs_grid {
@@ -106,10 +49,6 @@
         z-index: 1;
         cursor: pointer;
 
-        &:active {
-          transform: scale(0.9);
-        }
-
         &:hover {
           transform: scale(0.9);
           cursor: pointer;
@@ -120,6 +59,8 @@
         display: grid;
         grid-template-rows: auto auto;
         transition: all 0.3s;
+        row-gap: 10px;
+        line-height: 20px;
 
         p {
           margin: 0;
@@ -164,7 +105,7 @@
               @include transparent_button;
 
               svg {
-                transform: scale(2);
+                transform: scale(0.5);
               }
             }
           }

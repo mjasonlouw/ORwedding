@@ -21,9 +21,13 @@
             <div class="form-wrapper" [ngClass]="{'active': currentStep == i}">
 
                 <div class="form-heading" *ngIf="personsData[i].name != '' || !showPlusOne">
-                    <p> {{i + 1}}. </p>
-                    <p *ngIf="!personsData[i].isPlusOne">For {{personsData[i].name}}</p>
-                    <input *ngIf="personsData[i].isPlusOne" type="test" formControlName='name'/>
+                    <div>
+                        <p> {{i + 1}}. </p>
+                    </div>
+                    <div>
+                        <p *ngIf="!personsData[i].isPlusOne">For {{personsData[i].name}}</p>
+                        <input placeholder="Plus one's name" class="search_box plus_one" *ngIf="personsData[i].isPlusOne" type="test" formControlName='name'/>
+                    </div>
                 </div>
 
                 <!-- <p *ngIf="personsData[i].name == '' && showPlusOne">Name</p> -->
@@ -57,9 +61,9 @@
                         <div>
 
                             <div class="menu_items_information_wrapper">
-
+                                
                                 <div class="menu_item" *ngFor="let menuItem of mealOptions" (click)="selectMeal(menuItem.id, rsvp)"
-                                    [ngClass]="{'active': rsvp.controls['meal'].value == menuItem.id}">
+                                    [ngClass]="rsvp.controls['meal'].value == menuItem.id && rsvp.controls['coming']?.value == true ? 'selected' : 'notSelected'">
                                     <div class="image_outer_wrapper">
                                         <div class="image_wrapper" [ngStyle]="{'background-image':'url(' + menuItem.imgUrl + ')'}">
                                         </div>
@@ -131,7 +135,7 @@
     <div class="submit_wrapper">
         <div class="submit_button"> 
             <button type="submit" class="submit_btn" (click)='submitRSVP()'>
-                Submit
+                RSVP
             </button>
         </div>
         <div class="stepper_wrapper">

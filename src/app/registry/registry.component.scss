@@ -65,39 +65,6 @@
     display: flex;
     justify-content: center;
 
-    .search_box {
-      padding: 0 25px;
-      border-radius: 30px;
-      width: 200px;
-      font-family: "Greycliff_light_italic";
-      letter-spacing: 3px;
-      height: 45px;
-      color: $background;
-      font-size: 0.9rem;
-      transition: all 0.5s;
-      border: 1px solid $background;
-      -webkit-backdrop-filter: blur(3px);
-      backdrop-filter: blur(3px);
-
-      &.at_top_search {
-        background-color: rgba($background, 0.1);
-      }
-
-      &.on_scroll_search {
-        background-color: rgba($secondary_green, 0.5);
-        //-webkit-backdrop-filter: blur(6px);
-        //backdrop-filter: blur(6px);
-        @include drop_shadow;
-      }
-
-      @media (min-width: 1024px) {
-        width: 400px;
-      }
-    }
-
-    ::placeholder {
-      color: $background;
-    }
   }
 }
 

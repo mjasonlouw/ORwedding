@@ -37,12 +37,20 @@
                     searchResults" class="song_item" (click)="addSong(song)">
                     <div class="image_outer_wrapper">
                         <div class="image_wrapper"
-                            [ngStyle]="{'background-image':'url(' + song.imgUrl
-                            + ')'}">
+                        [ngStyle]="{'background-image': 'linear-gradient(
+                            rgba(51, 63, 54, 0.5), 
+                            rgba(51, 63, 54, 0.5)
+                        ),url(' + song.imgUrl + ')'}">
                             <div class="remove_button_wrapper
                                 align_button_centre">
                                 <div class="remove_button">
-                                    add
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.5 10.5">
+                                        <g id="plus-circle" transform="translate(-6.75 -6.75)">
+                                          <line id="Line_60" data-name="Line 60" y2="10" transform="translate(12 7)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                                          <line id="Line_61" data-name="Line 61" x2="10" transform="translate(7 12)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                                        </g>
+                                      </svg>
+                                      
                                 </div>
                             </div>
                         </div>
@@ -63,9 +71,8 @@
             </div>
         </div>
 
-        <div class="added_songs_wrapper" style="max-height: 50vh; overflow-y:
-            scroll;">
-            <div class="added_songs_header">My Song Picks </div>
+        <div class="added_songs_wrapper">
+            <div class="added_songs_header">My Song Requests</div>
             <div class="added_songs_grid" *ngIf="guestSongs != null &&
                 guestSongs?.length> 0">
                 <div class="added_songs_information_wrapper" *ngFor="let song of
@@ -73,12 +80,22 @@
                     <div *ngIf="song.payload.doc.data().user == gname">
                         <div class="image_outer_wrapper">
                             <div class="image_wrapper"
-                                [ngStyle]="{'background-image':'url(' +
-                                song.payload.doc.data().imgUrl + ')'}">
+                            [ngStyle]="{'background-image': 'linear-gradient(
+                                    rgba(51, 63, 54, 0.5), 
+                                    rgba(51, 63, 54, 0.5)
+                                ),url(' + song.payload.doc.data().imgUrl + ')'}">
                                 <div class="remove_button_wrapper
                                     align_button_centre">
                                     <div class="remove_button">
-                                        remove
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.289 11.376">
+                                            <g id="trash-2_1_" data-name="trash-2 (1)" transform="translate(-2.75 -1.75)">
+                                              <path id="Path_618" data-name="Path 618" d="M3,6h9.789" transform="translate(0 -1.825)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                                              <path id="Path_619" data-name="Path 619" d="M12.613,4.175v7.613a1.088,1.088,0,0,1-1.088,1.088H6.088A1.088,1.088,0,0,1,5,11.789V4.175m1.631,0V3.088A1.088,1.088,0,0,1,7.719,2H9.894a1.088,1.088,0,0,1,1.088,1.088V4.175" transform="translate(-0.912)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                                              <line id="Line_30" data-name="Line 30" y2="3" transform="translate(7 7)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                                              <line id="Line_31" data-name="Line 31" y2="3" transform="translate(9 7)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+                                            </g>
+                                          </svg>
+                                          
                                     </div>
                                 </div>
                             </div>
