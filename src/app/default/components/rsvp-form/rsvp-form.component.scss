@@ -16,6 +16,11 @@
   .form-wrapper {
     display: none;
 
+    .active{
+      background-color: blue;
+      opacity: 1;
+    }
+
     &.active {
       display: block;
     }
@@ -133,6 +138,7 @@
       opacity: 0.5;
     }
 
+
     &:active {
       transform: scale(0.95);
     }
@@ -151,6 +157,8 @@
     }
   }
 }
+
+
 
 // Button Styles
 

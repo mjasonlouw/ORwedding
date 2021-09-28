@@ -22,7 +22,8 @@
 
                 <div class="form-heading" *ngIf="personsData[i].name != '' || !showPlusOne">
                     <p> {{i + 1}}. </p>
-                    <p>For {{personsData[i].name}}</p>
+                    <p *ngIf="!personsData[i].isPlusOne">For {{personsData[i].name}}</p>
+                    <input *ngIf="personsData[i].isPlusOne" type="test" formControlName='name'/>
                 </div>
 
                 <!-- <p *ngIf="personsData[i].name == '' && showPlusOne">Name</p> -->

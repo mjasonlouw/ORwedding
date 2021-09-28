@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFirestore, DocumentSnapshot, QueryDocumentSnapshot } from '@angular/fire/firestore';
+import { GuestService } from './guest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SpotifyService {
   accessToken = ''
   playlistId = ''
+  gname = ''
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,private firestore: AngularFirestore, private guestService: GuestService) {
     this.setup()
   }
 
@@ -137,7 +140,17 @@ export class SpotifyService {
     })
   }
 
-  async addSongToPlayList(uri){
+  async addSongToPlayList(song){
+
+    let guestName = this.guestService.getGuestName()
+
+    console.log('guestNameSpotify',guestName,song)
+    if(guestName != ''){
+      song['user'] = guestName;
+      this.firestore.collection('songs').add(song)
+    }
+
+
     console.log("attempting to add song")
 
     let headers = new HttpHeaders({
@@ -148,7 +161,7 @@ export class SpotifyService {
     let options = { headers: headers };
 
     let dataJson = {
-      uris: [uri],
+      uris: [song.uri],
       position: 0
     }
 
@@ -159,5 +172,14 @@ export class SpotifyService {
     this.http.post(`https://api.spotify.com/v1/playlists/${this.playlistId}/tracks`, dataJson, options).subscribe(data => {
       console.log('added song to platlist', data)
     })
+  }
+
+  getAllSongs() {
+    
+    return this.firestore.collection("songs").snapshotChanges()
+  }
+
+  removeSong(song){
+    this.firestore.collection('songs').doc(song.payload.doc.id).delete()
   }
 }
