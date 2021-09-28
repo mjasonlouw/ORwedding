@@ -3,7 +3,7 @@
 .rsvp_wrapper {
   display: flex;
   flex-direction: column;
-  padding: 8%;
+  // padding: 8%;
   position: relative;
   z-index: 1;
 
@@ -16,6 +16,9 @@
 
   .form-wrapper {
     display: none;
+    width: 90vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
 
     .active{
       background-color: blue;
@@ -277,4 +280,9 @@
     color: $secondary_green;
     font-family: "Greycliff_medium";
   }
+}
+
+.scrollContainer{
+  overflow-x: scroll;
+  display: flex;
 }

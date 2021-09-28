@@ -25,6 +25,8 @@ export class RsvpFormComponent {
   showErrors: boolean = true;
   errorList = new Array();
 
+  inviteCount = 0
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private GuestService: GuestService) {
@@ -52,6 +54,7 @@ export class RsvpFormComponent {
     this.personsData = []
 
     this.persons.forEach(person => {
+      this.inviteCount++
       const personData = person.data()
       console.log('person data:',personData);
       const rsvp = new FormGroup({
@@ -157,5 +160,55 @@ export class RsvpFormComponent {
 
   public selectMeal(selectedMeal: string, rsvpControl: any): void {
     rsvpControl.controls['meal'].setValue(selectedMeal);
+  }
+
+  scroll = false;
+  timeout;
+  scrollContainerScrolling(e){
+ 
+
+    // el.scrollLeft = 300;
+    // el.scrollTop = 500;
+
+
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.scroll = false;
+      console.log('stopped scrolling')
+      this.setScrollPostion()
+    }, 300);
+
+  }
+
+  setScrollPostion(){
+    const el = document.querySelector('.scrollContainer');
+    let containerWidth = el.clientWidth
+    let currentScrollLeft = el.scrollLeft
+
+    console.log('currentScrollLeft: ',currentScrollLeft)
+
+    let sum = 0;
+    let holdPosition = []
+    for(var i = 0; i < this.inviteCount; i++){
+
+        let goto = i * containerWidth;
+        let min = (i * containerWidth) - (containerWidth/2);
+        let max = (i * containerWidth) + (containerWidth/2);
+
+        if(currentScrollLeft > min && currentScrollLeft < max){
+          console.log('goto',i,goto)
+          // el.scrollLeft = goto;
+          // el.scrollIntoView()
+          const per = document.querySelector(`.rsvpPerson${i}`);
+          per.scrollIntoView({behavior: 'smooth'})
+
+          // el.scrollTo({
+          //   top: 100,
+          //   left: 100,
+          //   behavior: 'smooth'
+          // });
+        }
+
+    }
   }
 }
