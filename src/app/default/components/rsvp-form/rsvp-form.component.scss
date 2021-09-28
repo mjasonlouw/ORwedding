@@ -11,14 +11,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 50px;
+    padding: 0 5vh 4vh 5vh;
   }
 
   .form-wrapper {
     display: none;
-    width: 90vw;
-    padding-left: 5vw;
-    padding-right: 5vw;
+    width: 80vw;
+    padding: 0 5vh;
 
     .active{
       background-color: blue;
@@ -32,6 +31,7 @@
     .form-heading {
       display: grid;
       grid-template-columns: auto auto;
+      grid-template-rows: 70px;
       color: $secondary_green;
       font-family: "Greycliff_bold";
       text-transform: uppercase;
@@ -40,7 +40,6 @@
       letter-spacing: 3px;
       font-size: 1.7rem;
       align-items: center;
-      padding-bottom: 20px;
 
       p {
         margin: 0; 
@@ -113,8 +112,8 @@
 // Menu Items
 .menu_items_information_wrapper {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-gap: 0 25px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 10px;
   grid-template-rows: masonry;
 
   @media (min-width: 1024px) {
@@ -165,6 +164,7 @@
 .submit_wrapper {
   display: grid;
   grid-template-columns: auto auto;
+  padding: 0 5vh;
 
   .form-stepper {
     display: flex;
@@ -285,4 +285,8 @@
 .scrollContainer{
   overflow-x: scroll;
   display: flex;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
 }
