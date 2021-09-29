@@ -105,4 +105,10 @@ export class GuestService {
     this.firestore.collection('UsersDev')
     this.firestore.doc(`UsersDev/${guestID}/persons/${id}`).update(rsvp);
   }
+
+  async updateInvite(invite, guestID){
+    // this.firestore.collection('UsersDev',invite, guestID)
+
+    this.firestore.doc(`Users/${guestID}`).set(invite);
+  }
 }

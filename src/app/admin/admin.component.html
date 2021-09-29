@@ -1,26 +1,40 @@
-<div>
-    <!-- <form>
-        <input placeholder="create a guest" type="text" />
-        <input type="submit" value="Submit">
-    </form> -->
-    <div style="margin: 30px;">
-        <div>
-            <label for="fname">Create a guest</label><br>
-            <input type="text" id="fname" name="fname" [value]="guestName"
-                (input)="guestName=$event.target.value"
-                (keyup.enter)="createGuest($event)">
-            <input type="button" value="Create Guest"
-                (click)="createGuest($event)" />
-        </div>
-        <div>
-            <div *ngFor="let guest of allGuests" class='guestContainer'>
-                <div><strong>{{guest.payload.doc.data().name}}</strong> - https://ruanolivia.wedding/{{guest.payload.doc.data().name}}/registry 
-                <input type="button" value="delete invite"
-                (click)="deleteGuest(guest)" /></div>
+<div class="GuestForm">
+    <div style="margin: 8px;">
+        <label for="fname">Create a guest</label><br>
+        <input type="text" id="fname" name="fname" [value]="guestName"
+            (input)="guestName=$event.target.value"
+            (keyup.enter)="createGuest($event)">
+        <input type="button" value="Create Guest"
+            (click)="createGuest($event)" />
+    </div>
 
+    <div style="margin: 8px;">
+        <label for="fname">Set greeting</label><br>
+        <input type="text" id="fname" name="fname" [value]="greetingValue"
+            (input)="greetingValue=$event.target.value"
+            (keyup.enter)="setGreeting()">
+        <input type="button" value="set greeting"
+            (click)="setGreeting()" />
+    </div>
+</div>
+<div>
+    <div style="margin: 30px; margin-top: 200px;">
+
+        <div>
+            <div *ngFor="let guest of allGuests; index as i"
+                [ngClass]="selectGuestIndex == i ? 'SelectedGuestContainer':'guestContainer'">
                 <div>
-                    
+                    <input type="button" value="selectGuest"
+                        (click)="selectGuest(guest, i)" /> - 
+
+                    <strong>{{guest.payload.doc.data().name}}</strong> -
+                    https://ruanolivia.wedding/{{guest.payload.doc.data().name}}/registry
+                    <input type="button" value="delete invite"
+                        (click)="deleteGuest(guest)" />
+
+                    <p *ngIf="guest.payload.doc.data()?.greeting"><strong>Greeting: </strong>{{guest.payload.doc.data().greeting}} </p>
                 </div>
+
             </div>
         </div>
     </div>
@@ -28,20 +42,20 @@
     <div style="margin: 30px;">
         <div>
             <h1>Taken</h1>
-            <ng-container *ngFor="let item of registry; let i = index">
-                <div *ngIf='item.payload.doc.data().guest != ""'>
-                    {{item.payload.doc.data().name}} 
+            <ng-container *ngFor="let item of registry; let i= index">
+                <div *ngIf='item.payload.doc.data().guest !="" '>
+                    {{item.payload.doc.data().name}}
                 </div>
-                
+
             </ng-container>
         </div>
         <div>
             <h1>Available</h1>
-            <ng-container *ngFor="let item of registry; let i = index">
-                <div *ngIf='item.payload.doc.data().guest == ""'>
-                    {{item.payload.doc.data().name}} 
+            <ng-container *ngFor="let item of registry; let i= index">
+                <div *ngIf='item.payload.doc.data().guest =="" '>
+                    {{item.payload.doc.data().name}}
                 </div>
-                
+
             </ng-container>
         </div>
     </div>
