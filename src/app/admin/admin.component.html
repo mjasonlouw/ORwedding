@@ -13,10 +13,14 @@
                 (click)="createGuest($event)" />
         </div>
         <div>
-            <div *ngFor="let guest of allGuests">
-                {{guest.payload.doc.data().name}} - https://ruanolivia.wedding/{{guest.payload.doc.data().name}}/registry 
-                <input type="button" value="delete guest"
-                (click)="deleteGuest(guest)" />
+            <div *ngFor="let guest of allGuests" class='guestContainer'>
+                <div><strong>{{guest.payload.doc.data().name}}</strong> - https://ruanolivia.wedding/{{guest.payload.doc.data().name}}/registry 
+                <input type="button" value="delete invite"
+                (click)="deleteGuest(guest)" /></div>
+
+                <div>
+                    
+                </div>
             </div>
         </div>
     </div>

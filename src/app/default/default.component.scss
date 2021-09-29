@@ -11,3 +11,16 @@
     padding-top: 5px;
   }
 }
+
+.selectedPage{
+  text-transform: uppercase;
+  color: white;
+  font-family: "Greycliff_medium";
+}
+
+.notSelectedPage{
+  text-transform: uppercase;
+  font-family: "Greycliff_medium";
+  color: white;
+  opacity: 0.5;
+}

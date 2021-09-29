@@ -6,14 +6,39 @@
 ✧･ﾟ ҉ *✧･ﾟ RSVP Coming soon ✧･ﾟ ҉*✧･ﾟ 
 </div>
 </div> -->
-<app-menu></app-menu>
+<div>
+    <div style="position: relative; z-index: 100; display: flex; width: 100vw; justify-content: space-evenly;">
+        <div (click)="changePageTo('rsvp')" [ngClass]="pageToShow =='rsvp' ? 'selectedPage' : 'notSelectedPage'">
+            <p>RSVP</p>
+        </div>
+        <div (click)="changePageTo('music')" [ngClass]="pageToShow =='music' ? 'selectedPage' : 'notSelectedPage'">
+            <p>MUSIC</p>
+        </div>
+        <div (click)="changePageTo('details')" [ngClass]="pageToShow =='details' ? 'selectedPage' : 'notSelectedPage'">
+            <p>DETAILS</p>
+        </div>
+        <div class='notSelectedPage'>
+            <p>REGISTRY</p>
+        </div>
+    </div>
 
-<app-landing-page></app-landing-page>
+    <app-landing-page></app-landing-page>
 
-<app-rsvp-form></app-rsvp-form>
+    <div class='rsvpContainer'>
+        <div [hidden]="!(pageToShow =='rsvp')">
+            <app-rsvp-form></app-rsvp-form>
+        </div>
+    </div>
+    <div class='musicContainer'>
+        <div [hidden]="!(pageToShow =='music')">
+            <app-music-section></app-music-section>
+        </div>
+    </div>
+    <div class='detailsContainer'>
+        <div [hidden]="!(pageToShow =='details')" >
+            <app-wedding-details></app-wedding-details>
+        </div>
+    </div>
 
-<app-music-section></app-music-section>
-
-<app-wedding-details></app-wedding-details>
-
-<app-footer></app-footer>
+    <app-footer></app-footer>
+</div>
