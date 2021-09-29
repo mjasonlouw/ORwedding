@@ -24,3 +24,309 @@
   color: white;
   opacity: 0.5;
 }
+
+.logo-mark {
+  position: absolute;
+  z-index: 10;
+  margin: 6% 5%;
+  
+  p {
+    font-family: "Greycliff_light";
+    letter-spacing: 8px;
+    font-size: 1.3rem;
+    color: $light_background; 
+    margin: 0; 
+  }
+
+}
+
+.menu_outer_wrapper {
+  width: 100%; 
+  position: relative;
+}
+
+    .heading_wrapper {
+      display: grid;
+      grid-template-columns: auto;
+      position: fixed;
+      z-index: 10;
+      right: 0; 
+      margin: 5%;
+    }
+
+    .menu_wrapper {
+      display: grid; 
+      justify-content: flex-end;
+      grid-template-columns: repeat(1, minmax(0, 95px));
+      grid-row-gap: 25px;
+
+      .menu_dropdown_wrapper {
+        border: 1px $light_background solid;
+        padding: 20px 0 40px 0;
+        border-radius: 15px 15px 50px 50px;
+        background-color: rgba($secondary_green, 0.3);
+        box-shadow: 0 3px 10px rgb(0 0 0 / 5%);
+        backdrop-filter: blur(7px);
+        display: grid;
+        justify-content: center;
+        grid-row-gap: 22px;
+        position: relative;
+        transition: all 0.3s; 
+
+        &.open {
+          right: 0; 
+          height: 100%;
+        }
+
+        &.closed {
+          right: -150px; 
+          height: 0; 
+        }
+
+        .main_menu_item {
+          display: grid;
+          justify-content: center;
+          grid-row-gap: 10px;
+          position: relative;
+
+          .menu_icon {
+            display: grid;
+            justify-content: center;
+
+            svg {
+              height: 20px !important;
+            }
+          }
+
+          .menu_information {
+            font-family: "Greycliff_medium";
+            color: $light_background;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            padding-left: 3px;
+          }
+        }
+      }
+    }
+
+    .welcome-message {
+      position: absolute;
+      top: 24%;
+      height: 100%; 
+
+      color: $light_background;
+      font-family: "Greycliff_ExtraLight";
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .greeting {
+        padding-bottom: 20px;
+        font-family: "Greycliff_Thin";
+        text-transform: uppercase;
+        font-size: 3rem;
+        letter-spacing: 5px;
+        text-align: center;
+        margin: 0;
+      }
+
+      .sub_heading {
+        padding: 20px 20px 0 20px;
+        font-family: "Greycliff_LightOblique";
+        letter-spacing: 3px;
+        text-align: center;
+        line-height: 30px;
+      }
+
+      .scroll_text {
+        transform: scale(1.5);
+        height: 100%;
+        display: flex;
+        align-items: inherit;
+      }
+    }
+
+    .menu {
+      border: 1px $light_background solid;
+      padding: 10px 30px;
+      border-radius: 50px;
+      background-color: rgba($secondary_green, 0.3);
+      box-shadow: 0 3px 10px rgb(black, 0.05);
+      display: grid;
+      grid-template-columns: auto auto;
+      transition: all 0.3s;
+      backdrop-filter: blur(7px);
+
+      svg {
+        height: 15px;
+        top: 2px;
+        position: relative;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+
+    .count-down-timer {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 20px;
+
+      .countdown-item {
+        background-color: rgba($light_background, 0.1);
+        height: 77px;
+        width: 77px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(black, 0.05);
+
+        p {
+          margin: 0;
+        }
+
+        .value {
+          font-family: "Greycliff_bold";
+          font-size: 1.25rem;
+          letter-spacing: 7px;
+          margin-left: 7px;
+          padding-bottom: 3px;
+        }
+
+        .text {
+          font-size: 0.7rem;
+          font-family: "Greycliff_medium_italic"; 
+        }
+      }
+    }
+
+    .scroll-hint {
+      display: flex;
+      position: absolute;
+      bottom: 33%;
+      border: 1px $light_background solid;
+      padding: 10px 30px;
+      border-radius: 50px;
+      background-color: rgba($light_background, 0.1);
+      box-shadow: 0 3px 10px rgb(black, 0.05);
+      transform: rotate(90deg);
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+
+      object {
+        transform: translateX(20px);
+        animation-name: slide-hint;
+        animation-timing-function: ease;
+        animation-duration: 3s;
+        animation-delay: 5s;
+        animation-iteration-count: infinite;
+        transform-origin: bottom;
+      }
+    }
+  
+
+
+.fade_out {
+    right: -60px;
+    opacity: 0; 
+}
+
+.fade_in {
+  right: 0px;
+  opacity: 1; 
+}
+
+.parent_1 {
+  transition-delay: 0.2s;
+  transition-duration: 0.3s;
+}
+
+.parent_2 {
+  transition-delay: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.parent_3 {
+  transition-delay: 0.4s;
+  transition-duration: 0.3s;
+}
+
+.parent_4 {
+  transition-delay: 0.5s;
+  transition-duration: 0.3s;
+}
+
+.close_menu {
+  position: relative;
+  right: 10px; 
+  transition: all 0.3s; 
+  transition-delay: 0.15s;
+  opacity: 0; 
+
+  &.fade_in {
+    opacity: 1; 
+  }
+
+  &.fade_out {
+    animation-fill-mode: both;
+    animation-duration: 0.3s;
+    -webkit-animation-name: fade_out_right;
+    animation-name: fade_out_right;
+    opacity: 0;
+  }
+}
+
+.open_menu {
+  position: relative;
+  transition: all 0.3s; 
+  transition-delay: 0.15s;
+  left: 15px; 
+  opacity: 0; 
+
+  &.fade_in {
+    opacity: 1; 
+  }
+
+  &.fade_out {
+    animation-fill-mode: both;
+    animation-duration: 0.3s;
+    -webkit-animation-name: fade_out_left;
+    animation-name: fade_out_left;
+    opacity: 0;
+  }
+}
+
+@keyframes fade_out_right {
+  0% {
+    right: 10px; 
+  }
+  33% {
+    right: -5px; 
+  }
+  66% {
+    right: -10px;
+  }
+  100% {
+    right: 10;
+  }
+}
+
+@keyframes fade_out_left {
+  0% {
+    left: 10px; 
+  }
+  33% {
+    left: -5px; 
+  }
+  66% {
+    left: -10px;
+  }
+  100% {
+    left: 10;
+  }
+}
+

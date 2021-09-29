@@ -55,16 +55,18 @@
         backdrop-filter: blur(7px);
         display: grid;
         justify-content: center;
-        grid-row-gap: 35px;
+        grid-row-gap: 22px;
         position: relative;
         transition: all 0.3s; 
 
         &.open {
           right: 0; 
+          height: 100%;
         }
 
         &.closed {
           right: -150px; 
+          height: 0; 
         }
 
         .main_menu_item {
@@ -95,7 +97,7 @@
 
     .welcome-message {
       position: absolute;
-      top: 20%;
+      top: 24%;
       height: 100%; 
 
       color: $light_background;
@@ -124,12 +126,10 @@
       }
 
       .scroll_text {
-        position: relative;
-        display: flex;
+        transform: scale(1.5);
         height: 100%;
+        display: flex;
         align-items: inherit;
-        color: $secondary_green;
-        font-family: "Greycliff_LightOblique";
       }
     }
 
@@ -160,7 +160,7 @@
       grid-gap: 20px;
 
       .countdown-item {
-        background-color: rgba($light_background, 0.1);
+        background-color: rgba($secondary_green, 0.3);
         height: 77px;
         width: 77px;
         display: flex;
@@ -169,6 +169,7 @@
         flex-direction: column;
         border-radius: 50%;
         box-shadow: 0 0 15px rgba(black, 0.05);
+        backdrop-filter: blur(4px);
 
         p {
           margin: 0;

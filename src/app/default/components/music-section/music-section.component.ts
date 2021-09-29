@@ -12,7 +12,8 @@ export class MusicSectionComponent implements OnInit {
   musicFilter: FormGroup
   guestSongs = null;
   searchResults = null;
-  gname = ''
+  gname = '';
+  hasSearched = false; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,6 +32,11 @@ export class MusicSectionComponent implements OnInit {
 
   public onSearchKeyUp(event): void {
     const searchString = event.target.value;
+    if(searchString.length > 0) {
+      this.hasSearched = true;
+    } else {
+      this.hasSearched = false; 
+    }
     this.searchSpotify(searchString)
   }
 
@@ -39,12 +45,24 @@ export class MusicSectionComponent implements OnInit {
   }
 
   addSong(song){
-    console.log('adding song',song)
+    var popup = document.getElementsByClassName("added_popup_wrapper")[0];
+    document.getElementsByClassName("added_popup_information")[0].innerHTML = "Added";
+
+    popup.classList.remove("hidden");
+    popup.classList.add("show");
+
+    this.removePopUp(popup);
     this.spotify.addSongToPlayList(song);
   }
 
   removeSong(song){
-    console.log('removing component')
+    var popup = document.getElementsByClassName("added_popup_wrapper")[0];
+    document.getElementsByClassName("added_popup_information")[0].innerHTML = "Removed";
+
+    popup.classList.remove("hidden");
+    popup.classList.add("show");
+
+    this.removePopUp(popup);
     this.spotify.removeSong(song)
   }
 
@@ -63,4 +81,10 @@ export class MusicSectionComponent implements OnInit {
       });
   }
 
+  removePopUp(popup) {
+    setTimeout(function () {
+      popup.classList.remove("show");
+      popup.classList.add("hidden");
+    }, 3000);
+  }
 }
