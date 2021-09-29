@@ -6,7 +6,7 @@
             <div>
                 <h4>RSVP</h4>
             </div>
-            <div>
+            <div class="divider">
                 <hr class="heading_divider" />
             </div>
             <div class="align_sub_heading">
@@ -14,14 +14,12 @@
             </div>
         </div>
     </div>
-    <hr/>
     <div class="RsvpPositionContainer">
         <div *ngFor="let rsvp of rsvps.controls; index as i"
             [ngClass]="currentStep == i ? 'selectedPerson' : 'notSelectedPerson'">
-            <div (click)="scrollTo(i)">{{personsData[i].name}}<span *ngIf="personsData[i].isPlusOne"> +1</span></div>
+            <div (click)="scrollTo(i)">{{personsData[i].name}}<span *ngIf="personsData[i].isPlusOne"> (+1)</span></div>
         </div>
     </div>
-    <hr/>
     <div class='scrollContainer' (scroll)="scrollContainerScrolling($event)">
         <div *ngFor="let rsvp of rsvps.controls; index as i"
             class='rsvpPerson{{i}}'>
@@ -195,24 +193,24 @@
             </div>
         </div>
 
-        <div class="error-container" *ngIf="showErrors">
+        <!-- <div class="error-container" *ngIf="showErrors">
             <ul>
                 <li *ngFor="let error of errorList">{{error.name}}
                     {{error.error}}</li>
             </ul>
-        </div>
+        </div> -->
     </div>
-    <div class="bubble-wrapper">
+    <!-- <div class="bubble-wrapper">
         <object data="../../../../assets/images/circles_top.svg"
             type="image/svg+xml"></object>
-    </div>
+    </div> -->
 </div>
-
+<!-- 
 <div class="error-container" *ngIf="showErrors">
     <ul>
         <li *ngFor="let error of errorList">{{error.name}} {{error.error}}</li>
     </ul>
-</div>
+</div> -->
 
 <div class="submit_wrapper">
     <div class="submit_button">
@@ -220,7 +218,7 @@
             RSVP
         </button>
     </div>
-    <div class="stepper_wrapper">
+    <!-- <div class="stepper_wrapper">
         <div class="form-stepper">
             <div class="arrow_wrapper arrow_prev" (click)="currentStep=
                 currentStep - 1" [ngClass]="{'available-step' : currentStep>
@@ -246,11 +244,11 @@
                     type="image/svg+xml" height="10" width="10"></object>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 
-    <div class="bubble-wrapper">
+    <!-- <div class="bubble-wrapper">
         <object data="../../../../assets/images/circles_top.svg"
             type="image/svg+xml"></object>
-    </div>
+    </div> -->

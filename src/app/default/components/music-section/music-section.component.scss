@@ -3,9 +3,11 @@
 .music_wrapper {
   display: flex;
   flex-direction: column;
-  padding: 20% 8%;
+  padding: 8%;
   position: relative;
-  z-index: 0;
+  z-index: 0; 
+
+  
 
   .music_header {
     display: flex;
@@ -16,7 +18,13 @@
   .search_wrapper {
     display: flex;
     justify-content: center;
+    padding: 30px 0 40px 0;
+    width: 100%; 
     // position: relative;
+
+    .search_box {
+      width: 85%;
+    }
 
     form {
       width: 100%;
@@ -26,13 +34,12 @@
   .added_songs_wrapper {
     color: $secondary_green;
     position: relative;
-    margin-top: 10%;
 
     .added_songs_header {
       font-family: "Greycliff_medium_italic";
       font-size: 1rem;
       letter-spacing: 3px;
-      padding-bottom: 8%;
+      padding-bottom: 30px;
     }
 
     .added_songs_grid {
@@ -48,10 +55,15 @@
       .song_item {
         z-index: 1;
         cursor: pointer;
+        transition: all 0.3s; 
 
         &:hover {
           transform: scale(0.9);
           cursor: pointer;
+        }
+
+        &:active {
+          transform: scale(0.9)
         }
       }
 
@@ -131,4 +143,123 @@
   bottom: -40%;
   left: 0;
   z-index: -1;
+}
+
+.added_popup_wrapper {
+  position: sticky;
+  bottom: -50px;
+  display: flex;
+  justify-content: center;
+  transition: all 0.5s;
+  z-index: 10; 
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  &.show {
+    opacity: 1;
+    bottom: 40px;
+  }
+
+  .added_popup_information {
+    // background-color: rgba($secondary_green, 0.2);
+    // border: 1px solid $secondary_green;
+    background-color: rgba($secondary_green, 0.5);
+    border: 1px solid $background;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-family: "Greycliff_light_italic";
+    color: $background;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+
+    @include drop_shadow;
+
+    &.pulse_animation {
+      box-shadow: 0 0 0 0 rgba($secondary_green, 1);
+      animation: pulse-green 2s infinite;
+    }
+  }
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba($secondary_green, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba($secondary_green, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba($secondary_green, 0);
+  }
+}
+
+.searched_songs_wrapper {
+  color: $secondary_green;
+  position: relative;
+  padding-bottom: 30px; 
+
+  .searched_songs_header {
+    font-family: "Greycliff_medium_italic";
+    font-size: 1rem;
+    letter-spacing: 3px;
+
+    .found_songs {
+      padding-bottom: 30px; 
+    }
+  }
+
+.search_results_outer_wrapper {
+  max-height: 50vh; 
+  overflow-y: scroll;
+
+  .search_results_wrapper {
+    display: grid;
+    grid-template-columns: 60px auto auto;
+    grid-gap: 20px;
+    padding-bottom: 15px;
+    transition: all 0.3s; 
+
+    .album_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .album {
+        height: 60px;
+        width: 60px;
+        background-position: center;
+        background-size: contain;
+        border-radius: 100%;
+      }
+    }
+
+    .song_information_wrapper {
+      .song_name {
+        letter-spacing: 3px;
+        font-family: "Greycliff_bold";
+        display: flex;
+        align-items: center;
+        font-size: 0.8rem;
+      }
+
+      .song_artist {
+        font-family: "Greycliff_light_italic";
+        letter-spacing: 3px;
+        font-size: 0.75rem;
+        margin-top: 2px;
+      }
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+  }
+}
 }
