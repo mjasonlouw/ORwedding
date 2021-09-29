@@ -39,7 +39,7 @@ export class RsvpFormComponent {
       new MealOption("chorizoSausage", "Chorizo sausage and Prawn gnocchi",  "../../../../assets/images/meals/chorizo_sausage.jpg"),
       new MealOption("lambShank", "Slow Braised lamb shank",  "../../../../assets/images/meals/lamb_shank.jpg"),
       new MealOption("porkBelly", "Crispy Pork belly",  "../../../../assets/images/meals/pork_belly.jpg"),
-      new MealOption("cauliflowerSteak", "Roasted cauliflower steak",  "../../../../assets/images/meals/cauliflower_steak.jpg")
+      new MealOption("cauliflowerSteak", "Roasted cauli. steak",  "../../../../assets/images/meals/cauliflower_steak.jpg")
     ];
   }
 

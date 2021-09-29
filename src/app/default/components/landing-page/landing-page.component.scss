@@ -96,6 +96,7 @@
     .welcome-message {
       position: absolute;
       top: 20%;
+      height: 100%; 
 
       color: $light_background;
       font-family: "Greycliff_ExtraLight";
@@ -112,6 +113,23 @@
         letter-spacing: 5px;
         text-align: center;
         margin: 0;
+      }
+
+      .sub_heading {
+        padding: 20px 20px 0 20px;
+        font-family: "Greycliff_LightOblique";
+        letter-spacing: 3px;
+        text-align: center;
+        line-height: 30px;
+      }
+
+      .scroll_text {
+        position: relative;
+        display: flex;
+        height: 100%;
+        align-items: inherit;
+        color: $secondary_green;
+        font-family: "Greycliff_LightOblique";
       }
     }
 
