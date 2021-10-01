@@ -14,13 +14,11 @@ export class DefaultComponent implements OnInit {
   changePageTo(pageName) {
     console.log('clicking')
     console.log(pageName)
-    if (pageName == 'registry') {
-
-    } else {
+  
       this.pageToShow = pageName;
 
       this.slideBitch(pageName)
-    }
+    
   }
 
   async slideBitch(pageName){

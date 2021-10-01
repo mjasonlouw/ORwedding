@@ -17,7 +17,7 @@
     <div class="RsvpPositionContainer">
         <div *ngFor="let rsvp of rsvps.controls; index as i"
             [ngClass]="currentStep == i ? 'selectedPerson' : 'notSelectedPerson'">
-            <div (click)="scrollTo(i)">{{personsData[i].name}}<span *ngIf="personsData[i].isPlusOne"> (+1)</span></div>
+            <div (click)="scrollTo(i)" *ngIf="personsData[i]?.name != null">{{personsData[i].name}}<span *ngIf="personsData[i].isPlusOne"> (+1)</span></div>
         </div>
     </div>
     <div class='scrollContainer' (scroll)="scrollContainerScrolling($event)">

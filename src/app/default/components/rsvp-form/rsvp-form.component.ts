@@ -106,6 +106,11 @@ export class RsvpFormComponent {
           if(count++ == index){
             console.log('update id',person.id, rsvp, this.guest.id)
             this.GuestService.updatePersonById(person.id, rsvp, this.guest.id)
+
+            // setTimeout(() => {
+            //   this.getGuestDetails()
+            // }, 200);
+            
           }
         });
       });

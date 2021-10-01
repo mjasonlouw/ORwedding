@@ -11,10 +11,14 @@ export class AdminComponent implements OnInit {
 
   guestName = '';
   allGuests = []
-  registry =[]
+  registry = []
   greetingValue = ''
   selectGuestIndex = -1;
   selectedGuest = null;
+
+  rsvpName = ''
+
+  rsvps = []
 
   constructor(private guestService: GuestService,
     private RegistryService: RegistryService) { }
@@ -37,6 +41,23 @@ export class AdminComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.allGuests = res;
+
+        res.forEach((p) => {
+          p.payload.doc.ref.collection('persons').get().then((x) => {
+            x.forEach(rsvp => {
+              console.log(rsvp.data())
+              console.log('rsvp.ref.parent',rsvp.ref.parent.parent.id)
+
+              this.rsvps.push({
+                data: rsvp.data(),
+                id: rsvp.ref.parent.parent.id
+              })
+
+              console.log(this.rsvps)
+            })
+          })
+
+        });
       });
   }
 
@@ -48,26 +69,41 @@ export class AdminComponent implements OnInit {
       });
   }
 
-  deleteGuest(guest){
+  deleteGuest(guest) {
     this.guestService.deleteGuest(guest);
-    console.log('delete guest')    
+    console.log('delete guest')
   }
 
-  setGreeting(){
+  setGreeting() {
     console.log("create new greetingValue", this.greetingValue)
 
     let newData = this.selectedGuest.payload.doc.data();
     newData['greeting'] = this.greetingValue;
     console.log(newData, this.selectedGuest.payload.doc.id)
-    this.guestService.updateInvite(newData, this.selectedGuest.payload.doc.id )
+    this.guestService.updateInvite(newData, this.selectedGuest.payload.doc.id)
   }
 
-  selectGuest(guest, i){
-    console.log(guest,i)
+  selectGuest(guest, i) {
+    console.log(guest, i)
     this.selectGuestIndex = i;
     this.selectedGuest = guest
     console.log(guest.payload.doc.data())
     console.log(guest.payload.doc.id)
+  }
+
+  createRSVP() {
+    console.log('rsvp name: ', this.rsvpName)
+
+    let data = {
+      coming: false,
+      isPlusOne: this.rsvpName == '' ? true : false,
+      meal: '',
+      name: this.rsvpName,
+      vaccinated: ''
+    }
+
+    this.guestService.createRSVP(data, this.selectedGuest.payload.doc.id)
+    console.log('data: ', data)
   }
 
 }
