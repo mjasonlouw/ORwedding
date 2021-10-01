@@ -12,8 +12,6 @@ export class DefaultComponent implements OnInit {
   pageToShow = 'rsvp';
 
   changePageTo(pageName) {
-    console.log('clicking')
-    console.log(pageName)
     if (pageName == 'registry') {
 
     } else {
@@ -27,8 +25,6 @@ export class DefaultComponent implements OnInit {
 
 
     setTimeout(() => {
-      console.log(`.${pageName}Container`)
-
       const per = document.querySelector(`.${pageName}Container`);
       per.scrollIntoView({behavior: 'smooth'})
     }, 10);

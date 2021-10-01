@@ -12,7 +12,7 @@
 
     .details_tab_wrapper {
       display: grid;
-      grid-row-gap: 30px;
+      grid-row-gap: 40px;
       padding-top: 30px;
 
       .wedding_detail_item {
@@ -21,7 +21,7 @@
 
         p {
           margin: 0;
-          margin-top: 10px;
+          margin-top: 13px;
         }
 
         .category_desc {
@@ -34,7 +34,7 @@
           font-family: "Greycliff_bold";
         }
         .sub_text {
-          font-family: "Greycliff_ThinOblique";
+          font-family: "Greycliff_medium_italic";
           font-size: 0.8rem;
           margin-top: 25px;
         }

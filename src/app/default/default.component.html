@@ -67,7 +67,7 @@
                         <div class="menu_information">DETAILS</div>
                     </div>
     
-                    <div class="main_menu_item parent_4 fade_out">
+                    <div class="main_menu_item parent_4 fade_out" (click)="changePageTo('registry')" [ngClass]="pageToShow =='rsvp' ? 'selectedPage' : 'notSelectedPage'">
                         <div class="menu_icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16.145">
                                 <g id="gift_4_" data-name="gift (4)" transform="translate(-1.5 -1.5)">
