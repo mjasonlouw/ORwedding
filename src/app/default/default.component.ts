@@ -12,13 +12,8 @@ export class DefaultComponent implements OnInit {
   pageToShow = 'rsvp';
 
   changePageTo(pageName) {
-    if (pageName == 'registry') {
-
-    } else {
       this.pageToShow = pageName;
-
       this.slideBitch(pageName)
-    }
   }
 
   async slideBitch(pageName){

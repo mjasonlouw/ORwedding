@@ -62,7 +62,7 @@
 
       .menu_dropdown_wrapper {
         border: 1px $light_background solid;
-        padding: 20px 0 40px 0;
+        
         border-radius: 15px 15px 50px 50px;
         background-color: rgba($secondary_green, 0.3);
         box-shadow: 0 3px 10px rgb(0 0 0 / 5%);
@@ -76,11 +76,13 @@
         &.open {
           right: 0; 
           height: 100%;
+          padding: 20px 0 40px 0;
         }
 
         &.closed {
           right: -150px; 
           height: 0; 
+          padding: 0;
         }
 
         .main_menu_item {

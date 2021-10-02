@@ -111,4 +111,8 @@ export class GuestService {
 
     this.firestore.doc(`Users/${guestID}`).set(invite);
   }
+
+  async createRSVP(data, guestID){
+    this.firestore.collection(`Users/${guestID}/persons`).add(data)
+  }
 }

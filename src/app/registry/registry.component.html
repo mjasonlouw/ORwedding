@@ -1,60 +1,19 @@
 <div class="body">
-  <div class="filtering_wrapper at_top">
-    <div class="search_filter_wrapper">
-      <div class="search_wrapper">
-        <form [formGroup]="categoryFilter">
-          <input placeholder="Search an item" type="text" (keyup)="onSearchKeyUp($event)" class="search_box at_top_search" />
-        </form>
-      </div>
-
-      <div class="filters_button" (click)="openFilters();">
-        <div class="filter_button">
-          <div class="filter swipeUp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="11.538" height="10.434" viewBox="0 0 11.538 10.434">
-              <path id="filter" d="M13.038,3H2L6.415,8.221v3.61l2.208,1.1V8.221Z" transform="translate(-1.75 -2.75)" fill="none" stroke="#e9e5e0" stroke-linecap="round"
-                stroke-linejoin="round" stroke-width="0.5" />
-            </svg>
-          </div>
-
-          <div class="close swipeUpAway">
-            <svg xmlns="http://www.w3.org/2000/svg" width="8.013" height="8.013" viewBox="0 0 8.013 8.013">
-              <g id="Close" transform="translate(0.354 0.354)">
-                <line id="Line_34" data-name="Line 34" x1="7.305" y2="7.305" transform="translate(0)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-width="0.5" />
-                <line id="Line_35" data-name="Line 35" x2="7.305" y2="7.305" transform="translate(0)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-width="0.5" />
-              </g>
-            </svg>
-          </div>
+  <div class="registry_header">
+    <div class="header-wrapper">
+        <div>
+            <h4>REGISTRY</h4>
         </div>
-      </div>
+        <div class="divider">
+            <hr class="heading_divider" />
+        </div>
+        <div class="align_sub_heading">
+            <p>Add and remove gifts</p>
+        </div>
     </div>
+</div>
 
-    <div class="filter_wrapper closed">
-      <div class="filter_header">
-        <div class="filters_heading">FILTERS</div>
-      </div>
-
-      <div class="filter_item_wrapper">
-        <form [formGroup]="categoryFilter">
-          <div formArrayName="categories" *ngFor="let order of
-          ordersFormArray.controls; let i= index">
-            <label class="checkbox">
-              <span class="checkbox__input">
-                <input type="checkbox" name="checkbox" [formControlName]="i" (change)="checkCategory(i, $event)">
-                <span class="checkbox__control">
-                  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
-                    <path fill='none' stroke='#667D6B' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' stroke-linecap="round" />
-                  </svg>
-                </span>
-              </span>
-              <span class="category_name">{{categories[i]}}</span>
-            </label>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div class="main_header_wrapper" id="headerBlob">
+  <!-- <div class="main_header_wrapper" id="headerBlob">
     <div class="heading_blob">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 475 531">
         <defs>
@@ -166,9 +125,70 @@
         </svg>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="registry_wrapper">
+    <div class="filtering_wrapper">
+      <div class="search_filter_wrapper">
+        <div class="search_wrapper">
+          <form class="registry_search_bar" [formGroup]="categoryFilter">
+            <input placeholder="Search an item" type="text" (keyup)="onSearchKeyUp($event)" class="search_box at_top_search" />
+          </form>
+        </div>
+  
+        <div class="filters_button" (click)="openFilters();">
+          <div class="filter_button">
+            <div class="filter swipeUp">
+              <svg xmlns="http://www.w3.org/2000/svg" width="11.538" height="10.434" viewBox="0 0 11.538 10.434">
+                <path id="filter" d="M13.038,3H2L6.415,8.221v3.61l2.208,1.1V8.221Z" transform="translate(-1.75 -2.75)" fill="none" stroke="#e9e5e0" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-width="0.5" />
+              </svg>
+            </div>
+  
+            <div class="close swipeUpAway">
+              <svg xmlns="http://www.w3.org/2000/svg" width="8.013" height="8.013" viewBox="0 0 8.013 8.013">
+                <g id="Close" transform="translate(0.354 0.354)">
+                  <line id="Line_34" data-name="Line 34" x1="7.305" y2="7.305" transform="translate(0)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-width="0.5" />
+                  <line id="Line_35" data-name="Line 35" x2="7.305" y2="7.305" transform="translate(0)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-width="0.5" />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="filter_wrapper closed">
+        <div class="filter_header">
+          <div class="filters_heading">FILTERS</div>
+        </div>
+  
+        <div class="filter_item_wrapper">
+          <form [formGroup]="categoryFilter">
+            <div formArrayName="categories" *ngFor="let order of
+            ordersFormArray.controls; let i= index">
+              <label class="checkbox">
+                <span class="checkbox__input">
+                  <input type="checkbox" name="checkbox" [formControlName]="i" (change)="checkCategory(i, $event)">
+                  <span class="checkbox__control">
+                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
+                      <path fill='none' stroke='#667D6B' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' stroke-linecap="round" />
+                    </svg>
+                  </span>
+                </span>
+                <span class="category_name">{{categories[i]}}</span>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
     <div>
       <div class="my_items_wrapper">
         <div class="my_items_header">1. MY ITEMS <span class="my_items_sub_header">Your gifts</span></div>
