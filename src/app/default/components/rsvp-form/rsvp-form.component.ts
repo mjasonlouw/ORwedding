@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { GuestService } from '../../../guest.service';
 import { MealOption } from '../../models/MealOptions.models';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-rsvp-form',
@@ -11,6 +12,9 @@ import { MealOption } from '../../models/MealOptions.models';
 })
 
 export class RsvpFormComponent {
+  @Output() changePageTo = new EventEmitter<string>();
+  @Output() finishedLoading = new EventEmitter<boolean>();
+
   guestName = '';
   guest = null;
   persons = null;
@@ -25,7 +29,13 @@ export class RsvpFormComponent {
   showErrors: boolean = true;
   errorList = new Array();
 
+  submitedForm = false;
+
   inviteCount = 0
+
+  BigError = ''
+
+  allDataLoaded = false
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -65,17 +75,27 @@ export class RsvpFormComponent {
         isPlusOne: new FormControl(personData && personData.isPlusOne)
       })
 
-      this.personsData.push(person.data())
+      console.log('meal',personData.meal,'name',personData.name)
+      if(personData.meal == '' || personData.name == ''){
+        personData['error'] = 'X'
+      }else{
+        personData['error'] = '';
+      }
+      
+      this.personsData.push(personData)
       this.rsvps.push(rsvp);
     });
+
+    this.finishedLoading.emit(true)
   }
 
   submitRSVP(){
+    this.BigError = ''
     console.log('submit rsvp')
     let errors: Array<any> = []
     let convertedRsvps = []
     convertedRsvps = this.rsvps.controls.map
-    (group => {
+    ((group,index) => {
       let rsvp = {
         coming: group.get('coming').value,
         isPlusOne: group.get('isPlusOne').value,
@@ -83,9 +103,26 @@ export class RsvpFormComponent {
         name: group.get('name').value,
         vaccinated: group.get('vaccinated').value
       }
-      errors.push(...this.validateRSVP(rsvp));
+      
+      this.personsData[index].error = ''
+      if(group.get('meal').value == '' && group.get('coming').value){
+        this.personsData[index].error = 'X';
+        this.BigError = `No meal option has been picked for ${this.personsData[index].name}.`
+      }
+
+      if(group.get('isPlusOne').value && group.get('coming').value && group.get('name').value == ''){
+        this.personsData[index].error = 'X';
+        this.BigError = `Please provide a name for your plus one if they are coming.`
+      }
+
+      this.personsData[index].name = group.get('name').value;
+
       return rsvp;
     });
+
+    if(this.BigError != ''){
+      return
+    }
 
     convertedRsvps = convertedRsvps.map(e => {
       if (!e.coming) {
@@ -106,14 +143,11 @@ export class RsvpFormComponent {
           if(count++ == index){
             console.log('update id',person.id, rsvp, this.guest.id)
             this.GuestService.updatePersonById(person.id, rsvp, this.guest.id)
-
-            // setTimeout(() => {
-            //   this.getGuestDetails()
-            // }, 200);
-            
           }
         });
       });
+
+      this.submitedForm = true;
     } else {
       this.errorList = errors;
     }
@@ -126,11 +160,14 @@ export class RsvpFormComponent {
       this.appendIf(result, {name: rsvp.name, error: "has not selected a meal"}, rsvp.meal === null || rsvp.meal === undefined);
       this.appendIf(result, {name: rsvp.name, error: "has not stated their vaccination status"}, rsvp.vaccinated === null || rsvp.vaccinated == undefined);
     }
+
+    console.log('validation issue',result)
     return result;
   }
 
   private appendIf(array: Array<any>, element: any, condition: boolean): void {
     if (condition) {
+      
       array.push(element)
     }
   }
@@ -240,4 +277,9 @@ export class RsvpFormComponent {
       //192.168.58.198
 
   }
+
+  changePage(page){
+    this.changePageTo.emit(page)
+  }
+  
 }

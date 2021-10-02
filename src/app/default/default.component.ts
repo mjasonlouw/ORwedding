@@ -10,10 +10,15 @@ export class DefaultComponent implements OnInit {
   ngOnInit(): void { }
 
   pageToShow = 'rsvp';
+  finshedLoading = false 
 
   changePageTo(pageName) {
       this.pageToShow = pageName;
       this.slideBitch(pageName)
+  }
+
+  finishedLoading(loading){
+    this.finshedLoading = loading
   }
 
   async slideBitch(pageName){
