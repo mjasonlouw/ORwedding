@@ -1,4 +1,9 @@
 <div>
+    <div *ngIf="!finshedLoading" class="loadingPage">
+        hello fam here is sexy loading page
+        <p>( . Y . )</p>
+    </div>
+
     <div class="logo-mark">
         <p>R&O</p>
     </div>
@@ -105,7 +110,7 @@
 
     <div class='rsvpContainer'>
         <div [hidden]="!(pageToShow =='rsvp')">
-            <app-rsvp-form></app-rsvp-form>
+            <app-rsvp-form (changePageTo)="changePageTo($event)" (finishedLoading)="finishedLoading($event)"></app-rsvp-form>
         </div>
     </div>
     <div class='musicContainer'>

@@ -1,4 +1,5 @@
 <div class="rsvp_wrapper">
+ 
 
     <div class="rsvp_header">
 
@@ -17,7 +18,12 @@
     <div class="RsvpPositionContainer">
         <div *ngFor="let rsvp of rsvps.controls; index as i"
             [ngClass]="currentStep == i ? 'selectedPerson' : 'notSelectedPerson'">
-            <div (click)="scrollTo(i)" *ngIf="personsData[i]?.name != null">{{personsData[i].name}}<span *ngIf="personsData[i].isPlusOne"> (+1)</span></div>
+            <div (click)="scrollTo(i)" *ngIf="personsData[i]?.name != null">
+                <span *ngIf="personsData[i].error != 'X'" style="color: green;">✓</span>
+                <span *ngIf="personsData[i].error == 'X'" style="color: red;">✗</span>
+                    {{personsData[i].name}}
+                <span *ngIf="personsData[i].isPlusOne"> (+1)</span>
+            </div>
         </div>
     </div>
     <div class='scrollContainer' (scroll)="scrollContainerScrolling($event)">
@@ -45,8 +51,7 @@
                     </div>
 
                     <!-- <p *ngIf="personsData[i].name == '' && showPlusOne">Name</p> -->
-                    <div class="form-sections" *ngIf="personsData[i].name != ''
-                        || showPlusOne">
+                    <div class="form-sections">
                         <div class="form-section">
                             <p class="form-section-label">Are you coming to
                                 celebrate?</p>
@@ -213,10 +218,19 @@
 </div> -->
 
 <div class="submit_wrapper">
+    <p>{{BigError}}</p>
     <div class="submit_button">
         <button type="submit" class="submit_btn" (click)='submitRSVP()'>
             RSVP
         </button>
+    </div>
+    <div *ngIf="submitedForm">
+        <p>RSVP has been successfuly submit</p>
+        <br>
+        <p>Would you like to pick some songs for us to play at the wedding</p>
+        <input type='button' value="Choose music" (click)="changePage('music')">
+        <p>Would you like to see more details for page</p>
+        <input type='button' value="About Wedding" (click)="changePage('details')">
     </div>
     <!-- <div class="stepper_wrapper">
         <div class="form-stepper">
