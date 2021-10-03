@@ -70,7 +70,7 @@ export class GuestService {
 
   async guestGuestByName(name){
     return new Promise<QueryDocumentSnapshot<unknown>>((res, ref) => {
-      this.firestore.collection('UsersDev', ref => ref.where('name', '==', name))
+      this.firestore.collection('Users', ref => ref.where('name', '==', name))
         .get().subscribe(data => {
           data.forEach(el => {
             res(el)
@@ -81,10 +81,10 @@ export class GuestService {
 
   async getPersonByName(name){
    return new Promise((res, err) => {
-     this.firestore.collection('UsersDev', ref => ref.where('name', '==', name))
+     this.firestore.collection('Users', ref => ref.where('name', '==', name))
       .get().subscribe(querySnapshot => {
         querySnapshot.forEach((doc) => {
-            this.firestore.collection('UsersDev').doc(doc.id).collection('persons')
+            this.firestore.collection('Users').doc(doc.id).collection('persons')
             .get().subscribe(persons => {
               res(persons);
             })
@@ -94,8 +94,8 @@ export class GuestService {
   }
 
   async updatePersonById(id, rsvp, guestID){
-    this.firestore.collection('UsersDev')
-    this.firestore.doc(`UsersDev/${guestID}/persons/${id}`).update(rsvp);
+    this.firestore.collection('Users')
+    this.firestore.doc(`Users/${guestID}/persons/${id}`).update(rsvp);
   }
 
   async updateInvite(invite, guestID){
