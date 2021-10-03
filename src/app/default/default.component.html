@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="menu_dropdown_wrapper closed">
-                    <div class="main_menu_item parent_1 fade_out" (click)="changePageTo('rsvp')" [ngClass]="pageToShow =='rsvp' ? 'selectedPage' : 'notSelectedPage'">
+                    <div class="main_menu_item parent_1 fade_out" (click)="changePageTo('rsvp', 0)" [ngClass]="pageToShow =='rsvp' ? 'selectedPage' : 'notSelectedPage'">
                         <div class="menu_icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.962 13.456">
                                 <g id="mail" transform="translate(-1.304 -3.5)">
@@ -46,7 +46,7 @@
                         <div class="menu_information">RSVP</div>
                     </div>
     
-                    <div class="main_menu_item parent_2 fade_out" (click)="changePageTo('music')" [ngClass]="pageToShow =='music' ? 'selectedPage' : 'notSelectedPage'">
+                    <div class="main_menu_item parent_2 fade_out" (click)="changePageTo('music', 0)" [ngClass]="pageToShow =='music' ? 'selectedPage' : 'notSelectedPage'">
                         <div class="menu_icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.313 16.391">
                                 <g id="music_2_" data-name="music (2)" transform="translate(-2.657 -2.5)">
@@ -59,7 +59,7 @@
                         <div class="menu_information">MUSIC</div>
                     </div>
     
-                    <div class="main_menu_item parent_3 fade_out" (click)="changePageTo('details')" [ngClass]="pageToShow =='details' ? 'selectedPage' : 'notSelectedPage'">
+                    <div class="main_menu_item parent_3 fade_out" (click)="changePageTo('details', 0)" [ngClass]="pageToShow =='details' ? 'selectedPage' : 'notSelectedPage'">
                         <div class="menu_icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.849 14">
                                 <g id="clipboard" transform="translate(-3.5 -1.745)">
@@ -72,7 +72,7 @@
                     </div>
     
 
-                    <div class="main_menu_item parent_4 fade_out" (click)="changePageTo('registry')" [ngClass]="pageToShow =='registry' ? 'selectedPage' : 'notSelectedPage'">
+                    <div class="main_menu_item parent_4 fade_out" (click)="changePageTo('registry', 0)" [ngClass]="pageToShow =='registry' ? 'selectedPage' : 'notSelectedPage'">
                         <div class="menu_icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16.145">
                                 <g id="gift_4_" data-name="gift (4)" transform="translate(-1.5 -1.5)">
@@ -110,7 +110,7 @@
 
     <div class='rsvpContainer'>
         <div [hidden]="!(pageToShow =='rsvp')">
-            <app-rsvp-form (changePageTo)="changePageTo($event)" (finishedLoading)="finishedLoading($event)"></app-rsvp-form>
+            <app-rsvp-form (changePageTo)="changePageTo($event, 0)" (finishedLoading)="finishedLoading($event)"></app-rsvp-form>
         </div>
     </div>
     <div class='musicContainer'>

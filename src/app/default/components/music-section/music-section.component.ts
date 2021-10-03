@@ -70,7 +70,6 @@ export class MusicSectionComponent implements OnInit {
     this.spotify
       .getAllSongs()
       .subscribe(res => {
-        console.log(res)
         // res.forEach(item => {
         //   let data = item.payload.doc.data();
         //   console.log('song data',data)

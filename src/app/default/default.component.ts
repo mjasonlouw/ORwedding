@@ -12,10 +12,10 @@ export class DefaultComponent implements OnInit {
   pageToShow = 'rsvp';
   finshedLoading = false 
 
-  changePageTo(pageName, subroutebuttons=true) {
+  changePageTo(pageName, subroutebuttons) {
       this.pageToShow = pageName;
 
-      if(!subroutebuttons) {
+      if(subroutebuttons == 0) {
         this.openMainMenu();
       }
     

@@ -28,7 +28,7 @@
 .logo-mark {
   position: absolute;
   z-index: 10;
-  margin: 6% 5%;
+  margin: 30px 20px; 
   
   p {
     font-family: "Greycliff_light";
@@ -51,7 +51,7 @@
       position: fixed;
       z-index: 10;
       right: 0; 
-      margin: 5%;
+      margin: 20px;
     }
 
     .menu_wrapper {
@@ -67,6 +67,7 @@
         background-color: rgba($secondary_green, 0.3);
         box-shadow: 0 3px 10px rgb(0 0 0 / 5%);
         backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
         display: grid;
         justify-content: center;
         grid-row-gap: 22px;
@@ -90,6 +91,10 @@
           justify-content: center;
           grid-row-gap: 10px;
           position: relative;
+
+          &:hover {
+            cursor: pointer;
+          }
 
           .menu_icon {
             display: grid;
@@ -159,6 +164,10 @@
       grid-template-columns: auto auto;
       transition: all 0.3s;
       backdrop-filter: blur(7px);
+
+      &:hover {
+        cursor: pointer;
+      }
 
       svg {
         height: 15px;

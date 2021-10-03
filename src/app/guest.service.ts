@@ -45,7 +45,6 @@ export class GuestService {
     })
 
     if (newAll.length == 0) {
-      console.log('This user doesnt exist', this.GuestName)
       this.GuestName == ''
       this.router.navigate(['']);
     }
@@ -60,11 +59,8 @@ export class GuestService {
   }
 
   createNewGuest(name) {
-    console.log('creating guest with name', name)
     this.firestore.collection("Users").add({ name }).then(res => {
-      console.log('created new guest')
     }, err => {
-      console.log('ERROR: couldnt create new guestt')
     });
   }
 
@@ -77,7 +73,6 @@ export class GuestService {
       this.firestore.collection('UsersDev', ref => ref.where('name', '==', name))
         .get().subscribe(data => {
           data.forEach(el => {
-            console.log(el.id, el.data())
             res(el)
           })
         })
@@ -85,13 +80,10 @@ export class GuestService {
   }
 
   async getPersonByName(name){
-    console.log("getting person")
    return new Promise((res, err) => {
      this.firestore.collection('UsersDev', ref => ref.where('name', '==', name))
       .get().subscribe(querySnapshot => {
-        console.log("where my things",querySnapshot)
         querySnapshot.forEach((doc) => {
-            console.log(doc.id, " => ", doc.data());
             this.firestore.collection('UsersDev').doc(doc.id).collection('persons')
             .get().subscribe(persons => {
               res(persons);

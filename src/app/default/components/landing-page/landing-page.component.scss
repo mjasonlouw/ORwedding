@@ -9,6 +9,24 @@
     width: 100%;
     position: absolute;
     bottom: 0;
+
+    .mobile {
+      display: block; 
+    }
+
+    .desktop {
+      display: none; 
+    }
+
+    @media (min-width: 1024px) {
+      .mobile {
+        display: none; 
+      }
+  
+      .desktop {
+        display: block; 
+      }
+    }
   }
 
   .image-wrapper {
@@ -142,6 +160,10 @@
       display: grid;
       grid-template-columns: auto auto;
       transition: all 0.3s;
+
+      &:hover {
+        cursor: pointer;
+      }
 
       svg {
         height: 15px;

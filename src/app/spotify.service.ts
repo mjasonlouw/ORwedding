@@ -17,18 +17,14 @@ export class SpotifyService {
   }
 
   setup() {
-    console.log('setting up spotify')
     const ClientID = 'e95e0f190188465cbb1fd5f53e814131'
     const ClientSecret = 'cb9a661e09d04e9d816414f368344599'
     const spotifyUrl = `https://accounts.spotify.com/authorize`
 
     const angularAppUrl = location.protocol + '//' + location.host
     const returnUrl = angularAppUrl + this.router.url
-
-    console.log('returnUrl', returnUrl)
     // &scope=${encodeURIComponent('playlist-modify-private playlist-modify-public')}
     let spotifyAuth = `${spotifyUrl}?client_id=${ClientID}&response_type=code&redirect_uri=${encodeURIComponent(returnUrl)}`
-    console.log('spotifyAuth', spotifyAuth)
 
     let code = `AQBcKicE5cWX80Cp7cr14z-adKema5P_UfRdS-gQVz0wq3wice4p-n2QVuifHCicioHOwW063Odf35EywGdz2ztCOIziG3ToQfRXH0itR-bbzjwKi4yjc6LdY3650bmABsmquMn6JmuFPbBuoLy7yX3BNHJ4tCy5_RRI5DPocfiWiBo`
 
@@ -54,7 +50,6 @@ export class SpotifyService {
     let refreshBody = `grant_type=refresh_token&refresh_token=${refreshToken}`
 
     this.http.post(`https://accounts.spotify.com/api/token`, refreshBody, options).subscribe(data => {
-      console.log('refreshed token', data)
       this.accessToken = data['access_token'];
       this.searchSong('sexy t')
       this.getPlayListId()
@@ -76,7 +71,6 @@ export class SpotifyService {
       let options = { headers: headers };
 
       this.http.get(`https://api.spotify.com/v1/search?Authorization=${this.accessToken}&q=${song}&type=track`, options).subscribe(data => {
-        console.log('data', data)
 
         data['tracks'].items.forEach(track => {
 
@@ -98,8 +92,6 @@ export class SpotifyService {
             id: track.id,
             uri: track.uri
           }
-
-          console.log('trackJson', trackJson)
 
           results.push(trackJson)
         });
@@ -126,12 +118,10 @@ export class SpotifyService {
       let options = { headers: headers };
 
       this.http.get(`https://api.spotify.com/v1/me/playlists?Authorization=${this.accessToken}`, options).subscribe(data => {
-        console.log('data', data)   
         
         data['items'].forEach(playlist => {
           if(playlist.name == "Wedding Song Requests"){
             this.playlistId = playlist.id
-            console.log('playlist id: ', this.playlistId)
             res(playlist.id)
           }
         });
@@ -144,14 +134,10 @@ export class SpotifyService {
 
     let guestName = this.guestService.getGuestName()
 
-    console.log('guestNameSpotify',guestName,song)
     if(guestName != ''){
       song['user'] = guestName;
       this.firestore.collection('songs').add(song)
     }
-
-
-    console.log("attempting to add song")
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -170,7 +156,6 @@ export class SpotifyService {
     let refreshBody = `grant_type=refresh_token&refresh_token=${refreshToken}`
 
     this.http.post(`https://api.spotify.com/v1/playlists/${this.playlistId}/tracks`, dataJson, options).subscribe(data => {
-      console.log('added song to platlist', data)
     })
   }
 

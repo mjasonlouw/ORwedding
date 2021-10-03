@@ -186,3 +186,19 @@ input:focus {
   /* Microsoft Edge */
   color: $secondary_green;
 }
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  padding: 10px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #C0C5B8;
+  border-radius: 20px;
+  border: 6px solid transparent;
+}

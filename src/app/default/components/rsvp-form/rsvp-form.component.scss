@@ -12,12 +12,21 @@
     align-items: center;
     justify-content: space-between;
     padding: 5vh 4vh;
+
+    @media (min-width: 1024px) {
+      padding: 5vh 25vw;
+    }
   }
 
   .form-wrapper {
     display: none;
     width: 80vw;
     padding: 0 10vw;
+
+    @media (min-width: 1024px) {
+      width: 50vw;
+      padding: 0 25vw;
+    }
 
     .active{
       background-color: blue;
@@ -116,10 +125,6 @@
   grid-gap: 10px;
   grid-template-rows: masonry;
 
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
   .image_wrapper {
     height: 20vh;
     background-size: cover;
@@ -202,6 +207,7 @@
             border: none;
             background-color: rgba(233, 229, 224, 0.1);
             color: $secondary_green;
+            border: 1px solid $secondary_green;
             font-family: "Greycliff_medium_italic";
             font-size: 0.7rem;
             padding: 10px 15px;
@@ -214,9 +220,6 @@
             letter-spacing: 3px;
             -webkit-backdrop-filter: blur(3px);
             backdrop-filter: blur(3px);
-            box-shadow: 0 0 41px 1px rgba(0, 0, 0, 0.1);
-            -webkit-box-shadow: 0 0 41px 1px rgba(0, 0, 0, 0.1);
-            -moz-box-shadow: 0 0 41px 1px rgba(0, 0, 0, 0.1);
             cursor: pointer;
       
             &:active {
@@ -435,6 +438,19 @@
   padding-bottom: 3vh; 
   letter-spacing: 3px;
   flex-wrap: wrap;
+
+  
+  @media (min-width: 1024px) {
+    justify-content: center;
+
+    .validation_stepper_wrapper {
+      padding: 0 10px; 
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
 
   .validation_stepper_wrapper {
     display: grid;

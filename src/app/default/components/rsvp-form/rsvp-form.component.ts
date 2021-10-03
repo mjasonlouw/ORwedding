@@ -68,7 +68,6 @@ export class RsvpFormComponent {
     this.persons.forEach(person => {
       this.inviteCount++
       const personData = person.data()
-      console.log('person data:',personData);
       const rsvp = new FormGroup({
         name: new FormControl(personData.name),
         meal: new FormControl(personData.meal),
@@ -77,7 +76,6 @@ export class RsvpFormComponent {
         isPlusOne: new FormControl(personData && personData.isPlusOne)
       })
 
-      console.log('meal',personData.meal,'name',personData.name)
       if(personData.meal == '' || personData.name == ''){
         personData['error'] = 'X'
       }else{
@@ -144,7 +142,6 @@ export class RsvpFormComponent {
 
   submitRSVP(){
     this.BigError = ''
-    console.log('submit rsvp')
     let errors: Array<any> = []
     let convertedRsvps = []
     convertedRsvps = this.validationCheck(true); 
@@ -170,7 +167,6 @@ export class RsvpFormComponent {
         let count = 0
         this.persons.forEach((person) => {
           if(count++ == index){
-            console.log('update id',person.id, rsvp, this.guest.id)
             this.GuestService.updatePersonById(person.id, rsvp, this.guest.id)
           }
         });
@@ -192,7 +188,6 @@ export class RsvpFormComponent {
       this.appendIf(result, {name: rsvp.name, error: "has not stated their vaccination status"}, rsvp.vaccinated === null || rsvp.vaccinated == undefined);
     }
 
-    console.log('validation issue',result)
     return result;
   }
 
@@ -216,7 +211,6 @@ export class RsvpFormComponent {
     this.personsData[index].name = ''
     this.personsData[index].vaccinated = false
 
-    console.log('remove plus one',rsvpp.get('coming').value)
   }
 
   addPlusOne(){
@@ -249,7 +243,6 @@ export class RsvpFormComponent {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.scroll = false;
-      console.log('stopped scrolling')
       this.setScrollPostion()
     }, 300);
 
@@ -260,8 +253,6 @@ export class RsvpFormComponent {
     let containerWidth = el.clientWidth
     let currentScrollLeft = el.scrollLeft
 
-    console.log('currentScrollLeft: ',currentScrollLeft)
-
     for(var i = 0; i < this.inviteCount; i++){
 
         let goto = i * containerWidth;
@@ -269,7 +260,6 @@ export class RsvpFormComponent {
         let max = (i * containerWidth) + (containerWidth/2);
 
         if(currentScrollLeft > min && currentScrollLeft < max){
-          console.log('goto',i,goto)
           // el.scrollLeft = goto;
           // el.scrollIntoView()
           const per = document.querySelector(`.rsvpPerson0`);
@@ -288,7 +278,6 @@ export class RsvpFormComponent {
   }
 
   scrollTo(i){
-    console.log(i);
 
     const el = document.querySelector('.scrollContainer');
     let containerWidth = el.clientWidth
