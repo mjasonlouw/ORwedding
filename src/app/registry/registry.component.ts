@@ -39,27 +39,19 @@ export class RegistryComponent implements OnInit {
     this.filterCategories()
 
     document.addEventListener('scroll', function(e) {
-        var position = window.pageYOffset;
+      var filter_wrapper = document.getElementsByClassName("filtering_wrapper")[0];
 
-        if(position != 0) {
-          if(document.getElementsByClassName("filtering_wrapper")[0].classList.contains("at_top")) {
-            document.getElementsByClassName("filtering_wrapper")[0].classList.remove("at_top");
-            document.getElementsByClassName("filtering_wrapper")[0].classList.add("scrolling");
-
-            document.getElementsByClassName("search_box")[0].classList.remove("at_top_search");
-            document.getElementsByClassName("search_box")[0].classList.add("on_scroll_search");
-
-            document.getElementsByClassName("filters_button")[0].classList.add("on_scroll_button");
+        var position = filter_wrapper.getBoundingClientRect().top;
+        
+        if(position > 150) {
+          if(filter_wrapper.classList.contains("at_top")) {
+            filter_wrapper.classList.remove("at_top");
+            filter_wrapper.classList.add("scrolling");
           }
         } else {
-          if(document.getElementsByClassName("filtering_wrapper")[0].classList.contains("scrolling")) {
-            document.getElementsByClassName("filtering_wrapper")[0].classList.remove("scrolling");
-            document.getElementsByClassName("filtering_wrapper")[0].classList.add("at_top");
-
-            document.getElementsByClassName("search_box")[0].classList.remove("on_scroll_search");
-            document.getElementsByClassName("search_box")[0].classList.add("at_top_search");
-
-            document.getElementsByClassName("filters_button")[0].classList.remove("on_scroll_button");
+          if(filter_wrapper.classList.contains("scrolling")) {
+            filter_wrapper.classList.remove("scrolling");
+            filter_wrapper.classList.add("at_top");
           }
         }
     });
@@ -221,8 +213,8 @@ export class RegistryComponent implements OnInit {
       this.RegistryService.assignGuestToItem(item, this.GuestService.getGuestName())
       this.sortMyItems()
 
-      var popup = document.getElementsByClassName("added_popup_wrapper")[0];
-      document.getElementsByClassName("added_popup_information")[0].innerHTML = "Added";
+      var popup = document.getElementsByClassName("added_popup_wrapper_registry")[0];
+      document.getElementsByClassName("added_popup_information_registry")[0].innerHTML = "Added";
 
       popup.classList.remove("hidden");
       popup.classList.add("show");
@@ -236,8 +228,8 @@ export class RegistryComponent implements OnInit {
     this.RegistryService.removeGuestFromItem(item)
     this.sortMyItems()
 
-    var popup = document.getElementsByClassName("added_popup_wrapper")[0];
-    document.getElementsByClassName("added_popup_information")[0].innerHTML = "Removed";
+    var popup = document.getElementsByClassName("added_popup_wrapper_registry")[0];
+    document.getElementsByClassName("added_popup_information_registry")[0].innerHTML = "Removed";
 
     popup.classList.remove("hidden");
     popup.classList.add("show");

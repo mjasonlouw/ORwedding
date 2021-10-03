@@ -145,7 +145,7 @@
   z-index: -1;
 }
 
-.added_popup_wrapper {
+.added_popup_wrapper_music {
   position: sticky;
   bottom: -50px;
   display: flex;
@@ -162,7 +162,7 @@
     bottom: 40px;
   }
 
-  .added_popup_information {
+  .added_popup_information_music {
     // background-color: rgba($secondary_green, 0.2);
     // border: 1px solid $secondary_green;
     background-color: rgba($secondary_green, 0.5);

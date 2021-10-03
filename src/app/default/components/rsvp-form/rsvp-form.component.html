@@ -1,8 +1,5 @@
 <div class="rsvp_wrapper">
- 
-
     <div class="rsvp_header">
-
         <div class="header-wrapper">
             <div>
                 <h4>RSVP</h4>
@@ -18,11 +15,28 @@
     <div class="RsvpPositionContainer">
         <div *ngFor="let rsvp of rsvps.controls; index as i"
             [ngClass]="currentStep == i ? 'selectedPerson' : 'notSelectedPerson'">
-            <div (click)="scrollTo(i)" *ngIf="personsData[i]?.name != null">
-                <span *ngIf="personsData[i].error != 'X'" style="color: green;">✓</span>
-                <span *ngIf="personsData[i].error == 'X'" style="color: red;">✗</span>
-                    {{personsData[i].name}}
-                <span *ngIf="personsData[i].isPlusOne"> (+1)</span>
+            <div class="validation_stepper_wrapper" (click)="scrollTo(i)" *ngIf="personsData[i]?.name != null">
+                <div class="validation_icons">
+                    <span *ngIf="personsData[i].error != 'X'">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21.813" height="21.526" viewBox="0 0 21.813 21.526">
+                            <g id="check-circle_1_" data-name="check-circle (1)" transform="translate(-1.248 -1.232)">
+                              <path id="Path_686" data-name="Path 686" d="M22,11.08V12a10,10,0,1,1-5.93-9.14" fill="none" stroke="#667d6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                              <path id="Path_687" data-name="Path 687" d="M22,4,12,14.01l-3-3" fill="none" stroke="#667d6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                            </g>
+                        </svg>
+                  </span>
+                  <span *ngIf="personsData[i].error == 'X'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5">
+                        <circle id="circle" cx="10" cy="10" r="10" transform="translate(0.75 0.75)" fill="none" stroke="#667d6b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                      </svg>                  
+                  </span>
+                </div>
+                <div class="name_stepper_wrapper">
+                    <div class="name_stepepr">
+                        {{personsData[i].name}}
+                    </div>
+                    <span *ngIf="personsData[i].isPlusOne"> (+1)</span>
+                </div>
             </div>
         </div>
     </div>
@@ -44,6 +58,7 @@
                             <p *ngIf="!personsData[i].isPlusOne">For
                                 {{personsData[i].name}}</p>
                             <input placeholder="Plus one's name"
+                                (keyup)="plusOneAddition($event)"
                                 class="search_box plus_one"
                                 *ngIf="personsData[i].isPlusOne" type="test"
                                 formControlName='name'/>
@@ -130,7 +145,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-section" [ngClass]="{'disabled':
+                            <!-- <div class="form-section" [ngClass]="{'disabled':
                                 rsvp.controls['coming']?.value !== true}">
                                 <p class="form-section-label">Are you
                                     vaccinated?</p>
@@ -175,7 +190,7 @@
                                         <label>No</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
 
@@ -209,6 +224,12 @@
         <object data="../../../../assets/images/circles_top.svg"
             type="image/svg+xml"></object>
     </div> -->
+
+    <div class="added_popup_wrapper hidden">
+        <div class="added_popup_information pulse_animation">
+            Submitted RSVP!
+        </div>
+    </div>
 </div>
 <!-- 
 <div class="error-container" *ngIf="showErrors">
@@ -218,19 +239,30 @@
 </div> -->
 
 <div class="submit_wrapper">
-    <p>{{BigError}}</p>
     <div class="submit_button">
-        <button type="submit" class="submit_btn" (click)='submitRSVP()'>
-            RSVP
+        <button [ngClass]="somethingNotFilledIn ? 'disabled' : 'enabled'" type="submit" class="submit_btn" (click)='submitRSVP()'>
+            SUBMIT YOUR RSVP
         </button>
     </div>
-    <div *ngIf="submitedForm">
-        <p>RSVP has been successfuly submit</p>
-        <br>
-        <p>Would you like to pick some songs for us to play at the wedding</p>
-        <input type='button' value="Choose music" (click)="changePage('music')">
-        <p>Would you like to see more details for page</p>
-        <input type='button' value="About Wedding" (click)="changePage('details')">
+    <!-- <p>{{BigError}}</p> -->
+    <!-- <div *ngIf="submitedForm"></div> -->
+    <div *ngIf="submitedForm" class="submitted_wrapper">
+        <div class="submitted_successfully">
+            <p class="success">Your RSVP has been submitted</p>
+            <p class="edit"> Feel free to come back and edit your responses before the 16th October.</p>
+        </div>
+        <div class="alternate_options_wrapper">
+            <div class="option_wrapper">
+                <div>
+                    <input class="alternate_option" type='button' value="Request a song" (click)="changePage('music', false)">
+                </div>
+            </div>
+            <div class="option_wrapper">
+                <div>
+                    <input class="alternate_option" type='button' value="View the details" (click)="changePage('details', false)">
+                </div>
+            </div>
+        </div>
     </div>
     <!-- <div class="stepper_wrapper">
         <div class="form-stepper">

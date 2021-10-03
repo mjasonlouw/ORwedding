@@ -1,7 +1,6 @@
-<div>
-    <div *ngIf="!finshedLoading" class="loadingPage">
-        hello fam here is sexy loading page
-        <p>( . Y . )</p>
+<div class="main_header_wrapper">
+    <div [ngClass]="!finshedLoading ? 'display' : 'hide'" class="loading_page">
+        <p>R&O</p>
     </div>
 
     <div class="logo-mark">

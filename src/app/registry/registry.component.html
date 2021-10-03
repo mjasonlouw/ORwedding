@@ -128,14 +128,14 @@
   </div> -->
 
   <div class="registry_wrapper">
-    <div class="filtering_wrapper">
+    <div class="filtering_wrapper at_top">
       <div class="search_filter_wrapper">
         <div class="search_wrapper">
           <form class="registry_search_bar" [formGroup]="categoryFilter">
-            <input placeholder="Search an item" type="text" (keyup)="onSearchKeyUp($event)" class="search_box at_top_search" />
+            <input placeholder="Search for an item" type="text" (keyup)="onSearchKeyUp($event)" class="search_box search_box_registry at_top_search" />
           </form>
         </div>
-  
+<!--   
         <div class="filters_button" (click)="openFilters();">
           <div class="filter_button">
             <div class="filter swipeUp">
@@ -154,10 +154,10 @@
               </svg>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
   
-      <div class="filter_wrapper closed">
+      <!-- <div class="filter_wrapper closed">
         <div class="filter_header">
           <div class="filters_heading">FILTERS</div>
         </div>
@@ -180,7 +180,7 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
     </div>
 
 
@@ -286,8 +286,8 @@
           </div>
         </div>
 
-        <div class="added_popup_wrapper hidden">
-          <div class="added_popup_information pulse_animation">
+        <div class="added_popup_wrapper_registry hidden">
+          <div class="added_popup_information_registry pulse_animation">
 
           </div>
         </div>

@@ -31,11 +31,13 @@ export class RsvpFormComponent {
 
   submitedForm = false;
 
-  inviteCount = 0
+  inviteCount = 0;
 
-  BigError = ''
+  BigError = '';
 
-  allDataLoaded = false
+  allDataLoaded = false;
+
+  somethingNotFilledIn = true; 
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -89,10 +91,11 @@ export class RsvpFormComponent {
     this.finishedLoading.emit(true)
   }
 
-  submitRSVP(){
-    this.BigError = ''
-    console.log('submit rsvp')
-    let errors: Array<any> = []
+  plusOneAddition() {
+    this.validationCheck(); 
+  }
+
+  validationCheck(submit = false) {
     let convertedRsvps = []
     convertedRsvps = this.rsvps.controls.map
     ((group,index) => {
@@ -107,18 +110,44 @@ export class RsvpFormComponent {
       this.personsData[index].error = ''
       if(group.get('meal').value == '' && group.get('coming').value){
         this.personsData[index].error = 'X';
-        this.BigError = `No meal option has been picked for ${this.personsData[index].name}.`
+
+        if(this.personsData[index].name == "") {
+          this.BigError = `No meal option has been picked for your plus one.`
+        } else {
+          this.BigError = `No meal option has been picked for ${this.personsData[index].name}.`
+        }
       }
 
       if(group.get('isPlusOne').value && group.get('coming').value && group.get('name').value == ''){
         this.personsData[index].error = 'X';
-        this.BigError = `Please provide a name for your plus one if they are coming.`
+        this.BigError = `Please provide a name for your plus one.`
       }
 
       this.personsData[index].name = group.get('name').value;
 
       return rsvp;
     });
+
+    for(var i = 0; i<this.personsData.length; i++) {
+      if(this.personsData[i].error == 'X'){
+        this.somethingNotFilledIn = true;
+        break;
+      } else {
+        this.somethingNotFilledIn = false;
+      }
+    }
+
+    if(true) {
+      return convertedRsvps;
+    }
+  }
+
+  submitRSVP(){
+    this.BigError = ''
+    console.log('submit rsvp')
+    let errors: Array<any> = []
+    let convertedRsvps = []
+    convertedRsvps = this.validationCheck(true); 
 
     if(this.BigError != ''){
       return
@@ -152,6 +181,8 @@ export class RsvpFormComponent {
       this.errorList = errors;
     }
     
+
+    this.submitted(); 
   }
 
   private validateRSVP(rsvp: any): Array<any> {
@@ -194,6 +225,7 @@ export class RsvpFormComponent {
 
   public toggleComingControl(state: boolean, rsvpControl: any): void {
     rsvpControl.controls['coming'].setValue(state);
+    this.validationCheck(); 
   }
 
   public toggleVaccineControl(state: boolean, rsvpControl: any): void {
@@ -202,6 +234,7 @@ export class RsvpFormComponent {
 
   public selectMeal(selectedMeal: string, rsvpControl: any): void {
     rsvpControl.controls['meal'].setValue(selectedMeal);
+    this.validationCheck(); 
   }
 
   scroll = false;
@@ -280,6 +313,22 @@ export class RsvpFormComponent {
 
   changePage(page){
     this.changePageTo.emit(page)
+  }
+
+  submitted(){
+    var popup = document.getElementsByClassName("added_popup_wrapper")[0];
+
+    popup.classList.remove("hidden");
+    popup.classList.add("show");
+
+    this.removePopUp(popup);
+  }
+
+  removePopUp(popup) {
+    setTimeout(function () {
+      popup.classList.remove("show");
+      popup.classList.add("hidden");
+    }, 3000);
   }
   
 }

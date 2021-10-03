@@ -12,7 +12,7 @@
 
     .details_tab_wrapper {
       display: grid;
-      grid-row-gap: 40px;
+      grid-row-gap: 50px;
       padding-top: 30px;
 
       .wedding_detail_item {
@@ -26,13 +26,26 @@
 
         .category_desc {
           font-family: "Greycliff_medium_italic";
-          text-transform: uppercase;
-          font-size: 0.8rem;
+          font-size: 0.9rem;
+        }
+
+        .dot_details {
+          height: 5px; 
+          width: 5px; 
+          background-color: rgba($secondary_green, 0.3); 
+          border-radius: 100%;
+          margin-top: 13px;
         }
 
         .main_text {
           font-family: "Greycliff_bold";
         }
+
+        .details_follow {
+          padding-top: 20px; 
+          font-family: "Greycliff_medium_italic";
+        }
+
         .sub_text {
           font-family: "Greycliff_medium_italic";
           font-size: 0.8rem;

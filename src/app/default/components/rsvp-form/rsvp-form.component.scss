@@ -47,7 +47,7 @@
     }
 
     .form-section {
-      margin-bottom: 10%;
+      margin-bottom: 20px;
       pointer-events: all;
 
       &.disabled {
@@ -166,6 +166,82 @@
   grid-template-columns: auto;
   padding: 0 5vh;
   justify-content: center;
+  grid-row-gap: 40px;
+  position: relative;
+
+  .submitted_wrapper {
+    .submitted_successfully {
+      padding-bottom: 50px;
+      font-family: "Greycliff_Thin";
+  
+      .success {
+        padding-bottom: 20px; 
+        text-align: center;
+      }
+      
+      .edit {
+        font-size: 0.8rem; 
+      }
+
+      p {
+        line-height: 25px;
+      }
+    }
+  
+    .alternate_options_wrapper {
+      display: grid; 
+      grid-template-columns: auto auto;
+      grid-gap: 20px; 
+      justify-content: center;
+  
+
+      
+      .option_wrapper {
+        .alternate_option {
+            border-radius: 50px;
+            border: none;
+            background-color: rgba(233, 229, 224, 0.1);
+            color: $secondary_green;
+            font-family: "Greycliff_medium_italic";
+            font-size: 0.7rem;
+            padding: 10px 15px;
+            margin: 0;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s all;
+            letter-spacing: 3px;
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+            box-shadow: 0 0 41px 1px rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: 0 0 41px 1px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: 0 0 41px 1px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+      
+            &:active {
+              transform: scale(0.9);
+            }
+        }
+
+
+        p {
+          padding-bottom: 20px; 
+        }
+      }
+    }
+  }
+
+  p {
+    margin: 0; 
+    color: $secondary_green;
+    font-family: "Greycliff_medium_italic"; 
+  }
+
+  .submit_button {
+    display: grid; 
+    justify-content: center;
+  }
 
   .form-stepper {
     display: flex;
@@ -247,8 +323,25 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: 0.3s all; 
+      letter-spacing: 3px;
     
-      cursor: pointer;
+      
+
+      &.disabled {
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.3;
+      }
+
+      &.enabled {
+        cursor: pointer;
+        opacity: 1;
+      }
+
+      &:active {
+        transform: scale(0.9);
+      }
     
       object {
         margin: 0 5px;
@@ -264,7 +357,50 @@
 }
 
 
+.added_popup_wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  transition: all 0.5s;
+  z-index: 10; 
+  pointer-events: none;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
 
+  &.hidden {
+    opacity: 0;
+    bottom: -50px;
+  }
+
+  &.show {
+    opacity: 1;
+    bottom: 40px;
+  }
+
+  .added_popup_information {
+    // background-color: rgba($secondary_green, 0.2);
+    // border: 1px solid $secondary_green;
+    background-color: rgba($secondary_green, 0.5);
+    border: 1px solid $background;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-family: "Greycliff_light_italic";
+    color: $background;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+
+    @include drop_shadow;
+
+    &.pulse_animation {
+      box-shadow: 0 0 0 0 rgba($secondary_green, 1);
+      animation: pulse-green 2s infinite;
+    }
+  }
+}
 
 // Bubble Styles
 .bubble-wrapper {
@@ -298,6 +434,31 @@
   width: 100%;
   padding-bottom: 3vh; 
   letter-spacing: 3px;
+  flex-wrap: wrap;
+
+  .validation_stepper_wrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    align-items: center;
+
+    .name_stepper_wrapper {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 5px;
+    }
+
+    .validation_icons {
+      transform: scale(0.8) translateY(2px);
+    }
+
+    .name_stepepr {
+      max-width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
 .selectedPerson{
@@ -311,6 +472,7 @@
   font-family: "Greycliff_medium";
   color: $secondary_green;
   opacity: 0.5;
+  text-overflow: ellipsis;
 }
 
 

@@ -41,18 +41,19 @@
   padding: 0 4vh;
 
   &.at_top {
-    margin-top: 92px;
-    //transform: translateY(110px);
+    width: 60%;
+    top: 20px; 
   }
 
   &.scrolling {
-    margin-top: 35px;
+    width: 85%;
+    
   }
 }
 
 .search_filter_wrapper {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -200,7 +201,7 @@
   }
 }
 
-.added_popup_wrapper {
+.added_popup_wrapper_registry {
   position: sticky;
   bottom: -50px;
   display: flex;
@@ -216,7 +217,7 @@
     bottom: 40px;
   }
 
-  .added_popup_information {
+  .added_popup_information_registry {
     // background-color: rgba($secondary_green, 0.2);
     // border: 1px solid $secondary_green;
     background-color: rgba($secondary_green, 0.5);

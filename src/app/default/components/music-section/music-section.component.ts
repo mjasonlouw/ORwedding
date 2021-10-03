@@ -45,8 +45,8 @@ export class MusicSectionComponent implements OnInit {
   }
 
   addSong(song){
-    var popup = document.getElementsByClassName("added_popup_wrapper")[0];
-    document.getElementsByClassName("added_popup_information")[0].innerHTML = "Added";
+    var popup = document.getElementsByClassName("added_popup_wrapper_music")[0];
+    document.getElementsByClassName("added_popup_information_music")[0].innerHTML = "Added";
 
     popup.classList.remove("hidden");
     popup.classList.add("show");
@@ -56,8 +56,8 @@ export class MusicSectionComponent implements OnInit {
   }
 
   removeSong(song){
-    var popup = document.getElementsByClassName("added_popup_wrapper")[0];
-    document.getElementsByClassName("added_popup_information")[0].innerHTML = "Removed";
+    var popup = document.getElementsByClassName("added_popup_wrapper_music")[0];
+    document.getElementsByClassName("added_popup_information_music")[0].innerHTML = "Removed";
 
     popup.classList.remove("hidden");
     popup.classList.add("show");
