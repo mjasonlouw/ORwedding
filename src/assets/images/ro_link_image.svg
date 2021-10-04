@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
   <g id="ro_link_image" transform="translate(-2140 -3230)">
     <rect id="Rectangle_192" data-name="Rectangle 192" width="300" height="200" transform="translate(2140 3230)" fill="#667d6b"/>
-    <text id="RO." transform="translate(2140 3264)" fill="#fbf4eb" font-size="101" font-family="GreycliffCF-ExtraBold, Greycliff CF" font-weight="800" letter-spacing="0.092em"><tspan x="58.191" y="104">RO.</tspan></text>
+    <text id="RO." transform="translate(2140 3264)" fill="#fff" font-size="101" font-family="GreycliffCF-ExtraBold, Greycliff CF" font-weight="800" letter-spacing="0.092em"><tspan x="58.191" y="104">RO.</tspan></text>
   </g>
 </svg>

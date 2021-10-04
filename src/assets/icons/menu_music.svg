@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16.313" height="16.391" viewBox="0 0 16.313 16.391">
   <g id="music_2_" data-name="music (2)" transform="translate(-2.657 -2.5)">
-    <path id="Path_648" data-name="Path 648" d="M9,15.891V4.719L19.313,3V14.173" transform="translate(-0.843 0)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-    <circle id="Ellipse_16" data-name="Ellipse 16" cx="2.5" cy="2.5" r="2.5" transform="translate(3.157 13.391)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-    <circle id="Ellipse_17" data-name="Ellipse 17" cx="2.5" cy="2.5" r="2.5" transform="translate(13.47 11.47)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="Path_648" data-name="Path 648" d="M9,15.891V4.719L19.313,3V14.173" transform="translate(-0.843 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <circle id="Ellipse_16" data-name="Ellipse 16" cx="2.5" cy="2.5" r="2.5" transform="translate(3.157 13.391)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <circle id="Ellipse_17" data-name="Ellipse 17" cx="2.5" cy="2.5" r="2.5" transform="translate(13.47 11.47)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
   </g>
 </svg>

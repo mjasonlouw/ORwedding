@@ -5,11 +5,11 @@
     </clipPath>
     <linearGradient id="linear-gradient" x1="0.878" y1="0.246" x2="0.051" y2="0.587" gradientUnits="objectBoundingBox">
       <stop offset="0" stop-color="#667d6b" stop-opacity="0"/>
-      <stop offset="1" stop-color="#e9e5e0"/>
+      <stop offset="1" stop-color="#fff"/>
     </linearGradient>
     <linearGradient id="linear-gradient-2" x1="0.529" y1="0.719" x2="0.068" y2="0.371" gradientUnits="objectBoundingBox">
       <stop offset="0" stop-color="#667d6b"/>
-      <stop offset="1" stop-color="#fbf4eb"/>
+      <stop offset="1" stop-color="#fff"/>
     </linearGradient>
   </defs>
   <g id="Mask_Group_8" data-name="Mask Group 8" transform="translate(-107 -751)" clip-path="url(#clip-path)">

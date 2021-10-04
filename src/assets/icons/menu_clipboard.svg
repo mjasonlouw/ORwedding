@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="11.849" height="14" viewBox="0 0 11.849 14">
   <g id="clipboard" transform="translate(-3.5 -1.745)">
-    <path id="Path_649" data-name="Path 649" d="M12.424,4h1.068a1.341,1.341,0,0,1,1.356,1.324V14.6a1.341,1.341,0,0,1-1.356,1.324H5.356A1.341,1.341,0,0,1,4,14.6V5.324A1.341,1.341,0,0,1,5.356,4H6.712" transform="translate(0 -0.676)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-    <rect id="Rectangle_148" data-name="Rectangle 148" width="5" height="3" rx="1" transform="translate(7 2.245)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="Path_649" data-name="Path 649" d="M12.424,4h1.068a1.341,1.341,0,0,1,1.356,1.324V14.6a1.341,1.341,0,0,1-1.356,1.324H5.356A1.341,1.341,0,0,1,4,14.6V5.324A1.341,1.341,0,0,1,5.356,4H6.712" transform="translate(0 -0.676)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <rect id="Rectangle_148" data-name="Rectangle 148" width="5" height="3" rx="1" transform="translate(7 2.245)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
   </g>
 </svg>

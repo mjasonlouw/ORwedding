@@ -5,7 +5,7 @@
     </clipPath>
     <linearGradient id="linear-gradient" x1="0.343" y1="0.769" x2="0.234" y2="0.909" gradientUnits="objectBoundingBox">
       <stop offset="0" stop-color="#667d6b"/>
-      <stop offset="1" stop-color="#fbf4eb"/>
+      <stop offset="1" stop-color="#fff"/>
     </linearGradient>
     <filter id="Path_663" x="108.779" y="-90.755" width="654.945" height="658.828" filterUnits="userSpaceOnUse">
       <feOffset dy="3" input="SourceAlpha"/>
@@ -27,7 +27,7 @@
     </filter>
     <linearGradient id="linear-gradient-3" x1="0.349" y1="0.846" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
       <stop offset="0" stop-color="#667d6b"/>
-      <stop offset="1" stop-color="#e9e5e0" stop-opacity="0.388"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.388"/>
     </linearGradient>
   </defs>
   <g id="registry" transform="translate(38 254)" clip-path="url(#clip-path)">

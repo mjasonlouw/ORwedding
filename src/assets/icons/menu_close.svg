@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="11.733" height="11.732" viewBox="0 0 11.733 11.732">
   <g id="Group_329" data-name="Group 329" transform="translate(-339.05 -28.551)">
     <g id="menu_1_" data-name="menu (1)" transform="translate(340.971 24.479)">
-      <line id="Line_43" data-name="Line 43" x2="14.591" transform="translate(-1.213 4.778) rotate(45)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <line id="Line_45" data-name="Line 45" x2="14.592" transform="translate(9.105 4.778) rotate(135)" fill="none" stroke="#fbf4eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line id="Line_43" data-name="Line 43" x2="14.591" transform="translate(-1.213 4.778) rotate(45)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line id="Line_45" data-name="Line 45" x2="14.592" transform="translate(9.105 4.778) rotate(135)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
     </g>
   </g>
 </svg>
