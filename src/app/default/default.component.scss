@@ -31,7 +31,7 @@
   margin: 30px 20px; 
   
   p {
-    font-family: "Greycliff_light";
+    font-family: "Greycliff_medium";
     letter-spacing: 8px;
     font-size: 1.3rem;
     color: $light_background; 
@@ -61,10 +61,10 @@
       grid-row-gap: 25px;
 
       .menu_dropdown_wrapper {
-        border: 1px $light_background solid;
+        //border: 1px $light_background solid;
         
         border-radius: 15px 15px 50px 50px;
-        background-color: rgba($secondary_green, 0.3);
+        background-color: rgba($secondary_green, 0.4);
         box-shadow: 0 3px 10px rgb(0 0 0 / 5%);
         backdrop-filter: blur(7px);
         -webkit-backdrop-filter: blur(7px);
@@ -155,10 +155,10 @@
     }
 
     .menu {
-      border: 1px $light_background solid;
+      //border: 1px $light_background solid;
       padding: 10px 30px;
       border-radius: 50px;
-      background-color: rgba($secondary_green, 0.3);
+      background-color: rgba($secondary_green, 0.4);
       box-shadow: 0 3px 10px rgb(black, 0.05);
       display: grid;
       grid-template-columns: auto auto;

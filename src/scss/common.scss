@@ -73,7 +73,7 @@ input:focus {
   width: 45px;
   justify-content: center;
   align-items: center;
-  border: 1px solid $background;
+  //border: 1px solid $background;
   background-color: rgba(233, 229, 224, 0.1);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
@@ -144,7 +144,7 @@ input:focus {
 .search_box {
   padding: 0 25px;
   border-radius: 30px;
-  font-family: "Greycliff_light_italic";
+  font-family: "Greycliff_medium_italic";
   letter-spacing: 3px;
   height: 41px;
   font-size: 0.8rem;
@@ -152,9 +152,9 @@ input:focus {
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
   color: $light_background;
-  border: 1px $light_background solid;
+  border: none;
   border-radius: 50px;
-  background-color: rgba($secondary_green, 0.3);
+  background-color: rgba($secondary_green, 0.4);
   box-shadow: 0 3px 10px rgb(0 0 0 / 5%);
   cursor: text;
 
@@ -184,12 +184,12 @@ input:focus {
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: $secondary_green;
+  color: $light_background;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: $secondary_green;
+  color: $light_background;
 }
 
 /* custom scrollbar */
@@ -203,7 +203,7 @@ input:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #C0C5B8;
+  background-color: #fff;
   border-radius: 20px;
   border: 6px solid transparent;
 }

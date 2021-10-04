@@ -312,7 +312,8 @@
   .submit_button {
     .submit_btn {
       border-radius: 50px;
-      border: 0.5px $secondary_green solid;
+      //border: 0.5px $secondary_green solid;
+      border: none;
       background-color: rgba($secondary_green, 0.25);
       text-transform: uppercase;
       color: $secondary_green;
