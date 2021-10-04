@@ -164,6 +164,7 @@
       grid-template-columns: auto auto;
       transition: all 0.3s;
       backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
 
       &:hover {
         cursor: pointer;

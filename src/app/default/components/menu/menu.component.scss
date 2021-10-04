@@ -56,6 +56,7 @@
       background-color: rgba(251, 244, 235, 0.1);
       box-shadow: 0 3px 10px rgb(0 0 0 / 5%);
       backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
       display: grid;
       justify-content: center;
       grid-row-gap: 35px;

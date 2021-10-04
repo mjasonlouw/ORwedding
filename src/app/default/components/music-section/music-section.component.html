@@ -60,38 +60,39 @@
             <div class="added_songs_header">My Song Requests</div>
             <div class="added_songs_grid" *ngIf="guestSongs != null &&
                 guestSongs?.length> 0">
-                <div class="added_songs_information_wrapper" *ngFor="let song of
-                    guestSongs" class="song_item" (click)="removeSong(song)">
-                    <div *ngIf="song.payload.doc.data().user == gname">
-                        <div class="image_outer_wrapper">
-                            <div class="image_wrapper"
-                            [ngStyle]="{'background-image': 'linear-gradient(
-                                    rgba(51, 63, 54, 0.5), 
-                                    rgba(51, 63, 54, 0.5)
-                                ),url(' + song.payload.doc.data().imgUrl + ')'}">
-                                <div class="remove_button_wrapper
-                                    align_button_centre">
-                                    <div class="remove_button">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="10.289" height="11.376" viewBox="0 0 10.289 11.376">
-                                            <g id="trash-2_1_" data-name="trash-2 (1)" transform="translate(-2.75 -1.75)">
-                                              <path id="Path_618" data-name="Path 618" d="M3,6h9.789" transform="translate(0 -1.825)" fill="none" stroke="#e9e5e0" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="0.5" />
-                                              <path id="Path_619" data-name="Path 619"
-                                                d="M12.613,4.175v7.613a1.088,1.088,0,0,1-1.088,1.088H6.088A1.088,1.088,0,0,1,5,11.789V4.175m1.631,0V3.088A1.088,1.088,0,0,1,7.719,2H9.894a1.088,1.088,0,0,1,1.088,1.088V4.175"
-                                                transform="translate(-0.912)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" />
-                                              <line id="Line_30" data-name="Line 30" y2="3" transform="translate(7 7)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="0.5" />
-                                              <line id="Line_31" data-name="Line 31" y2="3" transform="translate(9 7)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="0.5" />
-                                            </g>
-                                          </svg> 
+                <div *ngFor="let song of guestSongs">
+                    <div class="added_songs_information_wrapper"  class="song_item" (click)="removeSong(song)">
+                        <div *ngIf="song.payload.doc.data().user == gname">
+                            <div class="image_outer_wrapper">
+                                <div class="image_wrapper"
+                                [ngStyle]="{'background-image': 'linear-gradient(
+                                        rgba(51, 63, 54, 0.5), 
+                                        rgba(51, 63, 54, 0.5)
+                                    ),url(' + song.payload.doc.data().imgUrl + ')'}">
+                                    <div class="remove_button_wrapper
+                                        align_button_centre">
+                                        <div class="remove_button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10.289" height="11.376" viewBox="0 0 10.289 11.376">
+                                                <g id="trash-2_1_" data-name="trash-2 (1)" transform="translate(-2.75 -1.75)">
+                                                  <path id="Path_618" data-name="Path 618" d="M3,6h9.789" transform="translate(0 -1.825)" fill="none" stroke="#e9e5e0" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="0.5" />
+                                                  <path id="Path_619" data-name="Path 619"
+                                                    d="M12.613,4.175v7.613a1.088,1.088,0,0,1-1.088,1.088H6.088A1.088,1.088,0,0,1,5,11.789V4.175m1.631,0V3.088A1.088,1.088,0,0,1,7.719,2H9.894a1.088,1.088,0,0,1,1.088,1.088V4.175"
+                                                    transform="translate(-0.912)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" />
+                                                  <line id="Line_30" data-name="Line 30" y2="3" transform="translate(7 7)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="0.5" />
+                                                  <line id="Line_31" data-name="Line 31" y2="3" transform="translate(9 7)" fill="none" stroke="#e9e5e0" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="0.5" />
+                                                </g>
+                                              </svg> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="song_details">
-                            <p class="song_name">{{song.payload.doc.data().name}}</p>
-                            <p class="song_artist">{{song.payload.doc.data().artist}}</p>
+                            <div class="song_details">
+                                <p class="song_name">{{song.payload.doc.data().name}}</p>
+                                <p class="song_artist">{{song.payload.doc.data().artist}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

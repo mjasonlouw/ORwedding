@@ -71,11 +71,11 @@ export class MusicSectionComponent implements OnInit {
       .getAllSongs()
       .subscribe(res => {
         // res.forEach(item => {
-        //   let data = item.payload.doc.data();
+        //   
         //   console.log('song data',data)
         // })
         this.gname = this.guestService.getGuestName()
-        this.guestSongs = res;
+        this.guestSongs = res.filter(song => song.payload.doc.data()["user"] == this.gname);
    
       });
   }
