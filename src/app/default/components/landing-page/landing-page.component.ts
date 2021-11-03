@@ -36,6 +36,8 @@ export class LandingPageComponent implements OnInit {
   countDown() {
     let currentDate = new Date();
     let dateOfWedding = new Date('2021-11-06');
+    dateOfWedding.setHours(15, 30)
+
 
     let dif = dateOfWedding.getTime() - currentDate.getTime();
 
@@ -46,6 +48,7 @@ export class LandingPageComponent implements OnInit {
     setInterval(function () {
       let currentDate = new Date();
       let dateOfWedding = new Date('2021-11-06');
+      dateOfWedding.setHours(15, 30)
 
       let dif = dateOfWedding.getTime() - currentDate.getTime();
 
