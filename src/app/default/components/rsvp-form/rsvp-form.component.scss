@@ -433,13 +433,49 @@
 }
 
 .RsvpPositionContainer{
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  padding-bottom: 3vh; 
-  letter-spacing: 3px;
-  flex-wrap: wrap;
-  row-gap: 10px;
+  // display: flex;
+  // justify-content: space-evenly;
+  // width: 100%;
+  // padding-bottom: 3vh; 
+  // letter-spacing: 3px;
+  // flex-wrap: wrap;
+  // row-gap: 10px;
+
+  .streaming_link_wrapper {
+    padding: 0 5vh 4vh 5vh; 
+
+    .streaming_link_heading {
+      display: grid;
+      width: 100%;
+      grid-template-columns: auto auto;
+
+      .heading {
+        padding-bottom: 4vh;
+        color: #667d6b;
+        font-family: "Greycliff_bold";
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin: 0;
+      }
+
+      .time {
+        display: flex;
+        justify-content: flex-end;
+        color: #667d6b;
+        font-family: "Greycliff_medium_italic";
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+      }
+    
+    }
+
+    .streaming_link_iframe {
+      iframe {
+        width: 100%; 
+      }
+    }
+  }
 
   
   @media (min-width: 1024px) {

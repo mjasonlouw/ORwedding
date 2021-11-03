@@ -1,6 +1,6 @@
 <div class="rsvp_wrapper">
     <div class="rsvp_header">
-        <div class="header-wrapper">
+        <!-- <div class="header-wrapper">
             <div>
                 <h4>RSVP</h4>
             </div>
@@ -10,10 +10,48 @@
             <div class="align_sub_heading">
                 <p>RSVP by 16th October 2021</p>
             </div>
+        </div> -->
+        <div class="header-wrapper">
+            <div>
+                <h4>STREAMING</h4>
+            </div>
+            <div class="divider">
+                <hr class="heading_divider" />
+            </div>
+            <div class="align_sub_heading">
+                <p>Use these links to watch the live stream</p>
+            </div>
         </div>
     </div>
     <div class="RsvpPositionContainer">
-        <div *ngFor="let rsvp of rsvps.controls; index as i"
+        <div class="streaming_link_wrapper">
+            <div class="streaming_link_heading"> 
+                <div class="heading">
+                    1. Ceremony Link
+                </div>
+                <div class="time">
+                    Time: 15:00
+                </div>
+            </div>
+            <div class="streaming_link_iframe">
+                <iframe src="https://www.youtube.com/embed/-r2_3xRktdQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="streaming_link_wrapper">
+            <div class="streaming_link_heading"> 
+                <div class="heading">
+                    2. Reception Link
+                </div>
+                <div class="time">
+                    Time: 18:45
+                </div>
+            </div>
+            <div class="streaming_link_iframe">
+                <iframe src="https://www.youtube.com/embed/rFmY1bMsanQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <!-- <div *ngFor="let rsvp of rsvps.controls; index as i"
             [ngClass]="currentStep == i ? 'selectedPerson' : 'notSelectedPerson'">
             <div class="validation_stepper_wrapper" (click)="scrollTo(i)" *ngIf="personsData[i]?.name != null">
                 <div class="validation_icons">
@@ -38,17 +76,15 @@
                     <span *ngIf="personsData[i].isPlusOne"> (+1)</span>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
-    <div class='scrollContainer' (scroll)="scrollContainerScrolling($event)">
+    <!-- <div class='scrollContainer' (scroll)="scrollContainerScrolling($event)">
         <div *ngFor="let rsvp of rsvps.controls; index as i"
             class='rsvpPerson{{i}}'>
 
             <div [formGroup]="rsvp">
 
                 <div class="form-wrapper active">
-                    <!-- [ngClass]="{'active': currentStep == i}" -->
-
                     <div class="form-heading" *ngIf="personsData[i].name != ''
                         || !showPlusOne">
                         <div>
@@ -64,8 +100,6 @@
                                 formControlName='name'/>
                         </div>
                     </div>
-
-                    <!-- <p *ngIf="personsData[i].name == '' && showPlusOne">Name</p> -->
                     <div class="form-sections">
                         <div class="form-section">
                             <p class="form-section-label">Are you coming to
@@ -144,108 +178,25 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- <div class="form-section" [ngClass]="{'disabled':
-                                rsvp.controls['coming']?.value !== true}">
-                                <p class="form-section-label">Are you
-                                    vaccinated?</p>
-                                <div class="custom-radio-control-wrapper">
-                                    <div class="custom-radio-control"
-                                        (click)="toggleVaccineControl(true,
-                                        rsvp)">
-                                        <input type="radio"
-                                            formControlName="vaccinated"
-                                            value="yes"
-                                            type="hidden"
-                                            [checked]="rsvp.controls['vaccinated'].value"
-                                            />
-                                        <div class="radio-control">
-                                            <object
-                                                *ngIf="rsvp.controls['vaccinated'].value"
-                                                data="../../../assets/icons/check.svg"
-                                                type="image/svg+xml"
-                                                class="control_check"
-                                                height="9" width="9"></object>
-                                        </div>
-                                        <label>Yes</label>
-                                    </div>
-
-                                    <div class="custom-radio-control"
-                                        (click)="toggleVaccineControl(false,
-                                        rsvp)">
-                                        <input type="radio"
-                                            formControlName="vaccinated"
-                                            value="no"
-                                            type="hidden"
-                                            [checked]="!rsvp.controls['vaccinated'].value"
-                                            />
-                                        <div class="radio-control">
-                                            <object
-                                                *ngIf="!rsvp.controls['vaccinated'].value"
-                                                data="../../../assets/icons/check.svg"
-                                                type="image/svg+xml"
-                                                class="control_check"
-                                                height="9" width="9"></object>
-                                        </div>
-                                        <label>No</label>
-                                    </div>
-                                </div>
-                            </div> -->
-
                         </div>
-
-                        <!-- <input type='text' *ngIf="personsData[i].name == '' && showPlusOne" formControlName="name" />
-    
-                <button *ngIf="personsData[i].isPlusOne == 'yes' &&
-                    personsData[i].name == '' && !showPlusOne" (click)="addPlusOne()">
-                    add plus one
-                </button>
-    
-                <button *ngIf="(personsData[i].isPlusOne == 'yes' &&
-                    personsData[i].name != '') || (showPlusOne &&
-                    personsData[i].isPlusOne == 'yes' )" (click)="removePlusOne(rsvp,i)">
-                    remove plus one
-                </button> -->
                     </div>
-
                 </div>
-
             </div>
         </div>
-
-        <!-- <div class="error-container" *ngIf="showErrors">
-            <ul>
-                <li *ngFor="let error of errorList">{{error.name}}
-                    {{error.error}}</li>
-            </ul>
-        </div> -->
-    </div>
-    <!-- <div class="bubble-wrapper">
-        <object data="../../../../assets/images/circles_top.svg"
-            type="image/svg+xml"></object>
     </div> -->
-
-    <div class="added_popup_wrapper hidden">
+    <!-- <div class="added_popup_wrapper hidden">
         <div class="added_popup_information pulse_animation">
             Submitted RSVP!
         </div>
-    </div>
+    </div> -->
 </div>
 <!-- 
-<div class="error-container" *ngIf="showErrors">
-    <ul>
-        <li *ngFor="let error of errorList">{{error.name}} {{error.error}}</li>
-    </ul>
-</div> -->
-
 <div class="submit_wrapper">
     <div class="submit_button">
         <button [ngClass]="somethingNotFilledIn ? 'disabled' : 'enabled'" type="submit" class="submit_btn" (click)='submitRSVP()'>
             SUBMIT YOUR RSVP
         </button>
     </div>
-    <!-- <p>{{BigError}}</p> -->
-    <!-- <div *ngIf="submitedForm"></div> -->
     <div *ngIf="submitedForm" class="submitted_wrapper">
         <div class="submitted_successfully">
             <p class="success">Your RSVP has been submitted</p>
@@ -264,37 +215,6 @@
             </div>
         </div>
     </div>
-    <!-- <div class="stepper_wrapper">
-        <div class="form-stepper">
-            <div class="arrow_wrapper arrow_prev" (click)="currentStep=
-                currentStep - 1" [ngClass]="{'available-step' : currentStep>
-                0}">
-                <object data="../../../assets/icons/double_arrows.svg"
-                    type="image/svg+xml" height="10" width="10"></object>
-            </div>
-
-            <div class="step-hint">
-                <div class="hints">
-                    <div class="hint" [ngClass]="{'current-hint' :
-                        currentStep === i}" *ngFor="let rsvp of
-                        rsvps.controls; index as i"></div>
-                </div>
-                <p class="hint-text">{{ currentStep + 1 }} of {{
-                    rsvps.controls.length}}</p>
-            </div>
-
-            <div class="arrow_wrapper arrow_next" (click)="currentStep=
-                currentStep + 1" [ngClass]="{'available-step' : currentStep
-            <rsvps.controls.length - 1}">
-                <object data="../../../assets/icons/double_arrows.svg"
-                    type="image/svg+xml" height="10" width="10"></object>
-            </div>
-        </div>
-    </div> -->
-</div>
+</div> -->
 
 
-    <!-- <div class="bubble-wrapper">
-        <object data="../../../../assets/images/circles_top.svg"
-            type="image/svg+xml"></object>
-    </div> -->
