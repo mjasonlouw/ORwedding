@@ -9,22 +9,23 @@ export class DefaultComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  pageToShow = 'rsvp';
+  pageToShow = 'landing';
   finshedLoading = false 
 
   changePageTo(pageName, subroutebuttons) {
       this.pageToShow = pageName;
 
-      if(subroutebuttons == 0) {
+      var menu = document.getElementsByClassName("menu_dropdown_wrapper")[0]; 
+
+      if (menu.classList.contains("open")) {
         this.openMainMenu();
       }
-    
-      this.slideBitch(pageName)
   }
 
   
 
   finishedLoading(loading){
+    console.log("loading", loading);
     this.finshedLoading = loading
   }
 

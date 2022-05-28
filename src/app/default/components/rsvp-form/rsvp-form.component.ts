@@ -48,10 +48,9 @@ export class RsvpFormComponent {
 
   ngOnInit(): void {    
     this.mealOptions = [
-      new MealOption("chorizoSausage", "Chorizo sausage and Prawn gnocchi",  "../../../../assets/images/meals/chorizo_sausage.jpg"),
-      new MealOption("lambShank", "Slow Braised lamb shank",  "../../../../assets/images/meals/lamb_shank.jpg"),
-      new MealOption("porkBelly", "Crispy Pork belly",  "../../../../assets/images/meals/pork_belly.jpg"),
-      new MealOption("cauliflowerSteak", "Roasted cauli. steak",  "../../../../assets/images/meals/cauliflower_steak.jpg")
+      new MealOption("lamb", "Slow Cooked Lamb Shank",  "../../../../assets/images/meals/lamb.jpg"),
+      new MealOption("salmon", "Salmon Fillet",  "../../../../assets/images/meals/salmon.jpg"),
+      new MealOption("chickpea", "Chickpea & vegetable curry",  "../../../../assets/images/meals/chickpea.jpg"),
     ];
   }
 

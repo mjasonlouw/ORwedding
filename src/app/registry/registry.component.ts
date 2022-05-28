@@ -3,14 +3,14 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { GuestService } from '../guest.service';
 import { RegistryService } from '../registry.service';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-registry',
   templateUrl: './registry.component.html',
   styleUrls: ['./registry.component.scss']
 })
-export class RegistryComponent implements OnInit {
-
+export class RegistryComponent {
   finalRegistry;
   searchRegistry;
   registry = [];
@@ -18,7 +18,7 @@ export class RegistryComponent implements OnInit {
   activeCategories = [];
   guestsItems = [];
   searchTerm = '';
-  categoryFilter: FormGroup
+  categoryFilter: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,55 +30,18 @@ export class RegistryComponent implements OnInit {
       categories: new FormArray([])
     });
 
-  }
+    }
+
 
   ngOnInit(): void {
     this.GuestService.setUserDetailsFromActivatedRoute(this.activatedRoute);
     this.getRegistry();
     this.GuestService.getGuestName()
     this.filterCategories()
-
-    document.addEventListener('scroll', function(e) {
-      var filter_wrapper = document.getElementsByClassName("filtering_wrapper")[0];
-
-        var position = filter_wrapper.getBoundingClientRect().top;
-        
-        if(position > 150) {
-          if(filter_wrapper.classList.contains("at_top")) {
-            filter_wrapper.classList.remove("at_top");
-            filter_wrapper.classList.add("scrolling");
-          }
-        } else {
-          if(filter_wrapper.classList.contains("scrolling")) {
-            filter_wrapper.classList.remove("scrolling");
-            filter_wrapper.classList.add("at_top");
-          }
-        }
-    });
   }
 
   get ordersFormArray() {
     return this.categoryFilter.controls.categories as FormArray;
-  }
-
-  openFilters() {
-    if (document.getElementsByClassName("filter_wrapper")[0].classList.contains("opened")) {
-      document.getElementsByClassName("filter_wrapper")[0].classList.remove("opened");
-      document.getElementsByClassName("filter_wrapper")[0].classList.add("closed");
-
-      document.getElementsByClassName("filter")[0].classList.add("swipeUp");
-      document.getElementsByClassName("filter")[0].classList.remove("swipeUpAway");
-      document.getElementsByClassName("close")[0].classList.add("swipeUpAway");
-      document.getElementsByClassName("close")[0].classList.remove("swipeUp");
-    } else {
-      document.getElementsByClassName("filter_wrapper")[0].classList.remove("closed");
-      document.getElementsByClassName("filter_wrapper")[0].classList.add("opened");
-
-      document.getElementsByClassName("filter")[0].classList.add("swipeUpAway");
-      document.getElementsByClassName("filter")[0].classList.remove("swipeUp");
-      document.getElementsByClassName("close")[0].classList.add("swipeUp");
-      document.getElementsByClassName("close")[0].classList.remove("swipeUpAway");
-    }
   }
 
   sortCategories() {
@@ -104,6 +67,8 @@ export class RegistryComponent implements OnInit {
   }
 
   getRegistry() {
+
+
     this.RegistryService
       .getRegistry()
       .subscribe(res => {
@@ -214,7 +179,7 @@ export class RegistryComponent implements OnInit {
       this.sortMyItems()
 
       var popup = document.getElementsByClassName("added_popup_wrapper_registry")[0];
-      document.getElementsByClassName("added_popup_information_registry")[0].innerHTML = "Added";
+      document.getElementsByClassName("added_popup_information_registry")[0].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14.665" height="14.665" viewBox="0 0 14.665 14.665"><path id="tag-plus" d="M16.232,9.025l-6.6-6.6A1.465,1.465,0,0,0,8.6,2H3.467A1.467,1.467,0,0,0,2,3.467V8.6a1.442,1.442,0,0,0,.433,1.034l.3.293a4.269,4.269,0,0,1,2.2-.594,4.4,4.4,0,0,1,4.4,4.4,4.3,4.3,0,0,1-.6,2.2l.293.293a1.465,1.465,0,0,0,1.041.44,1.442,1.442,0,0,0,1.034-.433L16.232,11.1a1.442,1.442,0,0,0,.433-1.034,1.471,1.471,0,0,0-.433-1.041M4.566,5.666a1.1,1.1,0,1,1,1.1-1.1,1.1,1.1,0,0,1-1.1,1.1m3.3,8.8h-2.2v2.2H4.2v-2.2H2V13H4.2V10.8H5.666V13h2.2Z" transform="translate(-2 -2)"/></svg><div>Reserved Gift</div>';
 
       popup.classList.remove("hidden");
       popup.classList.add("show");
@@ -229,7 +194,7 @@ export class RegistryComponent implements OnInit {
     this.sortMyItems()
 
     var popup = document.getElementsByClassName("added_popup_wrapper_registry")[0];
-    document.getElementsByClassName("added_popup_information_registry")[0].innerHTML = "Removed";
+    document.getElementsByClassName("added_popup_information_registry")[0].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="11.039" height="14.192" viewBox="0 0 11.039 14.192"><path id="delete" d="M16.039,3.788h-2.76L12.49,3H8.548l-.788.788H5V5.365H16.039M5.788,15.615a1.577,1.577,0,0,0,1.577,1.577h6.308a1.577,1.577,0,0,0,1.577-1.577V6.154H5.788Z" transform="translate(-5 -3)"/></svg><div>Removed Gift</div>';
 
     popup.classList.remove("hidden");
     popup.classList.add("show");

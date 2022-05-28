@@ -28,61 +28,53 @@
 .logo-mark {
   position: absolute;
   z-index: 10;
-  margin: 30px 20px; 
-  
+  margin: 30px 20px;
+
   p {
     font-family: "Greycliff_medium";
     letter-spacing: 8px;
     font-size: 1.3rem;
-    color: $light_background; 
-    margin: 0; 
+    color: $light_background;
+    margin: 0;
   }
 
 }
 
-.menu_outer_wrapper {
-  width: 100%; 
-  position: relative;
-}
+// .menu_outer_wrapper {
+//   width: 100%;
+//   position: relative;
+// }
 
     .heading_wrapper {
       display: grid;
       grid-template-columns: auto;
-      position: fixed;
       z-index: 10;
-      right: 0; 
-      margin: 20px;
     }
 
     .menu_wrapper {
-      display: grid; 
-      justify-content: flex-end;
-      grid-template-columns: repeat(1, minmax(0, 95px));
-      grid-row-gap: 25px;
 
       .menu_dropdown_wrapper {
-        //border: 1px $light_background solid;
-        
-        border-radius: 15px 15px 50px 50px;
-        background-color: rgba($secondary_green, 0.4);
+        border-radius: 60px;
+        border: 1px solid $text_colour;
+        background-color: rgba($text_colour, 0.1);
         box-shadow: 0 3px 10px rgb(0 0 0 / 5%);
         backdrop-filter: blur(7px);
         -webkit-backdrop-filter: blur(7px);
         display: grid;
         justify-content: center;
-        grid-row-gap: 22px;
-        position: relative;
-        transition: all 0.3s; 
+        grid-row-gap: 20px;
+        position: absolute;
+        transition: all 0.3s;
+        z-index: 9;
+        top: 3.5vh;
 
         &.open {
-          right: 0; 
-          height: 100%;
-          padding: 20px 0 40px 0;
+          right: -29px;
+          padding: 30px 7px;
         }
 
         &.closed {
-          right: -150px; 
-          height: 0; 
+          right: -150px;
           padding: 0;
         }
 
@@ -99,18 +91,19 @@
           .menu_icon {
             display: grid;
             justify-content: center;
+            align-items: center;
 
             svg {
-              height: 20px !important;
+              height: 30px !important;
+              opacity: 0.5;
             }
           }
 
           .menu_information {
             font-family: "Greycliff_medium";
-            color: $light_background;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            padding-left: 3px;
+            color: $text_colour;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
           }
         }
       }
@@ -119,7 +112,7 @@
     .welcome-message {
       position: absolute;
       top: 24%;
-      height: 100%; 
+      height: 100%;
 
       color: $light_background;
       font-family: "Greycliff_ExtraLight";
@@ -156,22 +149,18 @@
 
     .menu {
       //border: 1px $light_background solid;
-      padding: 10px 30px;
-      border-radius: 50px;
-      background-color: rgba($secondary_green, 0.4);
-      box-shadow: 0 3px 10px rgb(black, 0.05);
       display: grid;
-      grid-template-columns: auto auto;
+      height: 100%;
+      position: relative;
+      align-items: center;
       transition: all 0.3s;
-      backdrop-filter: blur(7px);
-      -webkit-backdrop-filter: blur(7px);
 
       &:hover {
         cursor: pointer;
       }
 
       svg {
-        height: 15px;
+        height: 19px;
         top: 2px;
         position: relative;
       }
@@ -211,7 +200,7 @@
 
         .text {
           font-size: 0.7rem;
-          font-family: "Greycliff_medium_italic"; 
+          font-family: "Greycliff_medium_italic";
         }
       }
     }
@@ -239,17 +228,17 @@
         transform-origin: bottom;
       }
     }
-  
+
 
 
 .fade_out {
     right: -60px;
-    opacity: 0; 
+    opacity: 0;
 }
 
 .fade_in {
   right: 0px;
-  opacity: 1; 
+  opacity: 1;
 }
 
 .parent_1 {
@@ -273,51 +262,63 @@
 }
 
 .close_menu {
-  position: relative;
-  right: 10px; 
-  transition: all 0.3s; 
+  position: absolute;
+  right: 0;
+  transition: all 0.3s;
   transition-delay: 0.15s;
-  opacity: 0; 
+  opacity: 0;
+
+  svg {
+    &:active {
+      transform: scale(0.7);
+    }
+  }
 
   &.fade_in {
-    opacity: 1; 
+    opacity: 1;
   }
 
   &.fade_out {
-    animation-fill-mode: both;
-    animation-duration: 0.3s;
-    -webkit-animation-name: fade_out_right;
-    animation-name: fade_out_right;
+    // animation-fill-mode: both;
+    // animation-duration: 0.3s;
+    // -webkit-animation-name: fade_out_right;
+    // animation-name: fade_out_right;
     opacity: 0;
   }
 }
 
 .open_menu {
-  position: relative;
-  transition: all 0.3s; 
+  position: absolute;
+  right: 0;
+  transition: all 0.3s;
   transition-delay: 0.15s;
-  left: 15px; 
-  opacity: 0; 
+  opacity: 0;
+
+  svg {
+    &:active {
+      transform: scale(0.7);
+    }
+  }
 
   &.fade_in {
-    opacity: 1; 
+    opacity: 1;
   }
 
   &.fade_out {
-    animation-fill-mode: both;
-    animation-duration: 0.3s;
-    -webkit-animation-name: fade_out_left;
-    animation-name: fade_out_left;
+    // animation-fill-mode: both;
+    // animation-duration: 0.3s;
+    // -webkit-animation-name: fade_out_left;
+    // animation-name: fade_out_left;
     opacity: 0;
   }
 }
 
 @keyframes fade_out_right {
   0% {
-    right: 10px; 
+    right: 10px;
   }
   33% {
-    right: -5px; 
+    right: -5px;
   }
   66% {
     right: -10px;
@@ -329,10 +330,10 @@
 
 @keyframes fade_out_left {
   0% {
-    left: 10px; 
+    left: 10px;
   }
   33% {
-    left: -5px; 
+    left: -5px;
   }
   66% {
     left: -10px;
@@ -356,6 +357,12 @@
 
 .main_header_wrapper {
   position: relative;
+  padding: 5vh;
+  min-height: 90vh;
+
+  @media screen and (min-width: 1000px) {
+    padding: 5vh 13vh;
+  }
 
   .loading_page {
     display: block;
@@ -369,14 +376,14 @@
     left: 0;
     position: fixed;
     z-index: 1000;
-    transition: all 0.3s; 
-  
+    transition: all 0.3s;
+
       p {
         font-family: "Greycliff_bold";
         letter-spacing: 8px;
         font-size: 1.3rem;
-        color: $light_background; 
-        margin: 0; 
+        color: $light_background;
+        margin: 0;
         display: flex;
         height: 100%;
         width: 100%;
@@ -389,8 +396,116 @@
       }
 
       &.hide {
-        opacity: 0; 
+        opacity: 0;
         z-index: 0;
       }
   }
 }
+
+
+.header_wrapper {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding-bottom: 4vh;
+
+  .logo {
+    &:hover {
+      cursor: pointer;
+    }
+
+    svg {
+      height: 35px;
+
+      @media screen and (min-width: 1000px) {
+        height: 6vh;
+      }
+    }
+  }
+
+  .menu_icon_wrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 45px;
+
+    @media screen and (min-width: 1000px) {
+      display: none;
+    }
+
+    .page_place_wrapper {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+
+      .page_icon {
+        svg {
+          height: 35px;
+        }
+      }
+
+      .page_heading {
+        font-family: "Greycliff_medium";
+        color: rgba($text_colour, 0.2);
+        letter-spacing: 2px;
+      }
+    }
+
+    .menu_icon {
+      svg {
+        height: 20px;
+      }
+    }
+  }
+
+  .desktop_view_nav {
+    display: none;
+
+    @media screen and (min-width: 1000px) {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      gap: 35px;
+      justify-content: flex-end;
+
+        .main_menu_item {
+          display: grid;
+          grid-template-columns: auto auto;
+          justify-content: flex-end;
+          grid-row-gap: 10px;
+          position: relative;
+          align-items: center;
+          gap: 15px;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          .menu_icon {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+              height: 2.2vw !important;
+              opacity: 0.5;
+            }
+          }
+
+          .menu_information {
+            font-family: "Greycliff_medium";
+            color: $text_colour;
+            font-size: 1.1vw;
+            letter-spacing: 2px;
+          }
+        }
+    }
+  }
+}
+
+.menu_outer_wrapper {
+  position: relative;
+}
+
+

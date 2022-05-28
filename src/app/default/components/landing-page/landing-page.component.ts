@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GuestService } from '../../../guest.service';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-landing-page',
@@ -8,6 +9,8 @@ import { GuestService } from '../../../guest.service';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
+  @Output() changePageTo = new EventEmitter<string>();
+
   guestName = '';
   guest = null;
 
@@ -28,6 +31,12 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void{
   }
 
+  pageToShow = 'landing';
+
+  changePage(pageName) {
+    this.changePageTo.emit(pageName);
+  }
+
   async getGuestDetails() {
     this.guestName = await this.GuestService.getGuestName();
     this.guest = await this.GuestService.guestGuestByName(this.guestName);
@@ -35,7 +44,7 @@ export class LandingPageComponent implements OnInit {
 
   countDown() {
     let currentDate = new Date();
-    let dateOfWedding = new Date('2021-11-06');
+    let dateOfWedding = new Date('2022-07-30');
     dateOfWedding.setHours(15, 30)
 
 

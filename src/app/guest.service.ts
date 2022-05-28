@@ -20,7 +20,7 @@ export class GuestService {
     })
 
     if(this.GuestName == null) {
-      console.error("You need params in the URL dumb dumb");
+
     }
     
     document.cookie = this.GuestName;
@@ -95,6 +95,9 @@ export class GuestService {
 
   async updatePersonById(id, rsvp, guestID){
     this.firestore.collection('Users')
+    rsvp.rsvp = true; 
+
+    console.log(rsvp);
     this.firestore.doc(`Users/${guestID}/persons/${id}`).update(rsvp);
   }
 

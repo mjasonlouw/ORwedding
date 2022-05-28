@@ -44,6 +44,10 @@
                     <p *ngIf="guest.payload.doc.data()?.greeting"><strong>Greeting: </strong>{{guest.payload.doc.data().greeting}} </p>
 
                     <div *ngFor="let rs of rsvps; index as j">
+                        <div *ngIf="rs.data.rsvp == true">
+                            {{rs.data.rsvp}}
+                        </div>
+
                         <!-- {{rs.data.name}} -->
                         <div *ngIf="rs.id == guest.payload.doc.id">
                             <p><strong>name: </strong> {{rs.data.name}}<strong> is plus one: </strong>  {{rs.data.isPlusOne}}</p>

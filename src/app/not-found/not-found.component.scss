@@ -4,7 +4,7 @@
     display: block;
     background-color: #667d6b;
     width: 100vw;
-    background: linear-gradient(-45deg, #1a201b, #2e3931, #47524a, #707972);
+    background: linear-gradient(-45deg, #101917, #273f39, #526561, #939f9c);
     background-size: 400% 400%;
     animation: gradient 8s ease infinite;
     height: 100vh;
@@ -25,18 +25,16 @@
         align-items: center;
 
         .whoops {
-            font-family: "Greycliff_bold";
-            text-transform: uppercase;
+            font-family: "Baskerville_bold";
             font-size: 3rem;
             letter-spacing: 6px;
             padding-bottom: 20px;
         }
 
         .how_to {
-            font-family: "Greycliff_medium_italic";
+            font-family: "Baskerville_semibold";
             letter-spacing: 3px;
             font-size: 1rem;
-            width: 30px;
             line-height: 30px;
         }
       }

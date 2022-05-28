@@ -10,22 +10,24 @@
   .rsvp_header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 5vh 4vh;
+    gap: 15px;
+    justify-content: center;
+    padding-bottom: 5vh;
+    padding-top: 2vh;
+    flex-wrap: wrap;
 
-    @media (min-width: 1024px) {
-      padding: 5vh 25vw;
+    @media (min-width: 1000px) {
+      gap: 5vw;
     }
   }
 
   .form-wrapper {
     display: none;
-    width: 80vw;
-    padding: 0 10vw;
+    width: 79vw;
 
-    @media (min-width: 1024px) {
-      width: 50vw;
-      padding: 0 25vw;
+    @media (min-width: 1000px) {
+      width: 45vw;
+      padding: 0px 20vw;
     }
 
     .active{
@@ -41,14 +43,14 @@
       display: grid;
       grid-template-columns: auto auto;
       grid-template-rows: 70px;
-      color: $secondary_green;
-      font-family: "Greycliff_bold";
-      text-transform: uppercase;
+      color: $text_colour;
+      font-family: "Baskerville_bold";
       grid-gap: 20px;
       justify-content: flex-start;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       font-size: 1.7rem;
       align-items: center;
+      padding-bottom: 2vh;
 
       p {
         margin: 0; 
@@ -56,8 +58,13 @@
     }
 
     .form-section {
-      margin-bottom: 20px;
       pointer-events: all;
+      display: grid;
+      gap: 20px;
+
+      p {
+        margin: 0; 
+      }
 
       &.disabled {
         opacity: 0.5;
@@ -65,9 +72,9 @@
       }
 
       .form-section-label {
-        font-family: "Greycliff_medium";
-        color: $secondary_green;
-        letter-spacing: 3px;
+        font-family: "Baskerville_semibold";
+        color: $text_colour;
+        letter-spacing: 2px;
         font-size: 0.9rem;
         line-height: 25px;
       }
@@ -94,7 +101,8 @@
   }
 
   .radio-control {
-    background-color: rgba($secondary_green, 0.25);
+    background-color: rgba($text_colour, 0.2);
+    border: 1px solid $text_colour;
     height: 25px;
     width: 25px;
     border-radius: 50%;
@@ -108,8 +116,8 @@
   }
 
   label {
-    font-size: 0.8rem;
-    color: $secondary_green;
+    font-size: 0.7rem;
+    color: $text_colour;
     font-family: "Greycliff_medium";
     letter-spacing: 3px;
     display: flex;
@@ -121,15 +129,17 @@
 // Menu Items
 .menu_items_information_wrapper {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-gap: 10px;
-  grid-template-rows: masonry;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
   .image_wrapper {
-    height: 20vh;
+    height: 10vh;
+    width: 10vh;
     background-size: cover;
     background-position: center;
     border-radius: 15px;
+    border-radius: 100%;
+    margin: 0 auto;
+    border: 1px solid $text_colour;
   }
 
   .menu_item {
@@ -137,13 +147,12 @@
     transition: all 0.3s; 
 
     .item_desc {
-      color: $secondary_green;
-      font-family: "Greycliff_bold";
-      letter-spacing: 3px;
-      display: flex;
-      align-items: center;
-      font-size: 0.8rem;
-      line-height: 20px;
+      font-family: "Baskerville_semibold";
+      color: $text_colour;
+      font-size: 0.9rem;
+      line-height: 22px;
+      text-align: center;
+      letter-spacing: 1px;
     }
 
     &:active {
@@ -167,12 +176,12 @@
 // Button Styles
 
 .submit_wrapper {
-  display: grid;
-  grid-template-columns: auto;
-  padding: 0 5vh;
-  justify-content: center;
-  grid-row-gap: 40px;
-  position: relative;
+  // display: grid;
+  // grid-template-columns: auto;
+  // padding: 0 5vh;
+  // justify-content: center;
+  // grid-row-gap: 40px;
+  // position: relative;
 
   .submitted_wrapper {
     .submitted_successfully {
@@ -310,28 +319,25 @@
   }
 
   .submit_button {
-    .submit_btn {
-      border-radius: 50px;
-      //border: 0.5px $secondary_green solid;
-      border: none;
-      background-color: rgba($secondary_green, 0.25);
-      text-transform: uppercase;
-      color: $secondary_green;
-      font-family: "Greycliff_medium_italic";
-      padding: 10px 25px;
-      font-size: 0.8rem;
-      letter-spacing: 3px;
-      margin: 0;
-      box-shadow: 0 3px 10px rgba(black, 0.1);
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: 0.3s all; 
-      letter-spacing: 3px;
-    
-      
+    display: grid;
+    justify-content: center;
+    align-items: center;
 
+    .submit_btn {
+      border: 1px solid $text_colour;
+      color: $text_colour;
+      border-radius: 50px;
+      background-color: rgba(243, 242, 242, 0.1);
+      box-shadow: 0 3px 10px rgb(0 0 0 / 5%);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      display: grid;
+      justify-content: center;
+      padding: 10px 20px;
+      font-family: "Greycliff_medium";
+      letter-spacing: 3px;
+      font-size: 0.8rem;
+    
       &.disabled {
         pointer-events: none;
         cursor: default;
@@ -384,23 +390,26 @@
   }
 
   .added_popup_information {
-    // background-color: rgba($secondary_green, 0.2);
-    // border: 1px solid $secondary_green;
-    background-color: rgba($secondary_green, 0.5);
-    border: 1px solid $background;
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
+    background-color: rgba($text_colour, 0.8);
     padding: 10px 25px;
     border-radius: 30px;
-    font-family: "Greycliff_light_italic";
-    color: $background;
-    letter-spacing: 3px;
+    font-family: "Greycliff_bold";
+    color: rgba($background, 0.7);
+    letter-spacing: 1px;
     font-size: 0.9rem;
-
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
     @include drop_shadow;
+    fill: rgba($background, 0.7) !important;
+
+    .feedback_icon {
+      display: flex;
+      align-items: center;
+    }
 
     &.pulse_animation {
-      box-shadow: 0 0 0 0 rgba($secondary_green, 1);
+      box-shadow: 0 0 0 0 rgba($text_colour, 1);
       animation: pulse-green 2s infinite;
     }
   }
@@ -478,7 +487,7 @@
   }
 
   
-  @media (min-width: 1024px) {
+  @media (min-width: 1000px) {
     justify-content: center;
 
     .validation_stepper_wrapper {
@@ -496,6 +505,10 @@
     grid-gap: 10px;
     align-items: center;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     .name_stepper_wrapper {
       display: grid;
       grid-template-columns: auto auto;
@@ -504,9 +517,10 @@
 
     .validation_icons {
       transform: scale(0.8) translateY(2px);
+   
     }
 
-    .name_stepepr {
+    .name_stepper {
       max-width: 100px;
       white-space: nowrap;
       overflow: hidden;
@@ -515,18 +529,105 @@
   }
 }
 
+.validation_stepper_wrapper {
+  display: grid; 
+  gap: 10px;
+  grid-template-columns: auto auto;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .validation_icons {
+    display: grid;
+    justify-content: center;
+  }
+}
+
+
 .selectedPerson{
-  text-transform: uppercase;
-  color: $secondary_green;
+  color: $text_colour;
   font-family: "Greycliff_medium";
+  letter-spacing: 1px;
 }
 
 .notSelectedPerson{
-  text-transform: uppercase;
   font-family: "Greycliff_medium";
-  color: $secondary_green;
+  letter-spacing: 1px;
+  color: $text_colour;
   opacity: 0.5;
   text-overflow: ellipsis;
 }
 
+.form-sections {
+  display: grid;
+  gap: 30px;
+  padding-bottom: 5vh; 
+}
 
+.alternative_actions_wrapper {
+  height: 12vh; 
+}
+
+.image_outer_wrapper {
+  display: grid;
+  gap: 10px;
+}
+
+.gifts_image_outer_wrapper {
+  .gift_image_wrapper {
+    margin: 0 auto;
+    height: 20vw;
+    width: 20vw;
+    border-radius: 100%;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid $text_colour;
+    position: relative;
+    box-shadow: 5px 2px 17px #13131387 inset;
+
+    @media screen and (min-width: 1000px) {
+      height: 13vw;
+      width: 13vw;
+    }
+
+    .gift_button_wrapper {
+      position: absolute;
+      bottom: 4vw;
+      right: 4vw;
+
+      @media screen and (min-width: 1000px) {
+        bottom: 2vw;
+        right: 2vw;
+      }
+  
+      .gift_button {
+        height: 8vw; 
+        width: 8vw; 
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color:rgba($text_colour, 0.2);
+
+        @media screen and (min-width: 1000px) {
+          height: 4vw; 
+          width: 4vw; 
+        }
+  
+        svg {
+          height: 4vw;
+
+          @media screen and (min-width: 1000px) {
+            height: 2vw; 
+          }
+        }
+      }
+    }
+  }
+}
+
+.empty_state_wrapper {
+  padding-top: 45px; 
+}

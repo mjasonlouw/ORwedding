@@ -3,15 +3,29 @@
 }
 
 /* You can add global styles to this file, and also import other style files */
-$primary_green: #333f36;
-$secondary_green: #667d6b;
-$background: #fff;
-$light_background: #fff;
+/*Style 1*/
+// $primary_green: #333f36;
+// $secondary_green: #667d6b;
+// $background: #fff;
+// $light_background: #fff;
 
 // $background: white;
 // $light_background: white;
 
+$primary_green: #333f36;
+$secondary_green: #333f36;
+$text_colour: #F3F2F2;
+$background: #273F39;
+$light_background: #fff;
+$text_colour_tint: #4f615d;
 
+// * {
+//   outline: 1px solid #f00 !important;
+// }
+
+html {
+  overflow-x: hidden;
+}
 
 @font-face {
   font-family: "Greycliff_medium";
@@ -63,6 +77,21 @@ $light_background: #fff;
   src: url(../assets/fonts/GreycliffCF-Heavy.ttf);
 }
 
+@font-face {
+  font-family: "Baskerville_semibold";
+  src: url(../assets/fonts/Baskerville/BaskervilleBT.ttf);
+}
+
+@font-face {
+  font-family: "Baskerville_semibold_italics";
+  src: url(../assets/fonts/Baskerville/BaskervilleItalicBT.ttf);
+}
+
+@font-face {
+  font-family: "Baskerville_bold";
+  src: url(../assets/fonts/Baskerville/BaskervilleBoldBT.ttf);
+}
+
 textarea:focus,
 input:focus {
   outline: none;
@@ -98,6 +127,41 @@ input:focus {
   width: 40px;
 }
 
+.empty_state_wrapper {
+  .empty_state {
+    .empty_state_text {
+      display: grid;
+      row-gap: 10px;
+
+      .empty_heading {
+        display: flex;
+        column-gap: 10px;
+        align-items: center;
+        color: rgba($text_colour, 0.5);
+        fill: rgba($text_colour, 0.5);
+        letter-spacing: 0.5;
+        justify-content: center;
+
+        svg {
+          height: 20px; 
+        }
+      }
+    
+      .empty_no_gifts {
+        font-family: "Greycliff_medium";
+        font-size: 1rem;
+      }
+
+      .empty_no_gifts_help {
+        font-family: "Greycliff_medium";
+        color: rgba($text_colour, 0.2);
+        font-size: 0.7rem;
+        line-height: 18px;
+        text-align: center;
+      }
+    }
+  }
+}
 
 .header-wrapper {
   display: grid;
@@ -142,20 +206,15 @@ input:focus {
 
 
 .search_box {
-  padding: 0 25px;
-  border-radius: 30px;
-  font-family: "Greycliff_medium_italic";
-  letter-spacing: 3px;
-  height: 41px;
-  font-size: 0.8rem;
-  transition: all 0.5s;
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
-  color: $light_background;
-  border: none;
+  border: 1px solid $text_colour;
+  background-color: rgba($text_colour, 0.1);
+  padding: 10px 15px;
   border-radius: 50px;
-  background-color: rgba($secondary_green, 0.4);
-  box-shadow: 0 3px 10px rgb(0 0 0 / 5%);
+  font-family: "Greycliff_light";
+  color: $text_colour;
+  letter-spacing: 1px;
+  width: 100%;
+  box-sizing: border-box;
   cursor: text;
 
   &.plus_one {
@@ -195,7 +254,7 @@ input:focus {
 /* custom scrollbar */
 ::-webkit-scrollbar {
   padding: 10px;
-  width: 6px;
+  width: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -206,4 +265,59 @@ input:focus {
   background-color: #fff;
   border-radius: 20px;
   border: 6px solid transparent;
+}
+
+.alternative_actions_wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: flex-end;
+  height: 16vh;
+
+  @media screen and (min-width: 1000px) {
+      display: none; 
+  }
+
+  .alternate_action {
+    display: grid;
+    justify-content: center;
+    gap: 10px;
+
+    .alternate_action_icon {
+      display: grid; 
+      justify-content: center;
+
+      .link_icon_wrapper {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+  
+        .link_icon {
+          svg {
+            height: 30px;
+          }
+        }
+  
+        .arrow_wrapper {
+          svg {
+            height: 10px;
+          }
+        }
+      }
+    }
+
+    .alternate_action_name {
+      font-family: "Greycliff_medium";
+      letter-spacing: 2px;
+      font-size: 0.5rem;
+      color: $text_colour;
+      text-align: center;
+    }
+  }
+}
+
+.align_lined_buttons {
+  position: relative; 
+  top: 1px; 
 }

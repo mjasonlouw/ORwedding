@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="23" viewBox="0 0 20 23">
+  <g id="tag-not-found" transform="translate(-18303 -9075)">
+    <path id="tag-arrow-down" d="M21.41,11.58l-9-9A2,2,0,0,0,11,2H4A2.006,2.006,0,0,0,2,4v7a1.966,1.966,0,0,0,.59,1.41l.41.4A5.822,5.822,0,0,1,6,12a6,6,0,0,1,6,6,5.858,5.858,0,0,1-.82,3l.4.4A2,2,0,0,0,13,22a1.966,1.966,0,0,0,1.41-.59l7-7A1.966,1.966,0,0,0,22,13a2.006,2.006,0,0,0-.59-1.42M5.5,7A1.5,1.5,0,1,1,7,5.5,1.5,1.5,0,0,1,5.5,7" transform="translate(18301 9073)" fill="#f3f2f2"/>
+    <text id="_" data-name="?" transform="translate(18304 9087)" fill="#f3f2f2" font-size="11" font-family="GreycliffCF-Bold, Greycliff CF" font-weight="700" letter-spacing="0.181em"><tspan x="0.896" y="9">?</tspan></text>
+  </g>
+</svg>

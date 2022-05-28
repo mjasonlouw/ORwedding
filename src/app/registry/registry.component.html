@@ -1,133 +1,136 @@
+
 <div class="body">
-  <div class="registry_header">
-    <div class="header-wrapper">
-        <div>
-            <h4>REGISTRY</h4>
+  <div class="registry_wrapper">
+      <div class="my_items_wrapper">
+        <div class="heading_wrapper">
+          <div class="my_items_header">Your gift list</div>
+          <div class="my_items_sub_header">Your reserved gift list. Tap to remove an item.</div>
         </div>
-        <div class="divider">
-            <hr class="heading_divider" />
+        
+        <div class="my_items_grid" *ngIf="guestsItems?.length > 0">
+          <div class="my_items_information_wrapper" *ngFor="let item of guestsItems" class="gift_item">
+            <div class="selected_item" (click)="removeGuestItem(item);">
+              <div class="image_outer_wrapper">
+                <div class="image_wrapper" [ngStyle]="{'background-image': 'linear-gradient(
+                  rgba(51, 63, 54, 0.5), 
+                  rgba(51, 63, 54, 0.5)
+                ),url(' + item.payload.doc.data().url + ')'}">
+                </div>
+              </div>
+             
+              <div class="item_information_wrapper">
+                <div>
+                  <div class="item_name">{{item.payload.doc.data().name}}</div>
+                  <div class="item_category">{{item.payload.doc.data().category}}</div>
+                </div>
+              </div>
+            
+              <div class="remove_button_wrapper">
+                <div class="remove_button">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11.039 14.192">
+                    <path id="delete" d="M16.039,3.788h-2.76L12.49,3H8.548l-.788.788H5V5.365H16.039M5.788,15.615a1.577,1.577,0,0,0,1.577,1.577h6.308a1.577,1.577,0,0,0,1.577-1.577V6.154H5.788Z" transform="translate(-5 -3)" fill="#f3f2f2"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="align_sub_heading">
-            <p>Add and remove gifts</p>
+
+        <div class="empty_state_wrapper" *ngIf="guestsItems?.length == 0">
+          <div class="empty_state">
+            <div class="empty_state_text">
+              <div class="empty_heading">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20.92" height="20.92" viewBox="0 0 20.92 20.92">
+                  <path id="tag-off" d="M18.33,8.5l4.59-4.58L21.5,2.5l-19,19,1.42,1.42L8.5,18.33l3.08,3.08a1.992,1.992,0,0,0,2.83,0l7-7a1.992,1.992,0,0,0,0-2.83M5.61,15.43l9.86-9.78L12.41,2.58A2,2,0,0,0,11,2H4A2,2,0,0,0,2,4v7a2,2,0,0,0,.59,1.41M5.5,4A1.5,1.5,0,1,1,4,5.5,1.5,1.5,0,0,1,5.5,4Z" transform="translate(-2 -2)"/>
+                </svg>
+                <div class="empty_no_gifts">
+                  You have no reserved gifts yet.
+                </div>
+              </div>
+              <div class="empty_no_gifts_help">
+                Reserve a gift by tapping on an image in the full registry section.
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="my_items_wrapper">
+        <div class="heading_wrapper">
+          <div class="my_items_header">Full registry</div>
+          <div class="my_items_sub_header">This is a full list of potential gifts. Tap on an item to reserve it as a gift.</div>
+        </div>
+
+        <div class="search_wrapper">
+          <form [formGroup]="categoryFilter">
+            <input placeholder="Search for an item" type="text" class="find_an_item" (keyup)="onSearchKeyUp($event)"/>
+            <div class="search_icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17.591" height="17.592" viewBox="0 0 17.591 17.592">
+                <g id="search" transform="translate(0.5 0.5)">
+                  <circle id="Ellipse_4" data-name="Ellipse 4" cx="7.024" cy="7.024" r="7.024" transform="translate(0 0)" fill="none" stroke="#f3f2f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                  <line id="Line_18" data-name="Line 18" x1="3.96" y1="3.96" transform="translate(12.424 12.425)" fill="none" stroke="#f3f2f2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                </g>
+              </svg>
+            </div>
+          </form>
+        </div>
+
+        <div class="empty_state_wrapper" *ngIf="finalRegistry?.length == 0">
+          <div class="empty_state">
+            <div class="empty_state_text">
+              <div class="empty_heading">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="23" viewBox="0 0 20 23">
+                  <g id="tag-not-found" transform="translate(-18303 -9075)">
+                    <path id="tag-arrow-down" d="M21.41,11.58l-9-9A2,2,0,0,0,11,2H4A2.006,2.006,0,0,0,2,4v7a1.966,1.966,0,0,0,.59,1.41l.41.4A5.822,5.822,0,0,1,6,12a6,6,0,0,1,6,6,5.858,5.858,0,0,1-.82,3l.4.4A2,2,0,0,0,13,22a1.966,1.966,0,0,0,1.41-.59l7-7A1.966,1.966,0,0,0,22,13a2.006,2.006,0,0,0-.59-1.42M5.5,7A1.5,1.5,0,1,1,7,5.5,1.5,1.5,0,0,1,5.5,7" transform="translate(18301 9073)"/>
+                    <text id="_" data-name="?" transform="translate(18304 9087)" font-size="11" font-family="GreycliffCF-Bold, Greycliff CF" font-weight="700" letter-spacing="0.181em"><tspan x="0.896" y="9">?</tspan></text>
+                  </g>
+                </svg>
+                <div class="empty_no_gifts">
+                  No gift found.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gift_items_grid">
+          <ng-container *ngFor="let item of finalRegistry">
+            <div *ngIf="item.payload.doc.data().guest == ''" class="gift_item" (click)="selectItem(item);">
+              <div class="gifts_image_outer_wrapper">
+                <div class="gift_image_wrapper" [ngStyle]="{'background-image': 'linear-gradient(
+                  rgba(51, 63, 54, 0.5), 
+                  rgba(51, 63, 54, 0.5)
+                ), url(' + item.payload.doc.data().url + ')'}">
+                    <div class="gift_button_wrapper">
+                      <div class="gift_button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.665 14.665">
+                          <path id="tag-plus" d="M16.232,9.025l-6.6-6.6A1.465,1.465,0,0,0,8.6,2H3.467A1.467,1.467,0,0,0,2,3.467V8.6a1.442,1.442,0,0,0,.433,1.034l.3.293a4.269,4.269,0,0,1,2.2-.594,4.4,4.4,0,0,1,4.4,4.4,4.3,4.3,0,0,1-.6,2.2l.293.293a1.465,1.465,0,0,0,1.041.44,1.442,1.442,0,0,0,1.034-.433L16.232,11.1a1.442,1.442,0,0,0,.433-1.034,1.471,1.471,0,0,0-.433-1.041M4.566,5.666a1.1,1.1,0,1,1,1.1-1.1,1.1,1.1,0,0,1-1.1,1.1m3.3,8.8h-2.2v2.2H4.2v-2.2H2V13H4.2V10.8H5.666V13h2.2Z" transform="translate(-2 -2)" fill="#f3f2f2"/>
+                        </svg>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <div class="item_information_wrapper">
+                <div>
+                  <div class="item_category">{{item.payload.doc.data().category}}</div>
+                  <div class="item_name">{{item.payload.doc.data().name}}</div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+  </div>
+  
+  <div class="added_popup_wrapper_registry hidden">
+    <div class="added_popup_information_registry pulse_animation">
     </div>
+  </div>
 </div>
 
-  <!-- <div class="main_header_wrapper" id="headerBlob">
-    <div class="heading_blob">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 475 531">
-        <defs>
-          <clipPath id="clip-path">
-            <rect id="Rectangle_176" data-name="Rectangle 176" width="475" height="531" transform="translate(-38 -254)" fill="#fff" stroke="#707070" stroke-width="1"/>
-          </clipPath>
-          <linearGradient id="linear-gradient" x1="0.343" y1="0.769" x2="0.234" y2="0.909" gradientUnits="objectBoundingBox">
-            <stop offset="0" stop-color="#667d6b"/>
-            <stop offset="1" stop-color="#fff"/>
-          </linearGradient>
-          <filter id="Path_663" x="108.779" y="-90.755" width="654.945" height="658.828" filterUnits="userSpaceOnUse">
-            <feOffset dy="3" input="SourceAlpha"/>
-            <feGaussianBlur stdDeviation="13" result="blur"/>
-            <feFlood flood-opacity="0.161"/>
-            <feComposite operator="in" in2="blur"/>
-            <feComposite in="SourceGraphic"/>
-          </filter>
-          <linearGradient id="linear-gradient-2" x1="0.475" y1="0.53" x2="0.589" y2="0.768" gradientUnits="objectBoundingBox">
-            <stop offset="0" stop-color="#667d6b"/>
-            <stop offset="1" stop-color="#667d6b" stop-opacity="0.6"/>
-          </linearGradient>
-          <filter id="Path_662" x="-340.05" y="-324.698" width="1121.215" height="1054.198" filterUnits="userSpaceOnUse">
-            <feOffset dy="3" input="SourceAlpha"/>
-            <feGaussianBlur stdDeviation="18.5" result="blur-2"/>
-            <feFlood flood-opacity="0.2"/>
-            <feComposite operator="in" in2="blur-2"/>
-            <feComposite in="SourceGraphic"/>
-          </filter>
-          <linearGradient id="linear-gradient-3" x1="0.349" y1="0.846" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-            <stop offset="0" stop-color="#667d6b"/>
-            <stop offset="1" stop-color="#fff" stop-opacity="0.388"/>
-          </linearGradient>
-        </defs>
-        <g id="registry" transform="translate(38 254)" clip-path="url(#clip-path)">
-          <g transform="matrix(1, 0, 0, 1, -38, -254)" filter="url(#Path_663)">
-            <path id="Path_663-2" data-name="Path 663" d="M-250.8-1134.358c14.748-35.762,62.561-60.65,157.585-108.969,83.75-42.585,125.87-74.377,191.114-81.307,52.529-5.579,104.623-.876,141.659,30.175,51.766,43.4,42.331,128.527,36.881,177.7-13.3,119.97-82.52,197.825-95.557,212.07C159.844-881.7,42.262-753.238-73.94-788.172c-69.955-21.033-104.2-90.7-139.144-161.777C-244.044-1012.928-274.951-1075.8-250.8-1134.358Z" transform="matrix(1, -0.07, 0.07, 1, 499.14, 1288.26)" opacity="0.17" fill="url(#linear-gradient)"/>
-          </g>
-          <g transform="matrix(1, 0, 0, 1, -38, -254)" filter="url(#Path_662)">
-            <path id="Path_662-2" data-name="Path 662" d="M1959.834-2385.81c54.625,73.523,175.226,111.864,261.838,77.126,96.887-38.859,61.666-79.577,179.913-147.547,96.806-55.644,171.694,19.734,240.955-40.24,65.154-56.417,137.279-296.908,18.408-402.958s-296.854-114.925-493.892-21.241C1940.1-2812.762,1851.181-2532.056,1959.834-2385.81Z" transform="translate(-2918.9 1778.91) rotate(22)" opacity="0.7" fill="url(#linear-gradient-2)"/>
-          </g>
-          <path id="blobblob" d="M1115.316,538.521A88.337,88.337,0,0,1,1069.8,572c-45.647,14.2-70.712-12.954-134.716-13.131-64.589-.179-70.961,27.52-150.791,44.74-18.876,4.072-115.389,22.964-202.322-22-9.463-4.894-36.729-19-60.818-43.089V-109h594.167Z" transform="translate(-640.078 -368.316)" opacity="0.18" fill="url(#linear-gradient-3)"/>
-        </g>
-      </svg>
-      
-    </div>
-    
-    <div class="header_wrapper">
-      <div class="registry_icon">
-        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 561.75 399.92">
-          <defs>
-            <style>
-              .cls-1,
-              .cls-4 {
-                opacity: 0.5;
-              }
 
-              .cls-2,
-              .cls-4 {
-                isolation: isolate;
-              }
 
-              .cls-3 {
-                fill: #20271a;
-              }
-
-              .cls-5 {
-                fill: #fff;
-              }
-            </style>
-          </defs>
-          <g id="S" class="cls-1">
-            <g class="cls-2">
-              <path class="cls-3"
-                d="M49.3,346.15a50.52,50.52,0,0,1-24-5.53A47.2,47.2,0,0,1,8.75,326.68a2.83,2.83,0,0,1,.36-3.93l10.36-12q2-2.32,4.11-.36,12,12.31,25.19,12.32,8,0,12.77-3.39t4.73-10q0-5.72-3.48-8.76T51.27,294l-15.19-7.14q-25-11.43-25-34.12,0-16.42,11-25.81t27.6-9.38q21.25,0,36.62,16.43,1.78,1.8.18,4.11L76.28,250.41c-1.2,1.55-2.51,1.78-3.94.71q-11.61-10.19-21.79-10.18c-4.52,0-8.13,1.07-10.8,3.22a10.6,10.6,0,0,0-4,8.75,10.22,10.22,0,0,0,3.21,8q3.21,2.85,11.43,6.61l12.87,5.89a97.17,97.17,0,0,1,10.18,5.45,58.3,58.3,0,0,1,8.66,6.88A26.78,26.78,0,0,1,88.87,296a37.58,37.58,0,0,1,2.23,13.4q0,17.86-12.23,27.33T49.3,346.15Z" />
-            </g>
-          </g>
-          <g id="R" class="cls-1">
-            <g class="cls-2">
-              <path class="cls-3"
-                d="M99.85,150.25q2,3.23-1.78,3.22H76.63a3.48,3.48,0,0,1-3.21-1.79L47,109.71H37.87v41.08a2.37,2.37,0,0,1-2.68,2.68H15a2.36,2.36,0,0,1-2.67-2.68V31.11A2.36,2.36,0,0,1,15,28.43H52.7q21.6,0,32.77,11T96.64,69q0,29.11-24.83,37.87Zm-62-99.13V87H51.8q20.37,0,20.37-18,0-17.87-20.37-17.86Z" />
-            </g>
-          </g>
-          <g id="T" class="cls-1">
-            <g class="cls-2">
-              <path class="cls-3"
-                d="M181.48,344a2.37,2.37,0,0,1-2.68-2.68V241.66H154.33a2.37,2.37,0,0,1-2.68-2.68V221.65a2.37,2.37,0,0,1,2.68-2.68h74.31a2.37,2.37,0,0,1,2.68,2.68V239a2.37,2.37,0,0,1-2.68,2.68H204.35v99.67a2.37,2.37,0,0,1-2.68,2.68Z" />
-            </g>
-          </g>
-          <g id="E" class="cls-1">
-            <g class="cls-2">
-              <path class="cls-3"
-                d="M157.9,153.47a2.36,2.36,0,0,1-2.67-2.68V31.11a2.36,2.36,0,0,1,2.67-2.68h63.6a2.37,2.37,0,0,1,2.68,2.68V48.44a2.37,2.37,0,0,1-2.68,2.68H180.77V78.8h38.41a2.37,2.37,0,0,1,2.67,2.68V98.81a2.36,2.36,0,0,1-2.67,2.68H180.77v29.29H221.5a2.37,2.37,0,0,1,2.68,2.68v17.33a2.37,2.37,0,0,1-2.68,2.68Z" />
-            </g>
-          </g>
-          <g class="cls-4">
-            <path class="cls-3"
-              d="M463.33,344a2.37,2.37,0,0,1-2.68-2.68V286L424,222.18c-1.19-2.14-.6-3.21,1.79-3.21h21.07a3.54,3.54,0,0,1,3.22,1.78l23.4,42,23.22-42A3.54,3.54,0,0,1,500,219H521q3.57,0,1.78,3.21l-36.62,64.13v55a2.37,2.37,0,0,1-2.68,2.68Z" />
-          </g>
-          <g class="cls-4">
-            <path class="cls-3"
-              d="M462.24,151.83a2.37,2.37,0,0,1-2.68-2.68V29.47a2.37,2.37,0,0,1,2.68-2.68h20.18a2.37,2.37,0,0,1,2.68,2.68V149.15a2.37,2.37,0,0,1-2.68,2.68Z" />
-          </g>
-          <g class="cls-4">
-            <path class="cls-3"
-              d="M380.62,340.79q2,3.22-1.78,3.22H357.4a3.48,3.48,0,0,1-3.21-1.79l-26.44-42h-9.11v41.08A2.37,2.37,0,0,1,316,344H295.77a2.36,2.36,0,0,1-2.67-2.68V221.65a2.36,2.36,0,0,1,2.67-2.68h37.7q21.6,0,32.77,11t11.17,29.56q0,29.12-24.83,37.87Zm-62-99.13v35.9h13.93q20.37,0,20.37-18,0-17.86-20.37-17.86Z" />
-          </g>
-          <path class="cls-5"
-            d="M404.13,52.63H376.7A18.29,18.29,0,0,0,371,17.12c-.31,0-.62,0-.86,0-15.52,0-23.69,13.66-27.54,23.42-3.85-9.76-12-23.42-27.46-23.42-.32,0-.63,0-.94,0a18.31,18.31,0,0,0-12.14,31.56,18.43,18.43,0,0,0,6.42,4H281a3,3,0,0,0-3,3V86.41a3,3,0,0,0,3,3h9.6v61.34a3,3,0,0,0,3,3h97.89a3,3,0,0,0,3-3V89.41h9.61a3,3,0,0,0,3-3V55.63A3,3,0,0,0,404.13,52.63ZM370.21,23.12c.21,0,.41,0,.63,0a12.3,12.3,0,1,1-.71,24.59H346.47C348.76,40.12,355.51,23.12,370.21,23.12ZM302.36,35.73a12.3,12.3,0,0,1,12-12.61h.7c14.59,0,21.35,17,23.65,24.59H315a12.31,12.31,0,0,1-12.61-12ZM284,58.63h55.56V83.41H284Zm12.6,30.78h43v58.34h-43Zm91.89,58.34H345.59V89.41h42.93Zm12.61-64.34H345.59V58.63h55.54Z" />
-        </svg>
-      </div>
-    </div>
-  </div> -->
-
-  <div class="registry_wrapper">
+  <!-- <div class="registry_wrapper">
     <div class="filtering_wrapper at_top">
       <div class="search_filter_wrapper">
         <div class="search_wrapper">
@@ -135,59 +138,8 @@
             <input placeholder="Search for an item" type="text" (keyup)="onSearchKeyUp($event)" class="search_box search_box_registry at_top_search" />
           </form>
         </div>
-<!--   
-        <div class="filters_button" (click)="openFilters();">
-          <div class="filter_button">
-            <div class="filter swipeUp">
-              <svg xmlns="http://www.w3.org/2000/svg" width="11.538" height="10.434" viewBox="0 0 11.538 10.434">
-                <path id="filter" d="M13.038,3H2L6.415,8.221v3.61l2.208,1.1V8.221Z" transform="translate(-1.75 -2.75)" fill="none" stroke="#fff" stroke-linecap="round"
-                  stroke-linejoin="round" stroke-width="0.5" />
-              </svg>
-            </div>
-  
-            <div class="close swipeUpAway">
-              <svg xmlns="http://www.w3.org/2000/svg" width="8.013" height="8.013" viewBox="0 0 8.013 8.013">
-                <g id="Close" transform="translate(0.354 0.354)">
-                  <line id="Line_34" data-name="Line 34" x1="7.305" y2="7.305" transform="translate(0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="0.5" />
-                  <line id="Line_35" data-name="Line 35" x2="7.305" y2="7.305" transform="translate(0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="0.5" />
-                </g>
-              </svg>
-            </div>
-          </div>
-        </div> -->
       </div>
-  
-      <!-- <div class="filter_wrapper closed">
-        <div class="filter_header">
-          <div class="filters_heading">FILTERS</div>
-        </div>
-  
-        <div class="filter_item_wrapper">
-          <form [formGroup]="categoryFilter">
-            <div formArrayName="categories" *ngFor="let order of
-            ordersFormArray.controls; let i= index">
-              <label class="checkbox">
-                <span class="checkbox__input">
-                  <input type="checkbox" name="checkbox" [formControlName]="i" (change)="checkCategory(i, $event)">
-                  <span class="checkbox__control">
-                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden="true" focusable="false">
-                      <path fill='none' stroke='#667D6B' stroke-width='3' d='M1.73 12.91l6.37 6.37L22.79 4.59' stroke-linecap="round" />
-                    </svg>
-                  </span>
-                </span>
-                <span class="category_name">{{categories[i]}}</span>
-              </label>
-            </div>
-          </form>
-        </div>
-      </div> -->
     </div>
-
-
-
-
-
-
 
     <div>
       <div class="my_items_wrapper">
@@ -293,4 +245,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->

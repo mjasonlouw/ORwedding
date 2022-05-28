@@ -23,7 +23,7 @@
     "angular-spotify": "^1.5.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "firebase": "^8.10.0",
+    "firebase": "^8.10.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

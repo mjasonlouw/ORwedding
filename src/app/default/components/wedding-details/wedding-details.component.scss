@@ -1,76 +1,96 @@
 @import "../../../../scss/common.scss";
 
-.details_wrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 8%;
-  position: relative;
-  z-index: 1;
+.details {
+  min-height: 80vh;
+  display: grid;
+  align-items: center;
 
-  
-  @media (min-width: 1024px) {
-    padding: 5vh 25vw;
+  @media screen and (min-width: 1000px) {
+    padding: 5vw 10vw;
+    gap: 2vw;
   }
 
-  .content-wrapper {
-    z-index: 1;
+  .detils_outer_wrapper {
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: 10px;
 
-    .details_tab_wrapper {
-      display: grid;
-      grid-row-gap: 50px;
-      padding-top: 30px;
-
-      .wedding_detail_item {
-        color: $secondary_green;
-        letter-spacing: 2px;
-
-        p {
-          margin: 0;
-          margin-top: 20px;
-        }
-
-        .category_desc {
-          font-family: "Greycliff_medium_italic";
-          font-size: 0.9rem;
-        }
-
-        .dot_details {
-          height: 5px; 
-          width: 5px; 
-          background-color: rgba($secondary_green, 0.3); 
+    @media screen and (min-width: 1000px) {
+      justify-content: center;
+    }
+  
+    .detail_wrapper {
+      display: grid; 
+      grid-template-columns: auto auto;
+      gap: 20px;
+      justify-content: flex-start;
+      align-items: center;
+      
+        .detail_icon_wrapper {
+          height: 55px;
+          width: 55px; 
+          background-color: rgba($text_colour, 0.1);
           border-radius: 100%;
-          margin-top: 20px;
-        }
-
-        .main_text {
-          font-family: "Greycliff_bold";
-        }
-
-        .details_follow {
-          padding-top: 20px; 
-          font-family: "Greycliff_medium_italic";
-        }
-
-        .sub_text {
-          font-family: "Greycliff_medium_italic";
-          font-size: 0.8rem;
-          margin-top: 25px;
-        }
-
-        // https://cssgrid-generator.netlify.app/ - This is how I generated the grid btw
-
-        .map {
-          margin-top: 25px;
-          cursor: pointer;
-
-          iframe {
-            height: 100%;
-            border: 0;
-            width: 100%;
-            border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid $text_colour;
+    
+          svg {
+            height: 20px;
           }
+      }
+    
+      .details_wrapper {
+        display: grid;
+        gap: 5px; 
+    
+        .detail_name {
+          font-family: "Baskerville_semibold_italics";
+          color: rgba($text_colour, 0.2);
+          font-size: 1.1rem;
+        }
+      
+        .detail_description {
+          font-family: "Baskerville_semibold";
+          color: $text_colour;
+          font-size: 1rem;
+          line-height: 25px;
+        }
+
+        .detail_description_sub {
+          font-family: "Baskerville_semibold";
+          color: $text_colour;
+          font-size: 0.7rem;
+          line-height: 15px;
         }
       }
     }
   }
+  
+  .children_disclaimer {
+    text-align: center;
+    font-family: "Baskerville_semibold_italics";
+    color: rgba($text_colour, 0.4);
+    font-size: 1.1rem;
+    line-height: 25px;
+    padding-top: 3vh;
+  }
 }
+
+.map {
+  padding-top: 3vh;
+
+  @media screen and (min-width: 1000px) {
+    display: grid; 
+    justify-content: center;
+  }
+
+  iframe {
+    border: 1px solid $text_colour; 
+    border-radius: 5px;
+  }
+}
+
+
+
