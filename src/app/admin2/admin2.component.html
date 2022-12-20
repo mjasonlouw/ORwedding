@@ -1,0 +1,26 @@
+<table>
+    <tr>
+        <th>name</th>
+        <th>allergies</th>
+        <th>rsvp</th>
+        <th>is coming</th>
+    </tr>
+    <ng-container *ngFor="let guest of allGuests; index as i"
+        [ngClass]="selectGuestIndex == i ?
+        'SelectedGuestContainer':'guestContainer'">
+        <ng-container class="guest">
+            
+            <ng-container *ngFor="let rs of rsvps; index as j">
+
+                <tr *ngIf="rs.id == guest.payload.doc.id">
+                    <td>{{rs.data.name}}</td>
+                    <td>{{rs.data.allergies}}</td>
+                    <td>{{rs.data.rsvp}}</td>
+                    <td>{{rs.data.coming}}</td>
+                </tr>
+
+            </ng-container>
+
+        </ng-container>
+    </ng-container>
+</table>

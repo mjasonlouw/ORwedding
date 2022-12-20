@@ -21,6 +21,7 @@ import { MenuComponent } from './default/components/menu/menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './default/components/footer/footer.component';
+import { Admin2Component } from './admin2/admin2.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { FooterComponent } from './default/components/footer/footer.component';
     WeddingDetailsComponent,
     MenuComponent,
     NotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    Admin2Component
   ],
   imports: [
     ReactiveFormsModule,

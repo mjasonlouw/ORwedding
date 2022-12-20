@@ -6,9 +6,11 @@ import { RegistryComponent } from './registry/registry.component';
 import { DefaultComponent } from './default/default.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { Admin2Component } from './admin2/admin2.component';
 
 const routes: Routes = [
   { path:'admin', component: AdminComponent, pathMatch: 'full' },
+  { path:'admin2', component: Admin2Component, pathMatch: 'full' },
   {
     matcher: (url) => {
         if(url.length == 2){
