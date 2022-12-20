@@ -39,6 +39,8 @@ export class RsvpFormComponent {
 
   somethingNotFilledIn = true; 
 
+  hasAllergies = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private GuestService: GuestService) {
@@ -67,13 +69,24 @@ export class RsvpFormComponent {
     this.persons.forEach(person => {
       this.inviteCount++
       const personData = person.data()
+
+      console.log("personData",personData,personData?.allergies)
+
+      let allergies = personData?.allergies == undefined ? "" : personData.allergies
+      let hasAllergies = personData?.hasAllergies == undefined ? false : personData.hasAllergies
+
       const rsvp = new FormGroup({
         name: new FormControl(personData.name),
         meal: new FormControl(personData.meal),
         coming: new FormControl(personData && personData.coming),
         vaccinated: new FormControl(personData && personData.vaccinated),
-        isPlusOne: new FormControl(personData && personData.isPlusOne)
+        isPlusOne: new FormControl(personData && personData.isPlusOne),
+        hasAllergies: new FormControl(hasAllergies),
+        allergies: new FormControl(allergies)
       })
+
+      this.hasAllergies = (allergies != "")
+      console.log("has allergies",this.hasAllergies)
 
       if(personData.meal == '' || personData.name == ''){
         personData['error'] = 'X'
@@ -81,6 +94,7 @@ export class RsvpFormComponent {
         personData['error'] = '';
       }
       
+      personData.allergies = allergies
       this.personsData.push(personData)
       this.rsvps.push(rsvp);
     });
@@ -101,7 +115,9 @@ export class RsvpFormComponent {
         isPlusOne: group.get('isPlusOne').value,
         meal: group.get('meal').value,
         name: group.get('name').value,
-        vaccinated: group.get('vaccinated').value
+        vaccinated: group.get('vaccinated').value,
+        allergies: group.get('allergies').value,
+        hasAllergies: group.get('hasAllergies').value
       }
       
       this.personsData[index].error = ''
@@ -166,6 +182,7 @@ export class RsvpFormComponent {
         let count = 0
         this.persons.forEach((person) => {
           if(count++ == index){
+            console.log("the rsvp", rsvp)
             this.GuestService.updatePersonById(person.id, rsvp, this.guest.id)
           }
         });
@@ -204,11 +221,13 @@ export class RsvpFormComponent {
     rsvpp.controls['meal'].setValue('')
     rsvpp.controls['name'].setValue('')
     rsvpp.controls['vaccinated'].setValue('')
+    rsvpp.controls['allergies'].setValue('')
 
     this.personsData[index].coming = false
     this.personsData[index].meal = ''
     this.personsData[index].name = ''
     this.personsData[index].vaccinated = false
+    this.personsData[index].allergies = ''
 
   }
 
@@ -216,8 +235,18 @@ export class RsvpFormComponent {
     this.showPlusOne = true;
   }
 
+  public setAllergies(allergies: string, rsvpControl: any){
+    rsvpControl.controls['allergies'].setValue(allergies);
+    this.validationCheck(); 
+  }
+
   public toggleComingControl(state: boolean, rsvpControl: any): void {
     rsvpControl.controls['coming'].setValue(state);
+    this.validationCheck(); 
+  }
+
+  public toggleHasAllergies(state: boolean, rsvpControl: any): void{
+    rsvpControl.controls['hasAllergies'].setValue(state);
     this.validationCheck(); 
   }
 
