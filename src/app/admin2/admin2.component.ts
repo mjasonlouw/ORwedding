@@ -21,6 +21,7 @@ export class Admin2Component implements OnInit {
     this.guestService
       .getAllGuests()
       .subscribe(res => {
+        this.rsvps = []
   
         this.allGuests = res;
 
